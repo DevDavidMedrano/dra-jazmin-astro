@@ -1,18 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
-import InnerHero from "../components/InnerHero.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-
-const cases = [
-  { id: "01", category: "capilar", title: "Restauración capilar" },
-  { id: "02", category: "capilar", title: "Tratamiento capilar" },
-  { id: "03", category: "estetica", title: "Medicina estética" },
-];
+import InnerHero from "../components/InnerHero.astro";
+import ResultsGallerySection from "../components/sections/ResultsGallerySection.astro";
 ---
 
 <BaseLayout
-  title="Resultados | Dra. Jazmín Alvarez"
+  title="Resultados | Dra. Jazmín Álvarez"
   description="Consulta la estructura de la galería clínica y conoce cómo se documenta la evolución de cada tratamiento."
 >
   <Header />
@@ -22,93 +17,16 @@ const cases = [
       title="Resultados que se sienten naturales"
       description="Cada proceso es único y se acompaña de una valoración profesional, seguimiento y documentación responsable."
       image="/images/hero-doctor-02.webp"
-      imageAlt="Dra. Jazmín Alvarez en su consultorio"
+      imageAlt="Dra. Jazmín Álvarez en su consultorio"
     />
-
-    <section class="results-gallery" aria-labelledby="gallery-heading">
-      <div class="section-heading results-gallery-heading">
-        <div>
-          <p class="eyebrow">Galería clínica</p>
-          <h2 id="gallery-heading">Evolución documentada con autorización</h2>
-        </div>
-        <p>
-          Esta sección queda preparada para integrar fotografías clínicas reales
-          autorizadas por cada paciente.
-        </p>
-      </div>
-
-      <div class="result-filters" role="group" aria-label="Filtrar casos">
-        <button class="result-filter active" type="button" data-result-filter="all">Todos</button>
-        <button class="result-filter" type="button" data-result-filter="capilar">Restauración capilar</button>
-        <button class="result-filter" type="button" data-result-filter="estetica">Medicina estética</button>
-      </div>
-
-      <div class="case-grid" data-case-grid>
-        {
-          cases.map((item) => (
-            <article class="case-card" data-case-category={item.category}>
-              <div class="case-title">
-                <span>Caso {item.id}</span>
-                <strong>{item.title}</strong>
-              </div>
-              <div class="case-comparison">
-                <div>
-                  <div class="case-placeholder">
-                    <img src="/brand/dra-jazmin-mark.png" alt="" width="197" height="387" loading="lazy" />
-                    <span>Imagen clínica autorizada</span>
-                  </div>
-                  <p>Antes</p>
-                </div>
-                <div>
-                  <div class="case-placeholder case-placeholder-after">
-                    <img src="/brand/dra-jazmin-mark.png" alt="" width="197" height="387" loading="lazy" />
-                    <span>Imagen clínica autorizada</span>
-                  </div>
-                  <p>Después</p>
-                </div>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-
-      <div class="results-disclaimer">
-        <span aria-hidden="true">i</span>
-        <p>
-          Los resultados pueden variar en cada paciente. Las imágenes definitivas
-          deben contar con autorización y corresponder a casos clínicos reales.
-        </p>
-      </div>
-    </section>
-
+    <ResultsGallerySection />
     <section class="page-cta page-cta-compact">
       <div>
         <p class="eyebrow eyebrow-light">Tu caso es único</p>
         <h2>Conoce qué opciones pueden ser adecuadas para ti.</h2>
       </div>
-      <a class="button button-light button-large" href="/agenda/">Agenda una valoración</a>
+      <a class="button button-light button-large" href="/#agenda">Agenda una valoración</a>
     </section>
   </main>
   <SiteFooter />
 </BaseLayout>
-
-<script>
-  const filters = Array.from(
-    document.querySelectorAll<HTMLButtonElement>("[data-result-filter]"),
-  );
-  const cases = Array.from(
-    document.querySelectorAll<HTMLElement>("[data-case-category]"),
-  );
-
-  filters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-      const selected = filter.dataset.resultFilter;
-
-      filters.forEach((item) => item.classList.toggle("active", item === filter));
-      cases.forEach((item) => {
-        const visible = selected === "all" || item.dataset.caseCategory === selected;
-        item.hidden = !visible;
-      });
-    });
-  });
-</script>

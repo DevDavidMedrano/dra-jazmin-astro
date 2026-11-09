@@ -1,0 +1,65 @@
+---
+import { stats } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<section class="results-highlight" aria-labelledby="results-highlight-title">
+  <!--
+    IMAGEN DE REFERENCIA tomada del diseño. Antes de publicar debe sustituirse
+    por un caso real de la doctora con consentimiento firmado del paciente.
+  -->
+  <figure class="before-after">
+    <div class="before-after-panel">
+      <img
+        src="/images/resultados/capilar-antes.webp"
+        alt="Coronilla con pérdida de cabello antes del tratamiento"
+        width="252"
+        height="198"
+        loading="lazy"
+      />
+      <span class="before-after-pill">Antes</span>
+    </div>
+    <div class="before-after-panel before-after-after">
+      <img
+        src="/images/resultados/capilar-despues.webp"
+        alt="Coronilla con cabello recuperado después del tratamiento"
+        width="246"
+        height="198"
+        loading="lazy"
+      />
+      <span class="before-after-pill">Después</span>
+    </div>
+    <span class="before-after-handle" aria-hidden="true">
+      <Icon name="arrow" />
+    </span>
+  </figure>
+
+  <div class="results-highlight-copy">
+    <p class="eyebrow">Resultados reales</p>
+    <h2 id="results-highlight-title">Cambios que se notan</h2>
+    <p>
+      Pacientes que han recuperado su cabello y su confianza con nuestros
+      tratamientos.
+    </p>
+    <a class="button button-outline-gold" href="/#resultados">
+      Ver más resultados <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <ul class="results-stats">
+    {
+      stats.items.map((item) => (
+        <li>
+          <span class="results-stat-icon">
+            <Icon name={item.icon} />
+          </span>
+          <span>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+            {!stats.confirmed && <small class="pending-tag">Dato por confirmar</small>}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

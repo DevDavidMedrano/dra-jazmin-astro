@@ -2,17 +2,31 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import ServiceCards from "../components/ServiceCards.astro";
+import ResultsHighlight from "../components/ResultsHighlight.astro";
 import Sections from "../components/Sections.astro";
+import TreatmentsSection from "../components/sections/TreatmentsSection.astro";
+import ResultsGallerySection from "../components/sections/ResultsGallerySection.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import BlogSection from "../components/sections/BlogSection.astro";
+import AgendaSection from "../components/sections/AgendaSection.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+
+// Sitio de una sola página: todas las secciones van seguidas y el menú baja a cada una.
 ---
 
 <BaseLayout>
   <Header />
-  <main>
+  <main class="inner-page one-page">
     <Hero />
-    <ServiceCards />
+    <ResultsHighlight />
+    <TreatmentsSection />
     <Sections />
+    <ResultsGallerySection />
+    <AboutSection />
+    <BlogSection />
+    <AgendaSection />
+    <ContactSection />
   </main>
   <SiteFooter />
 </BaseLayout>

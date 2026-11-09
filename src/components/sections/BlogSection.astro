@@ -1,0 +1,119 @@
+---
+---
+
+<div class="blog-page" id="blog">
+  <section class="blog-hero">
+    <div>
+      <p class="eyebrow">Dra. Jazmín Álvarez</p>
+      <h1>Información para acompañar tus decisiones.</h1>
+      <p>
+        Un espacio para conocer a la doctora, resolver dudas frecuentes y compartir información sobre restauración capilar y medicina estética.
+      </p>
+    </div>
+    <aside>
+      <span>Enfoque médico</span>
+      <strong data-blog-profile-name>Dra. Jazmín Álvarez</strong>
+      <p data-blog-profile-headline>Ciencia, precisión y atención cercana</p>
+    </aside>
+  </section>
+
+  <section class="blog-feed" aria-labelledby="blog-title">
+    <div class="blog-feed-heading">
+      <div><p class="eyebrow">Publicaciones</p><h2 id="blog-title">Conoce más sobre cada proceso</h2></div>
+      <p data-blog-profile-bio>
+        Cada publicación busca ofrecer información clara para que puedas llegar a tu valoración con mejores preguntas.
+      </p>
+    </div>
+    <div class="blog-grid" data-public-blog-grid>
+      <article class="blog-empty-card" data-blog-empty>
+        <span>✦</span>
+        <h3>Próximamente habrá nuevas publicaciones</h3>
+        <p>La doctora podrá compartir aquí fotografías, videos y artículos desde su dashboard.</p>
+      </article>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import {
+    getDemoMediaById,
+    getDemoPosts,
+    getDemoSettings,
+    getMediaObjectUrl,
+    getVideoEmbedUrl,
+  } from "../../scripts/demoStore";
+
+  const settings = getDemoSettings();
+  const name = document.querySelector<HTMLElement>("[data-blog-profile-name]");
+  const headline = document.querySelector<HTMLElement>("[data-blog-profile-headline]");
+  const biography = document.querySelector<HTMLElement>("[data-blog-profile-bio]");
+  if (name) name.textContent = settings.profile.name;
+  if (headline) headline.textContent = settings.profile.headline;
+  if (biography) biography.textContent = settings.profile.biography;
+
+  const grid = document.querySelector<HTMLElement>("[data-public-blog-grid]");
+  const posts = getDemoPosts().filter((post) => post.published);
+  if (grid && posts.length) {
+    grid.replaceChildren();
+    for (const post of posts) {
+      const article = document.createElement("article");
+      article.className = "blog-card";
+      const media = document.createElement("div");
+      media.className = "blog-card-media";
+
+      if (post.mediaId) {
+        const record = await getDemoMediaById(post.mediaId);
+        if (record) {
+          const url = getMediaObjectUrl(record);
+          if (record.kind === "video") {
+            const video = document.createElement("video");
+            video.src = url;
+            video.controls = true;
+            video.preload = "metadata";
+            media.append(video);
+          } else {
+            const image = document.createElement("img");
+            image.src = url;
+            image.alt = post.title;
+            image.loading = "lazy";
+            media.append(image);
+          }
+        }
+      } else if (post.externalVideoUrl) {
+        const embedUrl = getVideoEmbedUrl(post.externalVideoUrl);
+        if (embedUrl) {
+          const iframe = document.createElement("iframe");
+          iframe.src = embedUrl;
+          iframe.title = `Video: ${post.title}`;
+          iframe.loading = "lazy";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          media.append(iframe);
+        }
+      }
+
+      if (!media.childElementCount) {
+        const placeholder = document.createElement("span");
+        placeholder.className = "blog-media-placeholder";
+        placeholder.textContent = "Dra. Jazmín Álvarez";
+        media.append(placeholder);
+      }
+
+      const copy = document.createElement("div");
+      copy.className = "blog-card-copy";
+      const meta = document.createElement("span");
+      meta.className = "blog-card-meta";
+      meta.textContent = new Intl.DateTimeFormat("es-MX", { dateStyle: "long" }).format(post.createdAt);
+      const title = document.createElement("h3");
+      title.textContent = post.title;
+      const excerpt = document.createElement("strong");
+      excerpt.textContent = post.excerpt;
+      const body = document.createElement("p");
+      body.textContent = post.body;
+      copy.append(meta, title, excerpt, body);
+      article.append(media, copy);
+      grid.append(article);
+    }
+  }
+</script>

@@ -1,16 +1,11 @@
 ---
 import { site } from "../data/site";
+import BrandLogo from "./BrandLogo.astro";
 ---
 
 <footer class="global-footer">
   <div class="footer-brand">
-    <img
-      src="/brand/dra-jazmin-logo.png"
-      alt="Dra. Jazmín Alvarez"
-      width="1100"
-      height="431"
-      loading="lazy"
-    />
+    <BrandLogo variant="light" />
     <p>Medicina estética y restauración capilar con atención personalizada.</p>
   </div>
 
@@ -27,10 +22,11 @@ import { site } from "../data/site";
 
   <nav class="footer-column footer-nav" aria-label="Navegación del pie de página">
     <p class="footer-label">Explora</p>
-    <a href="/tratamientos/">Tratamientos</a>
-    <a href="/resultados/">Resultados</a>
-    <a href="/sobre-mi/">Sobre mí</a>
-    <a href="/contacto/">Contacto</a>
+    <a href="/#tratamientos">Tratamientos</a>
+    <a href="/#resultados">Resultados</a>
+    <a href="/#sobre-mi">Sobre mí</a>
+    <a href="/#blog">Blog</a>
+    <a href="/#contacto">Contacto</a>
   </nav>
 
   <div class="footer-social">
@@ -53,11 +49,11 @@ import { site } from "../data/site";
       </span>
       <b aria-hidden="true">↗</b>
     </a>
-    <a class="footer-agenda" href="/agenda/">Agenda tu valoración</a>
+    <a class="footer-agenda" href="/#agenda">Agenda tu valoración</a>
   </div>
 
   <div class="footer-legal">
-    <span>© 2026 Dra. Jazmín Alvarez.</span>
+    <span>© 2026 Dra. Jazmín Álvarez.</span>
     <span data-footer-cofepris>Permiso de publicidad COFEPRIS: pendiente de capturar</span>
     <span>La información del sitio no sustituye una valoración médica.</span>
     <a href="/admin/login/">Acceso administrativo</a>

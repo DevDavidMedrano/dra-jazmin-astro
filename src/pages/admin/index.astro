@@ -1,5 +1,6 @@
 ---
 import AdminLayout from "../../layouts/AdminLayout.astro";
+import BrandLogo from "../../components/BrandLogo.astro";
 
 const days = [
   { key: "1", label: "Lunes" },
@@ -21,11 +22,11 @@ const defaultPhotos = [
 ];
 ---
 
-<AdminLayout title="Dashboard | Dra. Jazmín Alvarez" bodyClass="admin-dashboard-page">
+<AdminLayout title="Dashboard | Dra. Jazmín Álvarez" bodyClass="admin-dashboard-page">
   <div class="admin-app" data-admin-app hidden>
     <aside class="admin-sidebar">
       <a class="admin-sidebar-logo" href="/" aria-label="Abrir página pública">
-        <img src="/brand/dra-jazmin-logo.png" alt="Dra. Jazmín Alvarez" width="1100" height="431" />
+        <BrandLogo />
       </a>
       <div class="admin-sidebar-copy">
         <span>Panel administrativo</span>

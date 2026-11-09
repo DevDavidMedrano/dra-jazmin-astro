@@ -1,0 +1,72 @@
+---
+---
+
+<div class="about-page" id="sobre-mi">
+  <section class="profile-hero">
+    <figure class="profile-photo">
+      <img
+        src="/images/hero-doctor.webp"
+        alt="Retrato de la Dra. Jazmín Álvarez en su consultorio"
+        width="1000"
+        height="1000"
+        loading="lazy"
+      />
+      <span class="profile-arc profile-arc-one" aria-hidden="true"></span>
+      <span class="profile-arc profile-arc-two" aria-hidden="true"></span>
+    </figure>
+
+    <div class="profile-copy">
+      <p class="eyebrow">Sobre mí</p>
+      <h1 data-profile-headline>Ciencia, precisión y atención cercana</h1>
+      <span class="title-rule" aria-hidden="true"></span>
+      <h2 data-profile-name>Dra. Jazmín Álvarez</h2>
+      <p class="profile-intro" data-profile-biography>
+        Mi propósito es acompañarte con honestidad, cuidado y un plan diseñado
+        para tus necesidades. La valoración es el espacio para escuchar lo que
+        buscas y explicarte con claridad cada alternativa.
+      </p>
+
+      <div class="profile-values" aria-label="Principios de atención">
+        <article>
+          <span class="value-icon" aria-hidden="true">01</span>
+          <h3>Atención ética</h3>
+          <p>Información clara para tomar decisiones con tranquilidad.</p>
+        </article>
+        <article>
+          <span class="value-icon" aria-hidden="true">02</span>
+          <h3>Plan personalizado</h3>
+          <p>Cada recomendación parte de una revisión individual.</p>
+        </article>
+        <article>
+          <span class="value-icon" aria-hidden="true">03</span>
+          <h3>Seguimiento cercano</h3>
+          <p>Acompañamiento durante las distintas etapas del proceso.</p>
+        </article>
+      </div>
+
+      <a class="button button-dark button-large" href="/#agenda">Agenda tu valoración</a>
+    </div>
+  </section>
+
+  <section class="about-note">
+    <p class="eyebrow">La consulta</p>
+    <h2>Un espacio para entender tu caso antes de elegir un tratamiento.</h2>
+    <p>
+      Revisamos antecedentes, objetivos y expectativas para definir un plan
+      coherente contigo. Cuando una opción no es adecuada, también es importante
+      decirlo con claridad.
+    </p>
+  </section>
+</div>
+
+<script>
+  import { getDemoSettings } from "../../scripts/demoStore";
+
+  const profile = getDemoSettings().profile;
+  const name = document.querySelector<HTMLElement>("[data-profile-name]");
+  const headline = document.querySelector<HTMLElement>("[data-profile-headline]");
+  const biography = document.querySelector<HTMLElement>("[data-profile-biography]");
+  if (name) name.textContent = profile.name;
+  if (headline) headline.textContent = profile.headline;
+  if (biography) biography.textContent = profile.biography;
+</script>

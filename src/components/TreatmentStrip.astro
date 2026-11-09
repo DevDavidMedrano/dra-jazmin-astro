@@ -1,0 +1,20 @@
+---
+import { treatments } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<nav class="treatment-strip" aria-label="Tratamientos">
+  {
+    treatments.map((treatment) => (
+      <a href={`#${treatment.id}`}>
+        <span class="treatment-strip-icon">
+          <Icon name={treatment.icon} />
+        </span>
+        <span class="treatment-strip-title">{treatment.title}</span>
+        <span class="treatment-strip-arrow" aria-hidden="true">
+          <Icon name="chevron" />
+        </span>
+      </a>
+    ))
+  }
+</nav>

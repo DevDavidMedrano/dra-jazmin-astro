@@ -1,47 +1,73 @@
 ---
-import { site } from "../data/site";
+import { site, treatments } from "../data/site";
+import BrandLogo from "./BrandLogo.astro";
+import Icon from "./Icon.astro";
 
 const navItems = [
-  { label: "Inicio", href: "/" },
-  { label: "Tratamientos", href: "/tratamientos/" },
-  { label: "Resultados", href: "/resultados/" },
-  { label: "Sobre mí", href: "/sobre-mi/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Contacto", href: "/contacto/" },
+  { label: "Inicio", href: "/#inicio" },
+  { label: "Tratamientos", href: "/#tratamientos", children: treatments },
+  { label: "Resultados", href: "/#resultados" },
+  { label: "Sobre mí", href: "/#sobre-mi" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Contacto", href: "/#contacto" },
   { label: "Instagram", href: site.instagramUrl, external: true },
 ];
 
+// En la página única el enlace activo lo actualiza el script según la sección visible.
+// En las páginas sueltas (/tratamientos/, /blog/…) se marca el apartado correspondiente.
 const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
 const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (item: (typeof navItems)[number]) => {
+  if (item.external) return false;
+  const section = item.href.split("#")[1];
+  return currentPath === "/" ? section === "inicio" : currentPath === `/${section}`;
+};
 ---
 
 <header class="site-header" data-header>
-  <a class="header-logo" href="/" aria-label="Ir al inicio">
-    <img
-      src="/brand/dra-jazmin-logo.png"
-      alt="Dra. Jazmín Alvarez - Medicina estética y restauración capilar"
-      width="1100"
-      height="431"
-    />
+  <a class="header-logo" href="/" aria-label={`${site.doctorName} - Ir al inicio`}>
+    <BrandLogo />
   </a>
 
   <nav class="desktop-nav" aria-label="Navegación principal">
     {
-      navItems.map((item) => {
-        const isActive = !item.external && normalizePath(item.href) === currentPath;
-
-        return (
-        <a
-          class:list={["nav-link", { active: isActive }]}
-          href={item.href}
-          aria-current={isActive ? "page" : undefined}
-          target={item.external ? "_blank" : undefined}
-          rel={item.external ? "noreferrer" : undefined}
-        >
-          <span>{item.label}</span>
-        </a>
-        );
-      })
+      navItems.map((item) =>
+        item.children ? (
+          <div class="nav-dropdown">
+            <a
+              class:list={["nav-link", "nav-link-parent", { active: isActive(item) }]}
+              href={item.href}
+              aria-current={isActive(item) ? "page" : undefined}
+              aria-haspopup="true"
+            >
+              <span>{item.label}</span>
+              <svg class="nav-caret" viewBox="0 0 12 12" aria-hidden="true">
+                <path d="m3 4.5 3 3 3-3" />
+              </svg>
+            </a>
+            <div class="nav-submenu">
+              {item.children.map((child) => (
+                <a href={`/#${child.id}`}>
+                  <span class="nav-submenu-icon">
+                    <Icon name={child.icon} />
+                  </span>
+                  {child.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a
+            class:list={["nav-link", { active: isActive(item), "nav-link-external": item.external }]}
+            href={item.href}
+            aria-current={isActive(item) ? "page" : undefined}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noreferrer" : undefined}
+          >
+            <span>{item.label}</span>
+          </a>
+        ),
+      )
     }
   </nav>
 
@@ -59,7 +85,7 @@ const currentPath = normalizePath(Astro.url.pathname);
       </svg>
       WhatsApp
     </a>
-    <a class="button button-dark header-appointment" href="/agenda/">
+    <a class="button button-dark header-appointment" href="/#agenda">
       <svg class="appointment-icon" viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
         <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
@@ -82,47 +108,52 @@ const currentPath = normalizePath(Astro.url.pathname);
 
   <nav class="mobile-nav" aria-label="Navegación móvil" data-mobile-nav>
     {
-      navItems.map((item) => {
-        const isActive = !item.external && normalizePath(item.href) === currentPath;
-
-        return (
-        <a
-          class:list={["mobile-link", { active: isActive }]}
-          href={item.href}
-          aria-current={isActive ? "page" : undefined}
-          target={item.external ? "_blank" : undefined}
-          rel={item.external ? "noreferrer" : undefined}
-        >
-          {item.label}
-        </a>
-        );
-      })
+      navItems.map((item) => (
+        <>
+          <a
+            class:list={["mobile-link", { active: isActive(item) }]}
+            href={item.href}
+            aria-current={isActive(item) ? "page" : undefined}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noreferrer" : undefined}
+          >
+            {item.label}
+          </a>
+          {item.children && (
+            <div class="mobile-sublinks">
+              {item.children.map((child) => (
+                <a href={`/#${child.id}`}>{child.title}</a>
+              ))}
+            </div>
+          )}
+        </>
+      ))
     }
-    <a
-      class="mobile-whatsapp"
-      href={site.whatsappUrl}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a class="mobile-whatsapp" href={site.whatsappUrl} target="_blank" rel="noreferrer">
       WhatsApp
     </a>
-    <a class="mobile-appointment" href="/agenda/">Agenda tu valoración</a>
+    <a class="mobile-appointment" href="/#agenda">Agenda tu valoración</a>
   </nav>
-
-  <div class="mobile-quick-actions" aria-label="Acciones rápidas">
-    <a href={site.whatsappUrl} target="_blank" rel="noreferrer">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8a8.5 8.5 0 1 1 16.2-4.1Z" />
-        <path d="M8.1 7.7c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .6.5l.8 1.8c.1.3 0 .5-.1.7l-.6.8c-.2.2-.2.4 0 .7.5.9 1.3 1.7 2.3 2.2.3.2.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l1.8.9c.3.1.5.2.5.4 0 .2-.1 1.2-.6 1.7-.5.6-1.3.9-2.1.8-1.1-.1-2.6-.5-4.5-2.2-2.2-1.9-3.5-4.3-3.6-5.2 0-.6.1-.9.2-1.2Z" />
-      </svg>
-      WhatsApp
-    </a>
-    <a href="/agenda/">
-      <span aria-hidden="true">▦</span>
-      Agendar cita
-    </a>
-  </div>
 </header>
+
+<!--
+  Fuera de <header>: la cabecera usa backdrop-filter, que convierte a la cabecera
+  en el contenedor de los elementos "fixed" y hacía que esta barra apareciera
+  arriba, tapando el logo y el menú en celulares.
+-->
+<div class="mobile-quick-actions" aria-label="Acciones rápidas">
+  <a href={site.whatsappUrl} target="_blank" rel="noreferrer">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8a8.5 8.5 0 1 1 16.2-4.1Z" />
+      <path d="M8.1 7.7c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .6.5l.8 1.8c.1.3 0 .5-.1.7l-.6.8c-.2.2-.2.4 0 .7.5.9 1.3 1.7 2.3 2.2.3.2.5.1.7-.1l.9-1.1c.2-.3.5-.3.7-.2l1.8.9c.3.1.5.2.5.4 0 .2-.1 1.2-.6 1.7-.5.6-1.3.9-2.1.8-1.1-.1-2.6-.5-4.5-2.2-2.2-1.9-3.5-4.3-3.6-5.2 0-.6.1-.9.2-1.2Z" />
+    </svg>
+    WhatsApp
+  </a>
+  <a href="/#agenda">
+    <span aria-hidden="true">▦</span>
+    Agendar cita
+  </a>
+</div>
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
@@ -158,6 +189,51 @@ const currentPath = normalizePath(Astro.url.pathname);
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1380) closeMenu();
+    if (window.innerWidth > 1100) closeMenu();
   });
+
+  // Página única: marca en el menú la sección que se está viendo.
+  if (window.location.pathname === "/") {
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>(
+        ".desktop-nav .nav-link[href^='/#'], .mobile-nav .mobile-link[href^='/#']",
+      ),
+    );
+    // Todas las secciones principales, aunque no tengan botón en el menú (p. ej. Agenda),
+    // para que el menú no marque la sección anterior mientras se ve otra.
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("main > [id]"));
+
+    const setActive = (id: string) => {
+      links.forEach((link) => {
+        const active = link.hash === `#${id}`;
+        link.classList.toggle("active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const updateActive = () => {
+      const offset = window.innerHeight * 0.35;
+      let current = "inicio";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top - offset <= 0) current = section.id;
+      }
+      setActive(current);
+    };
+
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          updateActive();
+          ticking = false;
+        });
+      },
+      { passive: true },
+    );
+    updateActive();
+  }
 </script>

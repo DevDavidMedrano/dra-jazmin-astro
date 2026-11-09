@@ -21,3 +21,6 @@ pnpm-debug.log*
 .vercel/
 .DS_Store
 .idea/
+
+# capturas personales de pantalla (no son parte del sitio)
+imagnes de ejemplo/captura*

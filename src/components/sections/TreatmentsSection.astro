@@ -1,0 +1,86 @@
+---
+/**
+ * Bloque completo de Tratamientos (segunda imagen de diseño): portada
+ * "Soluciones pensadas para ti", barra blanca con los 4 tratamientos y tarjetas.
+ * Se usa igual en la página única y en /tratamientos/.
+ */
+import Icon from "../Icon.astro";
+import InnerHero from "../InnerHero.astro";
+import TreatmentStrip from "../TreatmentStrip.astro";
+import { treatments } from "../../data/site";
+
+/** Fotografía de las tarjetas pares; las impares muestran el ícono. */
+const cardPhotos: Record<string, { src: string; alt: string }> = {
+  "rejuvenecimiento-facial": {
+    src: "/images/hero-doctor-02.webp",
+    alt: "Dra. Jazmín Álvarez en su consultorio",
+  },
+  "tratamientos-personalizados": {
+    src: "/images/hero-doctor-03.webp",
+    alt: "Dra. Jazmín Álvarez durante una revisión capilar",
+  },
+};
+
+const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar información", "Agendar ahora"];
+---
+
+<div class="treatments-block" id="tratamientos">
+  <InnerHero
+    eyebrow="Tratamientos"
+    title="Soluciones pensadas"
+    titleAccent="para ti"
+    description="Cada tratamiento comienza con una valoración médica personalizada para entender tus necesidades y definir opciones reales y seguras."
+    image="/images/hero-doctor-05.webp"
+    imageAlt="Dra. Jazmín Álvarez con una tableta junto al equipo médico"
+    showActions
+    benefits={[
+      { icon: "shield", label: "Enfoque médico" },
+      { icon: "leaf", label: "Resultados naturales" },
+      { icon: "person", label: "Atención personalizada" },
+      { icon: "star", label: "Tecnología de vanguardia" },
+    ]}
+  />
+
+  <TreatmentStrip />
+
+  <section class="treatment-catalog" id="catalogo" aria-labelledby="treatment-heading">
+    <div class="section-heading compact-heading">
+      <p class="eyebrow">Atención personalizada</p>
+      <h2 id="treatment-heading">Encuentra un punto de partida para tu valoración</h2>
+    </div>
+
+    <div class="treatment-grid">
+      {
+        treatments.map((treatment, index) => {
+          const photo = cardPhotos[treatment.id];
+          const number = String(index + 1).padStart(2, "0");
+          return photo ? (
+            <article class="treatment-card treatment-card-photo" id={treatment.id}>
+              <img src={photo.src} alt={photo.alt} width="900" height="900" loading="lazy" />
+              <div class="treatment-card-copy">
+                <p class="card-index">{number}</p>
+                <h3>{treatment.title}</h3>
+                <p>{treatment.summary}</p>
+                <a href="/#agenda">
+                  {cardLinks[index]} <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ) : (
+            <article class="treatment-card treatment-card-symbol" id={treatment.id}>
+              <div class="treatment-symbol" aria-hidden="true">
+                <Icon name={treatment.icon} />
+              </div>
+              <p class="card-index">{number}</p>
+              <h3>{treatment.title}</h3>
+              <p>{treatment.summary}</p>
+              <a href="/#agenda">
+                {cardLinks[index]} <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+</div>

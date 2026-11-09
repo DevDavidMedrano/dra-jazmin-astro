@@ -1,22 +1,74 @@
 ---
+import Icon from "./Icon.astro";
+import type { IconName } from "../data/icons";
+
 interface Props {
   eyebrow: string;
   title: string;
+  /** Parte final del título que se muestra en dorado y cursiva. */
+  titleAccent?: string;
   description: string;
   image: string;
   imageAlt: string;
+  /** Muestra los botones "Agenda tu valoración" y "Conoce los tratamientos". */
+  showActions?: boolean;
+  benefits?: { icon: IconName; label: string }[];
 }
 
-const { eyebrow, title, description, image, imageAlt } = Astro.props;
+const {
+  eyebrow,
+  title,
+  titleAccent,
+  description,
+  image,
+  imageAlt,
+  showActions = false,
+  benefits = [],
+} = Astro.props;
 ---
 
-<section class="inner-hero">
+<section class:list={["inner-hero", { "inner-hero-rich": showActions || benefits.length > 0 }]}>
   <div class="inner-hero-copy">
     <p class="eyebrow">{eyebrow}</p>
-    <h1>{title}</h1>
+    <h1>
+      {title}
+      {titleAccent && <em>{titleAccent}</em>}
+    </h1>
     <p>{description}</p>
-  </div>
 
+    {
+      showActions && (
+        <div class="hero-buttons">
+          <a class="button button-gold button-large" href="/#agenda">
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
+              <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
+            </svg>
+            Agenda tu valoración
+          </a>
+          <a class="button button-outline button-large" href="#catalogo">
+            <Icon name="play" class="button-icon" />
+            Conoce los tratamientos
+          </a>
+        </div>
+      )
+    }
+
+    {
+      benefits.length > 0 && (
+        <div class="hero-benefits" aria-label="Beneficios de la atención">
+          {benefits.map((benefit) => (
+            <div class="benefit">
+              <span class="benefit-icon">
+                <Icon name={benefit.icon} />
+              </span>
+              <p>{benefit.label}</p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
   <figure class="inner-hero-media">
     <img src={image} alt={imageAlt} width="1000" height="610" fetchpriority="high" />
     <span class="inner-curve inner-curve-one" aria-hidden="true"></span>

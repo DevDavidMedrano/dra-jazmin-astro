@@ -1,335 +1,85 @@
 ---
-const heroSlides = [
-  {
-    src: "/images/hero-doctor.webp",
-    alt: "Dra. Jazmín Alvarez en su consultorio de restauración capilar",
-  },
-  {
-    src: "/images/hero-doctor-02.webp",
-    alt: "Dra. Jazmín Alvarez en un consultorio médico moderno",
-  },
-  {
-    src: "/images/hero-doctor-03.webp",
-    alt: "Dra. Jazmín Alvarez durante una consulta con tableta",
-  },
-  {
-    src: "/images/hero-doctor-04.webp",
-    alt: "Dra. Jazmín Alvarez realizando una revisión capilar",
-  },
-  {
-    src: "/images/hero-doctor-05.webp",
-    alt: "Dra. Jazmín Alvarez junto a equipo médico capilar",
-  },
-  {
-    src: "/images/hero-doctor-06.webp",
-    alt: "Dra. Jazmín Alvarez explicando un tratamiento personalizado",
-  },
-];
+import { treatments } from "../data/site";
+import Icon from "./Icon.astro";
+
+const benefits = [
+  { icon: "shield", label: "Enfoque médico" },
+  { icon: "people", label: "Atención personalizada" },
+  { icon: "leaf", label: "Resultados naturales" },
+] as const;
 ---
 
 <section class="hero" id="inicio">
   <div class="hero-content">
     <p class="eyebrow">Medicina estética y restauración capilar</p>
     <h1>
-      Recupera tu cabello.
-      <span>Renueva tu confianza.</span>
+      Recupera tu cabello, renueva tu <em>confianza</em>
     </h1>
     <p class="hero-description">
-      Tratamientos personalizados con enfoque médico, atención cercana y
-      resultados naturales.
+      Tratamientos médicos especializados para la caída del cabello,
+      rejuvenecimiento facial y bienestar estético.
     </p>
 
     <div class="hero-buttons">
-      <a class="button button-dark button-large" href="/agenda/">
+      <a class="button button-gold button-large" href="/#agenda">
         <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
           <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
           <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
         </svg>
         Agenda tu valoración
       </a>
-      <a class="button button-outline button-large" href="/tratamientos/">
-        <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="5" y="3" width="14" height="18" rx="2" />
-          <path d="M9 3.5h6v3H9zM8.5 11h7M8.5 15h7" />
-        </svg>
+      <a class="button button-outline button-large" href="/#tratamientos">
+        <Icon name="play" class="button-icon" />
         Conoce los tratamientos
       </a>
     </div>
 
     <div class="hero-benefits" aria-label="Beneficios de la atención">
-      <div class="benefit">
-        <span class="benefit-icon">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="9" r="5" />
-            <path d="M8 27v-4c0-4.4 3.6-8 8-8s8 3.6 8 8v4M11 18l5 4 5-4" />
-          </svg>
-        </span>
-        <p>Atención personalizada</p>
-      </div>
-      <div class="benefit">
-        <span class="benefit-icon">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M4 16h7M21 16h7M11 9v14M21 9v14" />
-            <path d="M11 16c0 4 2 7 5 7s5-3 5-7-2-7-5-7-5 3-5 7Z" />
-          </svg>
-        </span>
-        <p>Resultados naturales</p>
-      </div>
-      <div class="benefit">
-        <span class="benefit-icon">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M16 3 27 8v8c0 7-4.5 11.5-11 14-6.5-2.5-11-7-11-14V8l11-5Z" />
-            <path d="M16 10v12M10 16h12" />
-          </svg>
-        </span>
-        <p>Seguimiento médico</p>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="hero-media hero-carousel"
-    data-hero-carousel
-    aria-label="Galería de la Dra. Jazmín Alvarez"
-    aria-roledescription="carrusel"
-  >
-    <div class="hero-slides" aria-live="off">
       {
-        heroSlides.map((slide, index) => (
-          <figure
-            class:list={["hero-slide", { "is-active": index === 0 }]}
-            data-hero-slide
-            data-default-photo={slide.src}
-            aria-hidden={index === 0 ? "false" : "true"}
-          >
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              width="842"
-              height="605"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchpriority={index === 0 ? "high" : "auto"}
-            />
-          </figure>
+        benefits.map((benefit) => (
+          <div class="benefit">
+            <span class="benefit-icon">
+              <Icon name={benefit.icon} />
+            </span>
+            <p>{benefit.label}</p>
+          </div>
         ))
       }
     </div>
-
-    <span class="hero-curve hero-curve-one" aria-hidden="true"></span>
-    <span class="hero-curve hero-curve-two" aria-hidden="true"></span>
-
-    <div class="hero-trust-card">
-      <span class="trust-check" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
-          <path d="m6.5 12 3.5 3.5 7.5-8" />
-        </svg>
-      </span>
-      <span>
-        <strong>Enfoque médico</strong>
-        <small>Resultados naturales</small>
-      </span>
-    </div>
-
-    <div class="hero-carousel-controls" aria-label="Controles de la galería">
-      <button
-        class="hero-carousel-arrow"
-        type="button"
-        aria-label="Mostrar fotografía anterior"
-        data-carousel-previous
-      >
-        <span aria-hidden="true">←</span>
-      </button>
-
-      <div class="hero-carousel-dots" role="group" aria-label="Seleccionar fotografía">
-        {
-          heroSlides.map((_, index) => (
-            <button
-              class:list={["hero-carousel-dot", { "is-active": index === 0 }]}
-              type="button"
-              aria-label={`Mostrar fotografía ${index + 1} de ${heroSlides.length}`}
-              aria-current={index === 0 ? "true" : undefined}
-              data-carousel-dot
-            />
-          ))
-        }
-      </div>
-
-      <button
-        class="hero-carousel-arrow"
-        type="button"
-        aria-label="Mostrar fotografía siguiente"
-        data-carousel-next
-      >
-        <span aria-hidden="true">→</span>
-      </button>
-    </div>
-
-    <span class="hero-carousel-progress" aria-hidden="true"></span>
   </div>
+
+  <figure class="hero-media">
+    <img
+      src="/images/hero-doctor.webp"
+      alt="Dra. Jazmín Álvarez en su consultorio"
+      width="842"
+      height="605"
+      fetchpriority="high"
+    />
+  </figure>
+
+  <aside class="hero-treatments" aria-labelledby="hero-treatments-title">
+    <h2 id="hero-treatments-title">Principales tratamientos</h2>
+    <ul>
+      {
+        treatments.map((treatment) => (
+          <li>
+            <a href={`/#${treatment.id}`}>
+              <span class="hero-treatment-icon">
+                <Icon name={treatment.icon} />
+              </span>
+              <span class="hero-treatment-title">{treatment.title}</span>
+              <span class="hero-treatment-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </aside>
+
+  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path class="hero-wave-fill" d="M0 58C240 4 470 6 720 42s500 52 720 10V90H0Z" />
+    <path class="hero-wave-line" d="M0 58C240 4 470 6 720 42s500 52 720 10" />
+  </svg>
 </section>
 
-<script>
-  import {
-    getDemoMedia,
-    getDemoSettings,
-    getMediaObjectUrl,
-  } from "../scripts/demoStore";
-
-  const CAROUSEL_DELAY = 5000;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  const initializeCarousel = async (carousel: HTMLElement) => {
-    const settings = getDemoSettings();
-    const uploaded = (await getDemoMedia()).filter(
-      (record) => record.category === "hero" && record.kind === "image",
-    );
-    const defaultSlides = Array.from(
-      carousel.querySelectorAll<HTMLElement>("[data-default-photo]"),
-    );
-    const needsFallback =
-      defaultSlides.every((slide) =>
-        settings.hiddenHeroPhotos.includes(slide.dataset.defaultPhoto ?? ""),
-      ) && uploaded.length === 0;
-
-    defaultSlides.forEach((slide, index) => {
-      const hidden = settings.hiddenHeroPhotos.includes(slide.dataset.defaultPhoto ?? "");
-      if (hidden && !(needsFallback && index === 0)) slide.remove();
-    });
-
-    const slidesContainer = carousel.querySelector<HTMLElement>(".hero-slides");
-    uploaded.forEach((record) => {
-      const figure = document.createElement("figure");
-      figure.className = "hero-slide";
-      figure.dataset.heroSlide = "";
-      figure.setAttribute("aria-hidden", "true");
-      const image = document.createElement("img");
-      image.src = getMediaObjectUrl(record);
-      image.alt = record.name;
-      image.loading = "lazy";
-      image.width = 1480;
-      image.height = 1063;
-      figure.append(image);
-      slidesContainer?.append(figure);
-    });
-
-    const preparedSlides = Array.from(
-      carousel.querySelectorAll<HTMLElement>("[data-hero-slide]"),
-    );
-    preparedSlides.forEach((slide, index) => {
-      slide.classList.toggle("is-active", index === 0);
-      slide.setAttribute("aria-hidden", String(index !== 0));
-    });
-
-    const dotsContainer = carousel.querySelector<HTMLElement>(".hero-carousel-dots");
-    dotsContainer?.replaceChildren();
-    preparedSlides.forEach((_, index) => {
-      const dot = document.createElement("button");
-      dot.className = `hero-carousel-dot${index === 0 ? " is-active" : ""}`;
-      dot.type = "button";
-      dot.setAttribute("aria-label", `Mostrar fotografía ${index + 1} de ${preparedSlides.length}`);
-      dot.dataset.carouselDot = "";
-      if (index === 0) dot.setAttribute("aria-current", "true");
-      dotsContainer?.append(dot);
-    });
-
-    const slides = Array.from(
-      carousel.querySelectorAll<HTMLElement>("[data-hero-slide]"),
-    );
-    const dots = Array.from(
-      carousel.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"),
-    );
-    const previous = carousel.querySelector<HTMLButtonElement>(
-      "[data-carousel-previous]",
-    );
-    const next = carousel.querySelector<HTMLButtonElement>("[data-carousel-next]");
-
-    let currentIndex = 0;
-    let timer: number | undefined;
-    let paused = false;
-
-    const stopTimer = () => {
-      window.clearTimeout(timer);
-      carousel.classList.remove("is-timing");
-    };
-
-    const restartProgress = () => {
-      carousel.classList.remove("is-timing");
-      void carousel.offsetWidth;
-      carousel.classList.add("is-timing");
-    };
-
-    const scheduleNext = () => {
-      stopTimer();
-      if (paused || reduceMotion.matches || document.hidden) return;
-
-      restartProgress();
-      timer = window.setTimeout(() => {
-        showSlide(currentIndex + 1);
-        scheduleNext();
-      }, CAROUSEL_DELAY);
-    };
-
-    const showSlide = (requestedIndex: number) => {
-      currentIndex = (requestedIndex + slides.length) % slides.length;
-
-      slides.forEach((slide, index) => {
-        const isActive = index === currentIndex;
-        slide.classList.toggle("is-active", isActive);
-        slide.setAttribute("aria-hidden", String(!isActive));
-      });
-
-      dots.forEach((dot, index) => {
-        const isActive = index === currentIndex;
-        dot.classList.toggle("is-active", isActive);
-        if (isActive) dot.setAttribute("aria-current", "true");
-        else dot.removeAttribute("aria-current");
-      });
-    };
-
-    previous?.addEventListener("click", () => {
-      showSlide(currentIndex - 1);
-      scheduleNext();
-    });
-
-    next?.addEventListener("click", () => {
-      showSlide(currentIndex + 1);
-      scheduleNext();
-    });
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        showSlide(index);
-        scheduleNext();
-      });
-    });
-
-    carousel.addEventListener("pointerenter", () => {
-      paused = true;
-      stopTimer();
-    });
-
-    carousel.addEventListener("pointerleave", () => {
-      paused = false;
-      scheduleNext();
-    });
-
-    carousel.addEventListener("focusin", () => {
-      paused = true;
-      stopTimer();
-    });
-
-    carousel.addEventListener("focusout", (event) => {
-      if (carousel.contains(event.relatedTarget as Node | null)) return;
-      paused = false;
-      scheduleNext();
-    });
-
-    document.addEventListener("visibilitychange", scheduleNext);
-    reduceMotion.addEventListener("change", scheduleNext);
-    scheduleNext();
-  };
-
-  document.querySelectorAll<HTMLElement>("[data-hero-carousel]").forEach((carousel) => {
-    initializeCarousel(carousel);
-  });
-</script>
