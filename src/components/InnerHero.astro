@@ -1,0 +1,25 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+}
+
+const { eyebrow, title, description, image, imageAlt } = Astro.props;
+---
+
+<section class="inner-hero">
+  <div class="inner-hero-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+
+  <figure class="inner-hero-media">
+    <img src={image} alt={imageAlt} width="1000" height="610" fetchpriority="high" />
+    <span class="inner-curve inner-curve-one" aria-hidden="true"></span>
+    <span class="inner-curve inner-curve-two" aria-hidden="true"></span>
+  </figure>
+</section>

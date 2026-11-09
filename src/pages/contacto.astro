@@ -1,0 +1,168 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Contacto | Dra. Jazmín Alvarez"
+  description="Contacta al consultorio de la Dra. Jazmín Alvarez por WhatsApp o envía los datos de tu consulta."
+>
+  <Header />
+  <main class="inner-page contact-page">
+    <section class="contact-intro">
+      <div class="contact-intro-inner">
+        <div class="contact-intro-copy">
+          <p class="eyebrow">Contacto</p>
+          <h1>Estamos para escucharte</h1>
+          <p>
+            Cuéntanos qué necesitas y prepara un mensaje con tus datos. Al enviarlo,
+            abrirás WhatsApp para confirmar el contacto con el consultorio.
+          </p>
+        </div>
+        <div class="contact-intro-badge" aria-hidden="true">
+          <span>Atención personalizada</span>
+          <strong>Hablemos</strong>
+          <i>↘</i>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-layout">
+      <div class="contact-form-panel">
+        <div class="contact-form-heading">
+          <span class="contact-heading-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z"></path>
+              <path d="M8 9h8M8 13h5"></path>
+            </svg>
+          </span>
+          <div>
+            <p>Consulta directa</p>
+            <h2>Cuéntanos cómo podemos ayudarte</h2>
+          </div>
+        </div>
+        <form class="contact-form" data-contact-form data-whatsapp-number={site.whatsappNumber}>
+          <div class="field-row">
+            <label>
+              <span>Nombre</span>
+              <input name="name" type="text" autocomplete="name" placeholder="Tu nombre completo" required />
+            </label>
+            <label>
+              <span>Teléfono</span>
+              <input name="phone" type="tel" autocomplete="tel" placeholder="33 0000 0000" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Correo electrónico <small>Opcional</small></span>
+            <input name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" />
+          </label>
+
+          <label>
+            <span>¿En qué podemos ayudarte?</span>
+            <textarea name="message" rows="6" placeholder="Escribe brevemente el tratamiento o la información que necesitas..." required></textarea>
+          </label>
+
+          <button class="button button-dark button-large contact-submit" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z"></path>
+              <path d="M8.5 7.8c.2-.4.4-.4.7-.4h.5l.5 1.3c.1.3.1.5-.1.7l-.5.6c-.2.2-.1.4 0 .6.5 1 1.4 1.8 2.4 2.3.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.7-.1l1.3.6c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.5-.5.5-1.3.7-2.1.5-1.1-.3-2.6-.9-4.1-2.3-1.2-1.2-2-2.6-2.2-3.6-.2-.6.1-1.2.4-1.6l.5-.4"></path>
+            </svg>
+            <span>Enviar mensaje por WhatsApp</span>
+            <b aria-hidden="true">→</b>
+          </button>
+        </form>
+        <p class="privacy-note">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          Tus datos solo se usan para preparar el mensaje; no se almacenan en esta página.
+        </p>
+      </div>
+
+      <div class="contact-info-stack">
+        <section class="contact-info-card">
+          <div class="contact-brand-block">
+            <span>Consultorio</span>
+            <img
+              src="/brand/dra-jazmin-logo.png"
+              alt="Dra. Jazmín Alvarez"
+              width="1100"
+              height="431"
+            />
+            <p>Medicina estética y restauración capilar.</p>
+          </div>
+          <div class="info-list">
+            <a href={site.whatsappUrl} target="_blank" rel="noreferrer">
+              <span class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z"></path>
+                  <path d="M8.4 7.8c.4 3 2.8 5.5 5.8 5.9l1-1.2 1.8.8c-.2 1.7-1.3 2.5-2.7 2.5-3.5-.3-7.8-4.3-8-8 .1-1.1.7-2 1.6-2.4l1 1.9-.5.5Z"></path>
+                </svg>
+              </span>
+              <span><strong>WhatsApp</strong><small>{site.whatsappDisplay}</small></span>
+              <b aria-hidden="true">↗</b>
+            </a>
+            <a href={site.mapsUrl} target="_blank" rel="noreferrer">
+              <span class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+              </span>
+              <span><strong>Ubicación</strong><small>{site.clinic}</small></span>
+              <b aria-hidden="true">↗</b>
+            </a>
+            <div>
+              <span class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+              </span>
+              <span><strong>Horario de atención</strong><small>Atención con cita previa.</small></span>
+            </div>
+          </div>
+        </section>
+
+        <a class="map-card" href={site.mapsUrl} target="_blank" rel="noreferrer">
+          <span class="map-eyebrow">Hospital Real San José</span>
+          <span class="map-road road-one" aria-hidden="true"></span>
+          <span class="map-road road-two" aria-hidden="true"></span>
+          <span class="map-road road-three" aria-hidden="true"></span>
+          <span class="map-pin" aria-hidden="true"><i></i></span>
+          <span class="map-label">Abrir ubicación en Google Maps <b aria-hidden="true">↗</b></span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const values = new FormData(form);
+      const name = String(values.get("name") ?? "").trim();
+      const phone = String(values.get("phone") ?? "").trim();
+      const email = String(values.get("email") ?? "").trim();
+      const message = String(values.get("message") ?? "").trim();
+      const number = form.dataset.whatsappNumber;
+      const text = [
+        "Hola, me gustaría recibir información.",
+        `Nombre: ${name}`,
+        `Teléfono: ${phone}`,
+        email ? `Correo: ${email}` : "",
+        `Consulta: ${message}`,
+      ].filter(Boolean).join("\n");
+
+      window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    });
+  });
+</script>

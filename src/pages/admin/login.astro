@@ -1,0 +1,79 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="Acceso administrativo | Dra. Jazmín Alvarez" bodyClass="admin-login-page">
+  <main class="admin-login-shell">
+    <section class="admin-login-brand">
+      <a href="/" aria-label="Volver a la página principal">
+        <img src="/brand/dra-jazmin-logo.png" alt="Dra. Jazmín Alvarez" width="1100" height="431" />
+      </a>
+      <div>
+        <p class="admin-kicker">Administración local</p>
+        <h1>Tu página, siempre bajo control.</h1>
+        <p>
+          Actualiza fotografías, horarios, publicaciones y datos regulatorios desde un solo lugar.
+        </p>
+      </div>
+      <span class="admin-demo-chip">Demostración local</span>
+    </section>
+
+    <section class="admin-login-card" aria-labelledby="login-title">
+      <div class="admin-login-heading">
+        <span class="admin-lock" aria-hidden="true">◆</span>
+        <div>
+          <p>Bienvenida</p>
+          <h2 id="login-title">Iniciar sesión</h2>
+        </div>
+      </div>
+
+      <form data-admin-login>
+        <label>
+          <span>Correo electrónico</span>
+          <input name="email" type="email" autocomplete="username" required />
+        </label>
+        <label>
+          <span>Contraseña</span>
+          <input name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <p class="admin-form-error" data-login-error hidden>
+          El correo o la contraseña no coinciden con el acceso de demostración.
+        </p>
+        <button class="admin-primary-button" type="submit">Entrar al dashboard <span>→</span></button>
+      </form>
+
+      <a class="admin-back-link" href="/">← Volver a la página</a>
+    </section>
+  </main>
+</AdminLayout>
+
+<script>
+  import {
+    DEMO_CREDENTIALS,
+    hasDemoAdminSession,
+    setDemoAdminSession,
+  } from "../../scripts/demoStore";
+
+  if (hasDemoAdminSession()) window.location.replace("/admin/");
+
+  const form = document.querySelector<HTMLFormElement>("[data-admin-login]");
+  const error = document.querySelector<HTMLElement>("[data-login-error]");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const values = new FormData(form);
+    const email = String(values.get("email") ?? "").trim().toLowerCase();
+    const password = String(values.get("password") ?? "");
+
+    if (email !== DEMO_CREDENTIALS.email || password !== DEMO_CREDENTIALS.password) {
+      if (error) error.hidden = false;
+      form.classList.remove("is-shaking");
+      void form.offsetWidth;
+      form.classList.add("is-shaking");
+      return;
+    }
+
+    setDemoAdminSession();
+    window.location.assign("/admin/");
+  });
+</script>

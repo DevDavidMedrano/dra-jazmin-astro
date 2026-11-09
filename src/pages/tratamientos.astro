@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import InnerHero from "../components/InnerHero.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Tratamientos | Dra. Jazmín Álvarez"
+  description="Conoce las opciones de restauración capilar, tratamientos capilares, medicina estética y valoración personalizada."
+>
+  <Header />
+  <main class="inner-page">
+    <InnerHero
+      eyebrow="Tratamientos"
+      title="Soluciones pensadas para ti"
+      description="Cada tratamiento comienza con una valoración médica personalizada para entender tus necesidades y definir opciones realistas."
+      image="/images/hero-doctor-05.webp"
+      imageAlt="Dra. Jazmín Álvarez en su consultorio"
+    />
+
+    <section class="treatment-catalog" aria-labelledby="treatment-heading">
+      <div class="section-heading compact-heading">
+        <p class="eyebrow">Atención personalizada</p>
+        <h2 id="treatment-heading">Encuentra un punto de partida para tu valoración</h2>
+      </div>
+
+      <div class="treatment-grid">
+        <article class="treatment-card treatment-card-symbol" id="injerto-capilar">
+          <div class="treatment-symbol" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path d="M7 42h50M12 34h40M19 26h26" />
+              <path d="M32 7c-9 9-12 20-8 32 2 7 6 12 8 15 3-3 7-8 9-15 3-12 0-23-9-32Z" />
+              <path d="M32 20c-4 7-4 14 0 21 4-7 4-14 0-21Z" />
+            </svg>
+          </div>
+          <p class="card-index">01</p>
+          <h3>Injerto capilar</h3>
+          <p>
+            Valoración del patrón de pérdida, zona donante, objetivos y diseño
+            para determinar si este procedimiento es una opción adecuada.
+          </p>
+          <a href="/agenda/">Solicitar valoración <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="treatment-card treatment-card-photo" id="tratamientos-capilares">
+          <img
+            src="/images/hero-doctor-04.webp"
+            alt="Revisión capilar durante una consulta"
+            width="900"
+            height="900"
+            loading="lazy"
+          />
+          <div class="treatment-card-copy">
+            <p class="card-index">02</p>
+            <h3>Tratamientos capilares</h3>
+            <p>
+              Protocolos definidos después de revisar cuero cabelludo, densidad,
+              antecedentes y evolución de cada paciente.
+            </p>
+            <a href="/agenda/">Conocer opciones <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="treatment-card treatment-card-symbol" id="medicina-estetica">
+          <div class="treatment-symbol" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path d="m17 47 30-30M40 10l14 14M34 16l14 14M11 53l10-3-7-7-3 10ZM24 40 12 28M19 24l21 21M43 9l7-7M55 21l7-7" />
+            </svg>
+          </div>
+          <p class="card-index">03</p>
+          <h3>Medicina estética</h3>
+          <p>
+            Alternativas médico-estéticas enfocadas en cuidar la armonía facial
+            y mantener resultados sutiles, según la valoración profesional.
+          </p>
+          <a href="/agenda/">Solicitar información <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="treatment-card treatment-card-photo" id="valoracion-personalizada">
+          <img
+            src="/images/hero-doctor-03.webp"
+            alt="Dra. Jazmín Álvarez explicando un plan de atención"
+            width="900"
+            height="900"
+            loading="lazy"
+          />
+          <div class="treatment-card-copy">
+            <p class="card-index">04</p>
+            <h3>Valoración personalizada</h3>
+            <p>
+              Una conversación clínica para revisar tu caso, resolver dudas y
+              construir un plan con pasos claros.
+            </p>
+            <a href="/agenda/">Agendar ahora <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-cta">
+      <div>
+        <p class="eyebrow eyebrow-light">Tu siguiente paso</p>
+        <h2>Encuentra el tratamiento adecuado para ti.</h2>
+      </div>
+      <a class="button button-light button-large" href="/agenda/">Agenda una valoración</a>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

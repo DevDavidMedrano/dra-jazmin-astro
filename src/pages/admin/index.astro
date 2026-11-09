@@ -1,0 +1,704 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+
+const days = [
+  { key: "1", label: "Lunes" },
+  { key: "2", label: "Martes" },
+  { key: "3", label: "Miércoles" },
+  { key: "4", label: "Jueves" },
+  { key: "5", label: "Viernes" },
+  { key: "6", label: "Sábado" },
+  { key: "0", label: "Domingo" },
+];
+
+const defaultPhotos = [
+  "/images/hero-doctor.webp",
+  "/images/hero-doctor-02.webp",
+  "/images/hero-doctor-03.webp",
+  "/images/hero-doctor-04.webp",
+  "/images/hero-doctor-05.webp",
+  "/images/hero-doctor-06.webp",
+];
+---
+
+<AdminLayout title="Dashboard | Dra. Jazmín Alvarez" bodyClass="admin-dashboard-page">
+  <div class="admin-app" data-admin-app hidden>
+    <aside class="admin-sidebar">
+      <a class="admin-sidebar-logo" href="/" aria-label="Abrir página pública">
+        <img src="/brand/dra-jazmin-logo.png" alt="Dra. Jazmín Alvarez" width="1100" height="431" />
+      </a>
+      <div class="admin-sidebar-copy">
+        <span>Panel administrativo</span>
+        <small>Demostración local</small>
+      </div>
+
+      <nav class="admin-menu" aria-label="Secciones del dashboard">
+        <button class="is-active" type="button" data-admin-tab="overview">
+          <span aria-hidden="true">⌂</span> Resumen
+        </button>
+        <button type="button" data-admin-tab="media">
+          <span aria-hidden="true">▧</span> Fotos y videos
+        </button>
+        <button type="button" data-admin-tab="schedule">
+          <span aria-hidden="true">▦</span> Horarios y citas
+        </button>
+        <button type="button" data-admin-tab="blog">
+          <span aria-hidden="true">✦</span> Presentación y blog
+        </button>
+        <button type="button" data-admin-tab="legal">
+          <span aria-hidden="true">✓</span> COFEPRIS
+        </button>
+      </nav>
+
+      <div class="admin-sidebar-bottom">
+        <a href="/" target="_blank">Ver página pública <span>↗</span></a>
+        <button type="button" data-admin-logout>Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p>Administración de contenido</p>
+          <h1 data-panel-title>Resumen general</h1>
+        </div>
+        <div class="admin-top-actions">
+          <div class="admin-user-pill">
+            <span>JA</span>
+            <div><strong>Administradora</strong><small>Sesión local</small></div>
+          </div>
+          <button class="admin-mobile-logout" type="button" data-admin-logout aria-label="Cerrar sesión">
+            <span aria-hidden="true">↪</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-demo-notice">
+        <strong>Modo demostración:</strong>
+        los cambios se guardan únicamente en este navegador y no se comparten con otros dispositivos.
+      </div>
+
+      <section class="admin-panel is-active" data-admin-panel="overview">
+        <div class="admin-welcome-card">
+          <div>
+            <p class="admin-kicker">Buenos días</p>
+            <h2>Todo lo importante, en un solo lugar.</h2>
+            <p>Administra la presentación pública, la agenda y el contenido de la doctora.</p>
+          </div>
+          <a href="/" target="_blank">Abrir página <span>↗</span></a>
+        </div>
+
+        <div class="admin-stat-grid">
+          <article><span>Fotografías activas</span><strong data-stat-photos>0</strong><small>Carrusel principal</small></article>
+          <article><span>Citas apartadas</span><strong data-stat-holds>0</strong><small>Pendientes de confirmar</small></article>
+          <article><span>Citas confirmadas</span><strong data-stat-confirmed>0</strong><small>Próximas reservaciones</small></article>
+          <article><span>Publicaciones</span><strong data-stat-posts>0</strong><small>Contenido visible</small></article>
+        </div>
+
+        <div class="admin-overview-grid">
+          <article class="admin-card">
+            <div class="admin-card-heading"><div><span>Actividad</span><h2>Próximas citas</h2></div><button type="button" data-go-tab="schedule">Administrar</button></div>
+            <div class="admin-mini-list" data-overview-appointments></div>
+          </article>
+          <article class="admin-card">
+            <div class="admin-card-heading"><div><span>Atajos</span><h2>Actualizaciones rápidas</h2></div></div>
+            <div class="admin-quick-grid">
+              <button type="button" data-go-tab="media"><span>＋</span>Subir fotografía</button>
+              <button type="button" data-go-tab="schedule"><span>▦</span>Cambiar horarios</button>
+              <button type="button" data-go-tab="blog"><span>✎</span>Nueva publicación</button>
+              <button type="button" data-go-tab="legal"><span>✓</span>Editar COFEPRIS</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="admin-panel" data-admin-panel="media">
+        <div class="admin-section-heading">
+          <div><p class="admin-kicker">Biblioteca visual</p><h2>Fotos y videos</h2><p>Agrega contenido al carrusel principal o prepara archivos para publicaciones.</p></div>
+        </div>
+
+        <form class="admin-upload-card" data-media-upload>
+          <label class="admin-drop-zone">
+            <input name="media" type="file" accept="image/*,video/*" required />
+            <span class="admin-upload-icon">↑</span>
+            <strong>Selecciona una foto o un video</strong>
+            <small>Imágenes hasta 15 MB · Videos hasta 100 MB</small>
+          </label>
+          <label>
+            <span>Destino del archivo</span>
+            <select name="category">
+              <option value="hero">Carrusel de inicio</option>
+              <option value="blog">Biblioteca del blog</option>
+            </select>
+          </label>
+          <button class="admin-primary-button" type="submit">Guardar archivo</button>
+        </form>
+
+        <article class="admin-card admin-library-card">
+          <div class="admin-card-heading"><div><span>Incluidas en el proyecto</span><h2>Fotografías del carrusel</h2></div></div>
+          <div class="admin-media-grid" data-default-photo-grid>
+            {defaultPhotos.map((photo, index) => (
+              <article class="admin-media-item" data-default-photo={photo}>
+                <img src={photo} alt={`Fotografía ${index + 1} del carrusel`} width="480" height="340" />
+                <div><strong>Fotografía {String(index + 1).padStart(2, "0")}</strong><button type="button" data-toggle-default>Ocultar</button></div>
+              </article>
+            ))}
+          </div>
+        </article>
+
+        <article class="admin-card admin-library-card">
+          <div class="admin-card-heading"><div><span>Archivos locales</span><h2>Contenido agregado</h2></div></div>
+          <div class="admin-media-grid" data-uploaded-media-grid></div>
+        </article>
+      </section>
+
+      <section class="admin-panel" data-admin-panel="schedule">
+        <div class="admin-section-heading">
+          <div><p class="admin-kicker">Disponibilidad</p><h2>Horarios y citas</h2><p>Selecciona los días de trabajo y agrega los horarios que podrán elegir los pacientes.</p></div>
+        </div>
+
+        <article class="admin-card admin-schedule-card">
+          <div class="admin-card-heading"><div><span>Semana habitual</span><h2>Disponibilidad de la doctora</h2></div><button class="admin-save-button" type="button" data-save-schedule>Guardar horarios</button></div>
+          <div class="admin-day-list">
+            {days.map((day) => (
+              <div class="admin-day-row" data-day-row={day.key}>
+                <label class="admin-day-toggle"><input type="checkbox" data-day-enabled /><span></span><strong>{day.label}</strong></label>
+                <div class="admin-time-adder"><input type="time" data-new-time /><button type="button" data-add-time>Agregar hora</button></div>
+                <div class="admin-time-chips" data-time-chips></div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article class="admin-card admin-appointments-card">
+          <div class="admin-card-heading"><div><span>Reservaciones</span><h2>Citas apartadas y confirmadas</h2></div><small>Los apartados vencen automáticamente después de 30 minutos.</small></div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Paciente</th><th>Fecha</th><th>Hora</th><th>Estado</th><th>Acciones</th></tr></thead>
+              <tbody data-appointment-table></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="admin-panel" data-admin-panel="blog">
+        <div class="admin-section-heading">
+          <div><p class="admin-kicker">Perfil y contenidos</p><h2>Presentación y blog</h2><p>Edita la presentación de la doctora y crea publicaciones con texto, fotos o videos.</p></div>
+          <a class="admin-secondary-button" href="/blog/" target="_blank">Ver blog ↗</a>
+        </div>
+
+        <div class="admin-editor-grid">
+          <form class="admin-card admin-profile-form" data-profile-form>
+            <div class="admin-card-heading"><div><span>Sobre la doctora</span><h2>Presentación pública</h2></div></div>
+            <label><span>Nombre</span><input name="name" type="text" required /></label>
+            <label><span>Encabezado</span><input name="headline" type="text" required /></label>
+            <label><span>Biografía</span><textarea name="biography" rows="7" required></textarea></label>
+            <button class="admin-primary-button" type="submit">Guardar presentación</button>
+          </form>
+
+          <form class="admin-card admin-post-form" data-post-form>
+            <div class="admin-card-heading"><div><span>Nueva entrada</span><h2>Crear publicación</h2></div></div>
+            <label><span>Título</span><input name="title" type="text" required /></label>
+            <label><span>Resumen</span><input name="excerpt" type="text" required /></label>
+            <label><span>Contenido</span><textarea name="body" rows="7" required></textarea></label>
+            <div class="admin-field-grid">
+              <label><span>Foto o video directo</span><input name="postMedia" type="file" accept="image/*,video/*" /></label>
+              <label><span>O enlace YouTube/Vimeo</span><input name="videoUrl" type="url" placeholder="https://..." /></label>
+            </div>
+            <label class="admin-check"><input name="published" type="checkbox" checked /><span>Publicar inmediatamente</span></label>
+            <button class="admin-primary-button" type="submit">Publicar entrada</button>
+          </form>
+        </div>
+
+        <article class="admin-card admin-post-list-card">
+          <div class="admin-card-heading"><div><span>Contenido creado</span><h2>Publicaciones</h2></div></div>
+          <div class="admin-post-list" data-admin-post-list></div>
+        </article>
+      </section>
+
+      <section class="admin-panel" data-admin-panel="legal">
+        <div class="admin-section-heading">
+          <div><p class="admin-kicker">Información regulatoria</p><h2>Permiso COFEPRIS</h2><p>Este texto aparecerá en el pie de todas las páginas públicas.</p></div>
+        </div>
+
+        <form class="admin-card admin-legal-form" data-legal-form>
+          <div class="admin-legal-mark" aria-hidden="true">✓</div>
+          <div>
+            <label><span>Texto o número del permiso de publicidad</span><input name="cofepris" type="text" required /></label>
+            <p>No publiques un número provisional. Captura exactamente el texto autorizado en el permiso.</p>
+            <button class="admin-primary-button" type="submit">Guardar permiso</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <nav class="admin-mobile-dock" aria-label="Navegación móvil del dashboard">
+      <button class="is-active" type="button" data-admin-tab="overview">
+        <span aria-hidden="true">⌂</span><small>Resumen</small>
+      </button>
+      <button type="button" data-admin-tab="media">
+        <span aria-hidden="true">▧</span><small>Fotos</small>
+      </button>
+      <button type="button" data-admin-tab="schedule">
+        <span aria-hidden="true">▦</span><small>Agenda</small>
+      </button>
+      <button type="button" data-admin-tab="blog">
+        <span aria-hidden="true">✦</span><small>Blog</small>
+      </button>
+      <button type="button" data-admin-tab="legal">
+        <span aria-hidden="true">✓</span><small>Permiso</small>
+      </button>
+    </nav>
+  </div>
+
+  <div class="admin-toast" role="status" aria-live="polite" data-admin-toast></div>
+</AdminLayout>
+
+<script>
+  import {
+    DEFAULT_HERO_PHOTOS,
+    clearDemoAdminSession,
+    confirmDemoAppointment,
+    deleteDemoAppointment,
+    deleteDemoMedia,
+    deleteDemoPost,
+    getDemoAppointments,
+    getDemoMedia,
+    getDemoPosts,
+    getDemoSettings,
+    getMediaObjectUrl,
+    getVideoEmbedUrl,
+    hasDemoAdminSession,
+    saveDemoMedia,
+    saveDemoPost,
+    saveDemoSettings,
+    type DemoMediaRecord,
+  } from "../../scripts/demoStore";
+
+  if (!hasDemoAdminSession()) {
+    window.location.replace("/admin/login/");
+  } else {
+    document.querySelector<HTMLElement>("[data-admin-app]")?.removeAttribute("hidden");
+  }
+
+  const panelTitles: Record<string, string> = {
+    overview: "Resumen general",
+    media: "Fotos y videos",
+    schedule: "Horarios y citas",
+    blog: "Presentación y blog",
+    legal: "Permiso COFEPRIS",
+  };
+  let settings = getDemoSettings();
+  const activeUrls: string[] = [];
+
+  const toast = (message: string) => {
+    const element = document.querySelector<HTMLElement>("[data-admin-toast]");
+    if (!element) return;
+    element.textContent = message;
+    element.classList.add("is-visible");
+    window.setTimeout(() => element.classList.remove("is-visible"), 2600);
+  };
+
+  const openPanel = (name: string) => {
+    document.querySelectorAll<HTMLElement>("[data-admin-panel]").forEach((panel) => {
+      panel.classList.toggle("is-active", panel.dataset.adminPanel === name);
+    });
+    document.querySelectorAll<HTMLButtonElement>("[data-admin-tab]").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.adminTab === name);
+    });
+    const title = document.querySelector<HTMLElement>("[data-panel-title]");
+    if (title) title.textContent = panelTitles[name] ?? "Dashboard";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("[data-admin-tab]").forEach((button) => {
+    button.addEventListener("click", () => openPanel(button.dataset.adminTab ?? "overview"));
+  });
+  document.querySelectorAll<HTMLElement>("[data-go-tab]").forEach((button) => {
+    button.addEventListener("click", () => openPanel(button.dataset.goTab ?? "overview"));
+  });
+  document.querySelectorAll("[data-admin-logout]").forEach((button) => {
+    button.addEventListener("click", () => {
+      clearDemoAdminSession();
+      window.location.assign("/admin/login/");
+    });
+  });
+
+  const formatDate = (date: string) => {
+    const [year, month, day] = date.split("-").map(Number);
+    return new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "short", year: "numeric" }).format(new Date(year, month - 1, day));
+  };
+
+  const renderDefaultPhotos = () => {
+    document.querySelectorAll<HTMLElement>("[data-default-photo]").forEach((card) => {
+      const photo = card.dataset.defaultPhoto ?? "";
+      const hidden = settings.hiddenHeroPhotos.includes(photo);
+      card.classList.toggle("is-hidden-media", hidden);
+      const button = card.querySelector<HTMLButtonElement>("[data-toggle-default]");
+      if (button) button.textContent = hidden ? "Restaurar" : "Ocultar";
+    });
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("[data-toggle-default]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest<HTMLElement>("[data-default-photo]");
+      const photo = card?.dataset.defaultPhoto;
+      if (!photo) return;
+      settings.hiddenHeroPhotos = settings.hiddenHeroPhotos.includes(photo)
+        ? settings.hiddenHeroPhotos.filter((item) => item !== photo)
+        : [...settings.hiddenHeroPhotos, photo];
+      saveDemoSettings(settings);
+      renderDefaultPhotos();
+      renderOverview();
+      toast(settings.hiddenHeroPhotos.includes(photo) ? "Fotografía oculta" : "Fotografía restaurada");
+    });
+  });
+
+  const makeMediaPreview = (record: DemoMediaRecord) => {
+    const url = getMediaObjectUrl(record);
+    activeUrls.push(url);
+    const media = record.kind === "video" ? document.createElement("video") : document.createElement("img");
+    media.src = url;
+    if (media instanceof HTMLVideoElement) {
+      media.controls = true;
+      media.preload = "metadata";
+    } else {
+      media.alt = record.name;
+    }
+    return media;
+  };
+
+  const renderUploadedMedia = async () => {
+    const grid = document.querySelector<HTMLElement>("[data-uploaded-media-grid]");
+    if (!grid) return;
+    grid.replaceChildren();
+    const records = await getDemoMedia();
+    if (!records.length) {
+      const empty = document.createElement("p");
+      empty.className = "admin-empty-state";
+      empty.textContent = "Todavía no has agregado archivos desde el dashboard.";
+      grid.append(empty);
+      return;
+    }
+
+    records.forEach((record) => {
+      const card = document.createElement("article");
+      card.className = "admin-media-item";
+      card.append(makeMediaPreview(record));
+      const footer = document.createElement("div");
+      const label = document.createElement("strong");
+      label.textContent = record.name;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "Eliminar";
+      button.addEventListener("click", async () => {
+        if (!window.confirm(`¿Eliminar ${record.name}?`)) return;
+        await deleteDemoMedia(record.id);
+        await renderUploadedMedia();
+        await renderPosts();
+        renderOverview();
+        toast("Archivo eliminado");
+      });
+      footer.append(label, button);
+      const badge = document.createElement("small");
+      badge.className = "admin-media-badge";
+      badge.textContent = record.category === "hero" ? "Carrusel" : "Blog";
+      card.append(footer, badge);
+      grid.append(card);
+    });
+  };
+
+  document.querySelector<HTMLFormElement>("[data-media-upload]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const values = new FormData(form);
+    const file = values.get("media");
+    const category = String(values.get("category")) as "hero" | "blog";
+    if (!(file instanceof File) || !file.size) return;
+    if (category === "hero" && !file.type.startsWith("image/")) {
+      toast("El carrusel solo acepta fotografías");
+      return;
+    }
+    const limit = file.type.startsWith("video/") ? 100 : 15;
+    if (file.size > limit * 1024 * 1024) {
+      toast(`El archivo supera el límite de ${limit} MB`);
+      return;
+    }
+    await saveDemoMedia(file, category);
+    form.reset();
+    await renderUploadedMedia();
+    renderOverview();
+    toast("Archivo guardado correctamente");
+  });
+
+  const renderTimeChips = (row: HTMLElement, day: string) => {
+    const container = row.querySelector<HTMLElement>("[data-time-chips]");
+    if (!container) return;
+    container.replaceChildren();
+    settings.schedule[day].times.forEach((time) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.innerHTML = `<span>${time}</span><b aria-hidden="true">×</b>`;
+      chip.setAttribute("aria-label", `Eliminar horario ${time}`);
+      chip.addEventListener("click", () => {
+        settings.schedule[day].times = settings.schedule[day].times.filter((item) => item !== time);
+        renderTimeChips(row, day);
+      });
+      container.append(chip);
+    });
+  };
+
+  const renderSchedule = () => {
+    document.querySelectorAll<HTMLElement>("[data-day-row]").forEach((row) => {
+      const day = row.dataset.dayRow ?? "0";
+      const enabled = row.querySelector<HTMLInputElement>("[data-day-enabled]");
+      if (enabled) enabled.checked = settings.schedule[day].enabled;
+      row.classList.toggle("is-disabled", !settings.schedule[day].enabled);
+      renderTimeChips(row, day);
+    });
+  };
+
+  document.querySelectorAll<HTMLElement>("[data-day-row]").forEach((row) => {
+    const day = row.dataset.dayRow ?? "0";
+    row.querySelector<HTMLInputElement>("[data-day-enabled]")?.addEventListener("change", (event) => {
+      settings.schedule[day].enabled = (event.currentTarget as HTMLInputElement).checked;
+      row.classList.toggle("is-disabled", !settings.schedule[day].enabled);
+    });
+    row.querySelector<HTMLButtonElement>("[data-add-time]")?.addEventListener("click", () => {
+      const input = row.querySelector<HTMLInputElement>("[data-new-time]");
+      const value = input?.value;
+      if (!value || settings.schedule[day].times.includes(value)) return;
+      settings.schedule[day].times = [...settings.schedule[day].times, value].sort();
+      if (input) input.value = "";
+      renderTimeChips(row, day);
+    });
+  });
+
+  document.querySelector("[data-save-schedule]")?.addEventListener("click", () => {
+    saveDemoSettings(settings);
+    toast("Horarios guardados");
+  });
+
+  const renderAppointments = () => {
+    const body = document.querySelector<HTMLTableSectionElement>("[data-appointment-table]");
+    if (!body) return;
+    body.replaceChildren();
+    const appointments = getDemoAppointments();
+    if (!appointments.length) {
+      const row = body.insertRow();
+      const cell = row.insertCell();
+      cell.colSpan = 5;
+      cell.className = "admin-table-empty";
+      cell.textContent = "No existen citas apartadas en esta demostración.";
+    }
+    appointments.forEach((appointment) => {
+      const row = body.insertRow();
+      const patient = row.insertCell();
+      const patientName = document.createElement("strong");
+      patientName.textContent = appointment.patientName;
+      const patientPhone = document.createElement("small");
+      patientPhone.textContent = appointment.patientPhone;
+      patient.append(patientName, patientPhone);
+      row.insertCell().textContent = formatDate(appointment.date);
+      row.insertCell().textContent = appointment.time;
+      const statusCell = row.insertCell();
+      const status = document.createElement("span");
+      status.className = `admin-status admin-status-${appointment.status}`;
+      status.textContent = appointment.status === "confirmed" ? "Confirmada" : "Apartada 30 min";
+      statusCell.append(status);
+      const actions = row.insertCell();
+      actions.className = "admin-table-actions";
+      if (appointment.status === "hold") {
+        const confirm = document.createElement("button");
+        confirm.type = "button";
+        confirm.textContent = "Confirmar";
+        confirm.addEventListener("click", () => {
+          confirmDemoAppointment(appointment.id);
+          renderAppointments();
+          renderOverview();
+          toast("Cita confirmada");
+        });
+        actions.append(confirm);
+      }
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.textContent = "Cancelar";
+      remove.addEventListener("click", () => {
+        deleteDemoAppointment(appointment.id);
+        renderAppointments();
+        renderOverview();
+        toast("Horario liberado");
+      });
+      actions.append(remove);
+    });
+  };
+
+  const profileForm = document.querySelector<HTMLFormElement>("[data-profile-form]");
+  const fillProfileForm = () => {
+    if (!profileForm) return;
+    (profileForm.elements.namedItem("name") as HTMLInputElement).value = settings.profile.name;
+    (profileForm.elements.namedItem("headline") as HTMLInputElement).value = settings.profile.headline;
+    (profileForm.elements.namedItem("biography") as HTMLTextAreaElement).value = settings.profile.biography;
+  };
+  profileForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const values = new FormData(profileForm);
+    settings.profile = {
+      name: String(values.get("name") ?? "").trim(),
+      headline: String(values.get("headline") ?? "").trim(),
+      biography: String(values.get("biography") ?? "").trim(),
+    };
+    saveDemoSettings(settings);
+    toast("Presentación actualizada");
+  });
+
+  const renderPosts = async () => {
+    const container = document.querySelector<HTMLElement>("[data-admin-post-list]");
+    if (!container) return;
+    container.replaceChildren();
+    const posts = getDemoPosts();
+    if (!posts.length) {
+      const empty = document.createElement("p");
+      empty.className = "admin-empty-state";
+      empty.textContent = "Todavía no has creado publicaciones.";
+      container.append(empty);
+      return;
+    }
+    posts.forEach((post) => {
+      const card = document.createElement("article");
+      const copy = document.createElement("div");
+      const meta = document.createElement("span");
+      meta.textContent = `${post.published ? "Publicada" : "Borrador"} · ${new Intl.DateTimeFormat("es-MX", { dateStyle: "medium" }).format(post.createdAt)}`;
+      const title = document.createElement("strong");
+      title.textContent = post.title;
+      const excerpt = document.createElement("p");
+      excerpt.textContent = post.excerpt;
+      copy.append(meta, title, excerpt);
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.textContent = "Eliminar";
+      remove.addEventListener("click", async () => {
+        if (!window.confirm(`¿Eliminar la publicación “${post.title}”?`)) return;
+        deleteDemoPost(post.id);
+        if (post.mediaId) await deleteDemoMedia(post.mediaId);
+        await renderPosts();
+        await renderUploadedMedia();
+        renderOverview();
+        toast("Publicación eliminada");
+      });
+      card.append(copy, remove);
+      container.append(card);
+    });
+  };
+
+  document.querySelector<HTMLFormElement>("[data-post-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const values = new FormData(form);
+    const file = values.get("postMedia");
+    const videoUrl = String(values.get("videoUrl") ?? "").trim();
+    if (file instanceof File && file.size && videoUrl) {
+      toast("Elige un archivo o un enlace de video, no ambos");
+      return;
+    }
+    if (videoUrl && !getVideoEmbedUrl(videoUrl)) {
+      toast("El enlace debe ser de YouTube o Vimeo");
+      return;
+    }
+    let mediaId: string | undefined;
+    let mediaKind: "image" | "video" | undefined;
+    if (file instanceof File && file.size) {
+      const limit = file.type.startsWith("video/") ? 100 : 15;
+      if (file.size > limit * 1024 * 1024) {
+        toast(`El archivo supera el límite de ${limit} MB`);
+        return;
+      }
+      const record = await saveDemoMedia(file, "blog");
+      mediaId = record.id;
+      mediaKind = record.kind;
+    }
+    saveDemoPost({
+      title: String(values.get("title") ?? "").trim(),
+      excerpt: String(values.get("excerpt") ?? "").trim(),
+      body: String(values.get("body") ?? "").trim(),
+      published: values.get("published") === "on",
+      mediaId,
+      mediaKind,
+      externalVideoUrl: videoUrl || undefined,
+    });
+    form.reset();
+    const published = form.elements.namedItem("published") as HTMLInputElement;
+    published.checked = true;
+    await renderPosts();
+    await renderUploadedMedia();
+    renderOverview();
+    toast("Publicación guardada");
+  });
+
+  const legalForm = document.querySelector<HTMLFormElement>("[data-legal-form]");
+  const fillLegalForm = () => {
+    if (!legalForm) return;
+    (legalForm.elements.namedItem("cofepris") as HTMLInputElement).value = settings.cofepris;
+  };
+  legalForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    settings.cofepris = String(new FormData(legalForm).get("cofepris") ?? "").trim();
+    saveDemoSettings(settings);
+    toast("Información COFEPRIS actualizada");
+  });
+
+  const renderOverview = async () => {
+    const appointments = getDemoAppointments();
+    const posts = getDemoPosts().filter((post) => post.published);
+    const media = await getDemoMedia();
+    const photos = DEFAULT_HERO_PHOTOS.length - settings.hiddenHeroPhotos.length + media.filter((item) => item.category === "hero" && item.kind === "image").length;
+    const setText = (selector: string, value: number) => {
+      const element = document.querySelector<HTMLElement>(selector);
+      if (element) element.textContent = String(value);
+    };
+    setText("[data-stat-photos]", photos);
+    setText("[data-stat-holds]", appointments.filter((item) => item.status === "hold").length);
+    setText("[data-stat-confirmed]", appointments.filter((item) => item.status === "confirmed").length);
+    setText("[data-stat-posts]", posts.length);
+
+    const list = document.querySelector<HTMLElement>("[data-overview-appointments]");
+    if (!list) return;
+    list.replaceChildren();
+    if (!appointments.length) {
+      const empty = document.createElement("p");
+      empty.className = "admin-empty-state";
+      empty.textContent = "Las próximas citas aparecerán aquí.";
+      list.append(empty);
+      return;
+    }
+    appointments.slice(0, 4).forEach((appointment) => {
+      const item = document.createElement("div");
+      const date = document.createElement("span");
+      date.textContent = appointment.date.split("-")[2];
+      const copy = document.createElement("div");
+      const name = document.createElement("strong");
+      name.textContent = appointment.patientName;
+      const detail = document.createElement("small");
+      detail.textContent = `${formatDate(appointment.date)} · ${appointment.time}`;
+      copy.append(name, detail);
+      const state = document.createElement("b");
+      state.textContent = appointment.status === "confirmed" ? "Confirmada" : "Apartada";
+      item.append(date, copy, state);
+      list.append(item);
+    });
+  };
+
+  renderDefaultPhotos();
+  renderSchedule();
+  renderAppointments();
+  fillProfileForm();
+  fillLegalForm();
+  await renderUploadedMedia();
+  await renderPosts();
+  await renderOverview();
+  window.setInterval(() => {
+    renderAppointments();
+    renderOverview();
+  }, 60_000);
+  window.addEventListener("beforeunload", () => activeUrls.forEach((url) => URL.revokeObjectURL(url)));
+</script>
