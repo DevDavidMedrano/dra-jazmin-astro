@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../../data/paths";
 const cases = [
   { id: "01", category: "capilar", title: "Restauración capilar" },
   { id: "02", category: "capilar", title: "Tratamiento capilar" },
@@ -35,14 +36,14 @@ const cases = [
           <div class="case-comparison">
             <div>
               <div class="case-placeholder">
-                <img src="/brand/dra-jazmin-mark.png" alt="" width="197" height="387" loading="lazy" />
+                <img src={withBase("/brand/dra-jazmin-mark.png")} alt="" width="197" height="387" loading="lazy" />
                 <span>Imagen clínica autorizada</span>
               </div>
               <p>Antes</p>
             </div>
             <div>
               <div class="case-placeholder case-placeholder-after">
-                <img src="/brand/dra-jazmin-mark.png" alt="" width="197" height="387" loading="lazy" />
+                <img src={withBase("/brand/dra-jazmin-mark.png")} alt="" width="197" height="387" loading="lazy" />
                 <span>Imagen clínica autorizada</span>
               </div>
               <p>Después</p>

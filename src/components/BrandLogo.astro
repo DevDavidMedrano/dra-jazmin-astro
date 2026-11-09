@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../data/paths";
 /**
  * Logotipo en HTML: símbolo + nombre con acento. Sustituye al PNG
  * (que dice "ALVAREZ" sin acento) en encabezado, pie y contacto.
@@ -14,7 +15,7 @@ const { variant = "dark", class: className } = Astro.props;
 ---
 
 <span class:list={["brand-logo", `brand-logo-${variant}`, className]}>
-  <img src="/brand/dra-jazmin-mark.png" alt="" width="197" height="387" />
+  <img src={withBase("/brand/dra-jazmin-mark.png")} alt="" width="197" height="387" />
   <span class="brand-logo-text">
     <span class="brand-logo-name">Dra. Jazmín<br />Álvarez</span>
     <span class="brand-logo-specialty">{site.specialty}</span>

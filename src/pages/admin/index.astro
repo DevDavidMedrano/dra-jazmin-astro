@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../../data/paths";
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
 
@@ -25,7 +26,7 @@ const defaultPhotos = [
 <AdminLayout title="Dashboard | Dra. Jazmín Álvarez" bodyClass="admin-dashboard-page">
   <div class="admin-app" data-admin-app hidden>
     <aside class="admin-sidebar">
-      <a class="admin-sidebar-logo" href="/" aria-label="Abrir página pública">
+      <a class="admin-sidebar-logo" href={withBase("/")} aria-label="Abrir página pública">
         <BrandLogo />
       </a>
       <div class="admin-sidebar-copy">
@@ -52,7 +53,7 @@ const defaultPhotos = [
       </nav>
 
       <div class="admin-sidebar-bottom">
-        <a href="/" target="_blank">Ver página pública <span>↗</span></a>
+        <a href={withBase("/")} target="_blank">Ver página pública <span>↗</span></a>
         <button type="button" data-admin-logout>Cerrar sesión</button>
       </div>
     </aside>
@@ -86,7 +87,7 @@ const defaultPhotos = [
             <h2>Todo lo importante, en un solo lugar.</h2>
             <p>Administra la presentación pública, la agenda y el contenido de la doctora.</p>
           </div>
-          <a href="/" target="_blank">Abrir página <span>↗</span></a>
+          <a href={withBase("/")} target="_blank">Abrir página <span>↗</span></a>
         </div>
 
         <div class="admin-stat-grid">
@@ -140,7 +141,7 @@ const defaultPhotos = [
           <div class="admin-media-grid" data-default-photo-grid>
             {defaultPhotos.map((photo, index) => (
               <article class="admin-media-item" data-default-photo={photo}>
-                <img src={photo} alt={`Fotografía ${index + 1} del carrusel`} width="480" height="340" />
+                <img src={withBase(photo)} alt={`Fotografía ${index + 1} del carrusel`} width="480" height="340" />
                 <div><strong>Fotografía {String(index + 1).padStart(2, "0")}</strong><button type="button" data-toggle-default>Ocultar</button></div>
               </article>
             ))}
@@ -185,7 +186,7 @@ const defaultPhotos = [
       <section class="admin-panel" data-admin-panel="blog">
         <div class="admin-section-heading">
           <div><p class="admin-kicker">Perfil y contenidos</p><h2>Presentación y blog</h2><p>Edita la presentación de la doctora y crea publicaciones con texto, fotos o videos.</p></div>
-          <a class="admin-secondary-button" href="/blog/" target="_blank">Ver blog ↗</a>
+          <a class="admin-secondary-button" href={withBase("/blog/")} target="_blank">Ver blog ↗</a>
         </div>
 
         <div class="admin-editor-grid">
@@ -256,6 +257,7 @@ const defaultPhotos = [
 </AdminLayout>
 
 <script>
+  import { withBase } from "../../data/paths";
   import {
     DEFAULT_HERO_PHOTOS,
     clearDemoAdminSession,
@@ -277,7 +279,7 @@ const defaultPhotos = [
   } from "../../scripts/demoStore";
 
   if (!hasDemoAdminSession()) {
-    window.location.replace("/admin/login/");
+    window.location.replace(withBase("/admin/login/"));
   } else {
     document.querySelector<HTMLElement>("[data-admin-app]")?.removeAttribute("hidden");
   }
@@ -321,7 +323,7 @@ const defaultPhotos = [
   document.querySelectorAll("[data-admin-logout]").forEach((button) => {
     button.addEventListener("click", () => {
       clearDemoAdminSession();
-      window.location.assign("/admin/login/");
+      window.location.assign(withBase("/admin/login/"));
     });
   });
 

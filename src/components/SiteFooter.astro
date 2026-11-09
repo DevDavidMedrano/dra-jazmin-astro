@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../data/paths";
 import { site } from "../data/site";
 import BrandLogo from "./BrandLogo.astro";
 ---
@@ -22,11 +23,11 @@ import BrandLogo from "./BrandLogo.astro";
 
   <nav class="footer-column footer-nav" aria-label="Navegación del pie de página">
     <p class="footer-label">Explora</p>
-    <a href="/#tratamientos">Tratamientos</a>
-    <a href="/#resultados">Resultados</a>
-    <a href="/#sobre-mi">Sobre mí</a>
-    <a href="/#blog">Blog</a>
-    <a href="/#contacto">Contacto</a>
+    <a href={withBase("/#tratamientos")}>Tratamientos</a>
+    <a href={withBase("/#resultados")}>Resultados</a>
+    <a href={withBase("/#sobre-mi")}>Sobre mí</a>
+    <a href={withBase("/#blog")}>Blog</a>
+    <a href={withBase("/#contacto")}>Contacto</a>
   </nav>
 
   <div class="footer-social">
@@ -49,14 +50,14 @@ import BrandLogo from "./BrandLogo.astro";
       </span>
       <b aria-hidden="true">↗</b>
     </a>
-    <a class="footer-agenda" href="/#agenda">Agenda tu valoración</a>
+    <a class="footer-agenda" href={withBase("/#agenda")}>Agenda tu valoración</a>
   </div>
 
   <div class="footer-legal">
     <span>© 2026 Dra. Jazmín Álvarez.</span>
     <span data-footer-cofepris>Permiso de publicidad COFEPRIS: pendiente de capturar</span>
     <span>La información del sitio no sustituye una valoración médica.</span>
-    <a href="/admin/login/">Acceso administrativo</a>
+    <a href={withBase("/admin/login/")}>Acceso administrativo</a>
   </div>
 </footer>
 

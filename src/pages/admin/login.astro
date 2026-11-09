@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../../data/paths";
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
 ---
@@ -6,7 +7,7 @@ import BrandLogo from "../../components/BrandLogo.astro";
 <AdminLayout title="Acceso administrativo | Dra. Jazmín Álvarez" bodyClass="admin-login-page">
   <main class="admin-login-shell">
     <section class="admin-login-brand">
-      <a href="/" aria-label="Volver a la página principal">
+      <a href={withBase("/")} aria-label="Volver a la página principal">
         <BrandLogo />
       </a>
       <div>
@@ -43,19 +44,20 @@ import BrandLogo from "../../components/BrandLogo.astro";
         <button class="admin-primary-button" type="submit">Entrar al dashboard <span>→</span></button>
       </form>
 
-      <a class="admin-back-link" href="/">← Volver a la página</a>
+      <a class="admin-back-link" href={withBase("/")}>← Volver a la página</a>
     </section>
   </main>
 </AdminLayout>
 
 <script>
+  import { withBase } from "../../data/paths";
   import {
     DEMO_CREDENTIALS,
     hasDemoAdminSession,
     setDemoAdminSession,
   } from "../../scripts/demoStore";
 
-  if (hasDemoAdminSession()) window.location.replace("/admin/");
+  if (hasDemoAdminSession()) window.location.replace(withBase("/admin/"));
 
   const form = document.querySelector<HTMLFormElement>("[data-admin-login]");
   const error = document.querySelector<HTMLElement>("[data-login-error]");
@@ -75,6 +77,6 @@ import BrandLogo from "../../components/BrandLogo.astro";
     }
 
     setDemoAdminSession();
-    window.location.assign("/admin/");
+    window.location.assign(withBase("/admin/"));
   });
 </script>

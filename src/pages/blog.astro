@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../data/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -17,7 +18,7 @@ import BlogSection from "../components/sections/BlogSection.astro";
         <p class="eyebrow eyebrow-light">Atención personalizada</p>
         <h2>La información ayuda; la valoración define tu plan.</h2>
       </div>
-      <a class="button button-light button-large" href="/#agenda">Agenda tu valoración</a>
+      <a class="button button-light button-large" href={withBase("/#agenda")}>Agenda tu valoración</a>
     </section>
   </main>
   <SiteFooter />

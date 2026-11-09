@@ -1,31 +1,44 @@
 ---
+import { stripBase, withBase } from "../data/paths";
 import { site, treatments } from "../data/site";
 import BrandLogo from "./BrandLogo.astro";
 import Icon from "./Icon.astro";
 
-const navItems = [
-  { label: "Inicio", href: "/#inicio" },
-  { label: "Tratamientos", href: "/#tratamientos", children: treatments },
-  { label: "Resultados", href: "/#resultados" },
-  { label: "Sobre mí", href: "/#sobre-mi" },
-  { label: "Blog", href: "/#blog" },
-  { label: "Contacto", href: "/#contacto" },
+/** `section` es el id de la sección en la página única. */
+const sectionLink = (label: string, section: string, extra: object = {}) => ({
+  label,
+  section,
+  href: withBase(`/#${section}`),
+  ...extra,
+});
+
+const navItems: {
+  label: string;
+  href: string;
+  section?: string;
+  external?: boolean;
+  children?: typeof treatments;
+}[] = [
+  sectionLink("Inicio", "inicio"),
+  sectionLink("Tratamientos", "tratamientos", { children: treatments }),
+  sectionLink("Resultados", "resultados"),
+  sectionLink("Sobre mí", "sobre-mi"),
+  sectionLink("Blog", "blog"),
+  sectionLink("Contacto", "contacto"),
   { label: "Instagram", href: site.instagramUrl, external: true },
 ];
 
 // En la página única el enlace activo lo actualiza el script según la sección visible.
 // En las páginas sueltas (/tratamientos/, /blog/…) se marca el apartado correspondiente.
-const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
-const currentPath = normalizePath(Astro.url.pathname);
+const currentPath = stripBase(Astro.url.pathname);
 const isActive = (item: (typeof navItems)[number]) => {
-  if (item.external) return false;
-  const section = item.href.split("#")[1];
-  return currentPath === "/" ? section === "inicio" : currentPath === `/${section}`;
+  if (item.external || !item.section) return false;
+  return currentPath === "/" ? item.section === "inicio" : currentPath === `/${item.section}`;
 };
 ---
 
 <header class="site-header" data-header>
-  <a class="header-logo" href="/" aria-label={`${site.doctorName} - Ir al inicio`}>
+  <a class="header-logo" href={withBase("/")} aria-label={`${site.doctorName} - Ir al inicio`}>
     <BrandLogo />
   </a>
 
@@ -47,7 +60,7 @@ const isActive = (item: (typeof navItems)[number]) => {
             </a>
             <div class="nav-submenu">
               {item.children.map((child) => (
-                <a href={`/#${child.id}`}>
+                <a href={withBase(`/#${child.id}`)}>
                   <span class="nav-submenu-icon">
                     <Icon name={child.icon} />
                   </span>
@@ -85,7 +98,7 @@ const isActive = (item: (typeof navItems)[number]) => {
       </svg>
       WhatsApp
     </a>
-    <a class="button button-dark header-appointment" href="/#agenda">
+    <a class="button button-dark header-appointment" href={withBase("/#agenda")}>
       <svg class="appointment-icon" viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
         <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
@@ -122,7 +135,7 @@ const isActive = (item: (typeof navItems)[number]) => {
           {item.children && (
             <div class="mobile-sublinks">
               {item.children.map((child) => (
-                <a href={`/#${child.id}`}>{child.title}</a>
+                <a href={withBase(`/#${child.id}`)}>{child.title}</a>
               ))}
             </div>
           )}
@@ -132,7 +145,7 @@ const isActive = (item: (typeof navItems)[number]) => {
     <a class="mobile-whatsapp" href={site.whatsappUrl} target="_blank" rel="noreferrer">
       WhatsApp
     </a>
-    <a class="mobile-appointment" href="/#agenda">Agenda tu valoración</a>
+    <a class="mobile-appointment" href={withBase("/#agenda")}>Agenda tu valoración</a>
   </nav>
 </header>
 
@@ -149,13 +162,15 @@ const isActive = (item: (typeof navItems)[number]) => {
     </svg>
     WhatsApp
   </a>
-  <a href="/#agenda">
+  <a href={withBase("/#agenda")}>
     <span aria-hidden="true">▦</span>
     Agendar cita
   </a>
 </div>
 
 <script>
+  import { stripBase } from "../data/paths";
+
   const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
   const mobileNav = document.querySelector<HTMLElement>("[data-mobile-nav]");
 
@@ -193,10 +208,10 @@ const isActive = (item: (typeof navItems)[number]) => {
   });
 
   // Página única: marca en el menú la sección que se está viendo.
-  if (window.location.pathname === "/") {
+  if (stripBase(window.location.pathname) === "/") {
     const links = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(
-        ".desktop-nav .nav-link[href^='/#'], .mobile-nav .mobile-link[href^='/#']",
+        ".desktop-nav .nav-link[href*='#'], .mobile-nav .mobile-link[href*='#']",
       ),
     );
     // Todas las secciones principales, aunque no tengan botón en el menú (p. ej. Agenda),

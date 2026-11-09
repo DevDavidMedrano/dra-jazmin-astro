@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../data/paths";
 import { treatments } from "../data/site";
 import Icon from "./Icon.astro";
 
@@ -21,14 +22,14 @@ const benefits = [
     </p>
 
     <div class="hero-buttons">
-      <a class="button button-gold button-large" href="/#agenda">
+      <a class="button button-gold button-large" href={withBase("/#agenda")}>
         <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
           <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
           <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
         </svg>
         Agenda tu valoración
       </a>
-      <a class="button button-outline button-large" href="/#tratamientos">
+      <a class="button button-outline button-large" href={withBase("/#tratamientos")}>
         <Icon name="play" class="button-icon" />
         Conoce los tratamientos
       </a>
@@ -50,7 +51,7 @@ const benefits = [
 
   <figure class="hero-media">
     <img
-      src="/images/hero-doctor.webp"
+      src={withBase("/images/hero-doctor.webp")}
       alt="Dra. Jazmín Álvarez en su consultorio"
       width="842"
       height="605"
@@ -64,7 +65,7 @@ const benefits = [
       {
         treatments.map((treatment) => (
           <li>
-            <a href={`/#${treatment.id}`}>
+            <a href={withBase(`/#${treatment.id}`)}>
               <span class="hero-treatment-icon">
                 <Icon name={treatment.icon} />
               </span>

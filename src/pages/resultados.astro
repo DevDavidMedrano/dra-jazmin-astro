@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../data/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -16,7 +17,7 @@ import ResultsGallerySection from "../components/sections/ResultsGallerySection.
       eyebrow="Resultados"
       title="Resultados que se sienten naturales"
       description="Cada proceso es único y se acompaña de una valoración profesional, seguimiento y documentación responsable."
-      image="/images/hero-doctor-02.webp"
+      image={withBase("/images/hero-doctor-02.webp")}
       imageAlt="Dra. Jazmín Álvarez en su consultorio"
     />
     <ResultsGallerySection />
@@ -25,7 +26,7 @@ import ResultsGallerySection from "../components/sections/ResultsGallerySection.
         <p class="eyebrow eyebrow-light">Tu caso es único</p>
         <h2>Conoce qué opciones pueden ser adecuadas para ti.</h2>
       </div>
-      <a class="button button-light button-large" href="/#agenda">Agenda una valoración</a>
+      <a class="button button-light button-large" href={withBase("/#agenda")}>Agenda una valoración</a>
     </section>
   </main>
   <SiteFooter />

@@ -1,11 +1,12 @@
 ---
+import { withBase } from "../../data/paths";
 ---
 
 <div class="about-page" id="sobre-mi">
   <section class="profile-hero">
     <figure class="profile-photo">
       <img
-        src="/images/hero-doctor.webp"
+        src={withBase("/images/hero-doctor.webp")}
         alt="Retrato de la Dra. Jazmín Álvarez en su consultorio"
         width="1000"
         height="1000"
@@ -44,7 +45,7 @@
         </article>
       </div>
 
-      <a class="button button-dark button-large" href="/#agenda">Agenda tu valoración</a>
+      <a class="button button-dark button-large" href={withBase("/#agenda")}>Agenda tu valoración</a>
     </div>
   </section>
 
