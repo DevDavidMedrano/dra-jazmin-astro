@@ -2002,3 +2002,21 @@ html {
     height: 230px;
   }
 }
+
+/* Celular y tableta: la foto de las portadas verdes va debajo del texto, con alto fijo */
+@media (max-width: 900px) {
+  .inner-hero-rich {
+    min-height: 0;
+  }
+
+  .inner-hero-rich .inner-hero-media {
+    flex: none;
+    height: clamp(340px, 60vw, 480px);
+    min-height: 0;
+    position: relative;
+  }
+
+  .inner-hero-rich .inner-hero-media::after {
+    background: linear-gradient(180deg, #0c4234 0%, rgba(12, 66, 52, 0.35) 18%, transparent 40%);
+  }
+}
