@@ -1,8 +1,8 @@
 ---
 import { withBase } from "../data/paths";
 /**
- * Logotipo en HTML: símbolo + nombre con acento. Sustituye al PNG
- * (que dice "ALVAREZ" sin acento) en encabezado, pie y contacto.
+ * Logotipo oficial (símbolo + "Dra. Jazmín Álvarez" + especialidad).
+ * La variante "light" lo invierte a blanco para los fondos oscuros.
  */
 import { site } from "../data/site";
 
@@ -15,9 +15,11 @@ const { variant = "dark", class: className } = Astro.props;
 ---
 
 <span class:list={["brand-logo", `brand-logo-${variant}`, className]}>
-  <img src={withBase("/brand/dra-jazmin-mark.png")} alt="" width="197" height="387" />
-  <span class="brand-logo-text">
-    <span class="brand-logo-name">Dra. Jazmín<br />Álvarez</span>
-    <span class="brand-logo-specialty">{site.specialty}</span>
-  </span>
+  <img
+    class="brand-logo-full"
+    src={withBase("/brand/dra-jazmin-logo.png")}
+    alt={`${site.doctorName} · ${site.specialty}`}
+    width="1100"
+    height="431"
+  />
 </span>

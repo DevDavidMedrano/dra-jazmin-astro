@@ -1548,7 +1548,7 @@ html {
 /* Tratamientos: encuadre de la foto (la doctora está a la derecha de la imagen) */
 .treatments-block .inner-hero-media img {
   object-fit: cover;
-  object-position: 62% 25%;
+  object-position: 50% 42%;
 }
 
 /* El verde termina exactamente en el mismo tono con el que empieza la foto: sin línea de corte */
@@ -1556,4 +1556,46 @@ html {
   background:
     radial-gradient(circle at 12% 20%, rgba(29, 107, 85, 0.35), transparent 45%),
     linear-gradient(90deg, var(--petrol-950) 0%, #0c4234 100%);
+}
+
+/* Logotipo oficial en imagen (encabezado, pie, contacto y panel) */
+.brand-logo img.brand-logo-full {
+  height: 66px;
+  width: auto;
+}
+
+.footer-brand .brand-logo img.brand-logo-full,
+.contact-brand-block .brand-logo img.brand-logo-full {
+  height: 74px;
+}
+
+@media (max-width: 820px) {
+  .brand-logo img.brand-logo-full {
+    height: 50px;
+  }
+}
+
+/* La foto de portada (vertical) no debe estirar la sección: llena el espacio disponible */
+.inner-hero-rich .inner-hero-media img {
+  inset: 0;
+  min-height: 0;
+  position: absolute;
+}
+
+.site-header .brand-logo img.brand-logo-full {
+  height: 78px;
+}
+
+@media (max-width: 820px) {
+  .site-header .brand-logo img.brand-logo-full {
+    height: 54px;
+  }
+}
+
+/* Celular y tableta: botón de menú pegado a la derecha */
+@media (max-width: 1100px) {
+  .site-header .menu-toggle {
+    grid-column: -2;
+    justify-self: end;
+  }
 }

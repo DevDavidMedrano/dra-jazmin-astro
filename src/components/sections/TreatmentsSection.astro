@@ -11,14 +11,16 @@ import TreatmentStrip from "../TreatmentStrip.astro";
 import { treatments } from "../../data/site";
 
 /** Fotografía de las tarjetas pares; las impares muestran el ícono. */
-const cardPhotos: Record<string, { src: string; alt: string }> = {
+const cardPhotos: Record<string, { src: string; alt: string; position: string }> = {
   "rejuvenecimiento-facial": {
-    src: "/images/hero-doctor-02.webp",
-    alt: "Dra. Jazmín Álvarez en su consultorio",
+    src: "/images/doctora-tratamiento.webp",
+    alt: "Dra. Jazmín Álvarez aplicando un tratamiento a una paciente",
+    position: "center 30%",
   },
   "tratamientos-personalizados": {
-    src: "/images/hero-doctor-03.webp",
-    alt: "Dra. Jazmín Álvarez durante una revisión capilar",
+    src: "/images/doctora-tricoscopia.webp",
+    alt: "Dra. Jazmín Álvarez revisando el cuero cabelludo con un tricoscopio",
+    position: "center 35%",
   },
 };
 
@@ -31,8 +33,8 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
     title="Soluciones pensadas"
     titleAccent="para ti"
     description="Cada tratamiento comienza con una valoración médica personalizada para entender tus necesidades y definir opciones reales y seguras."
-    image={withBase("/images/hero-doctor-05.webp")}
-    imageAlt="Dra. Jazmín Álvarez con una tableta junto al equipo médico"
+    image={withBase("/images/procedimiento-capilar.webp")}
+    imageAlt="Dra. Jazmín Álvarez durante un procedimiento de restauración capilar"
     showActions
     benefits={[
       { icon: "shield", label: "Enfoque médico" },
@@ -57,7 +59,7 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
           const number = String(index + 1).padStart(2, "0");
           return photo ? (
             <article class="treatment-card treatment-card-photo" id={treatment.id}>
-              <img src={withBase(photo.src)} alt={photo.alt} width="900" height="900" loading="lazy" />
+              <img src={withBase(photo.src)} alt={photo.alt} width="900" height="780" loading="lazy" style={`object-position: ${photo.position}`} />
               <div class="treatment-card-copy">
                 <p class="card-index">{number}</p>
                 <h3>{treatment.title}</h3>
