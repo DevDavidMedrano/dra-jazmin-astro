@@ -1,53 +1,26 @@
 ---
 import { withBase } from "../../data/paths";
+import InnerHero from "../InnerHero.astro";
 ---
 
 <div class="about-page" id="sobre-mi">
-  <section class="profile-hero">
-    <figure class="profile-photo">
-      <img
-        src={withBase("/images/doctora-consultorio.webp")}
-        alt="Dra. Jazmín Álvarez realizando un tratamiento en su consultorio, junto a su título de Médico Cirujano y Partero"
-        width="1100"
-        height="1100"
-        loading="lazy"
-      />
-      <span class="profile-arc profile-arc-one" aria-hidden="true"></span>
-      <span class="profile-arc profile-arc-two" aria-hidden="true"></span>
-    </figure>
-
-    <div class="profile-copy">
-      <p class="eyebrow">Sobre mí</p>
-      <h1 data-profile-headline>Ciencia, precisión y atención cercana</h1>
-      <span class="title-rule" aria-hidden="true"></span>
-      <h2 data-profile-name>Dra. Jazmín Álvarez</h2>
-      <p class="profile-intro" data-profile-biography>
-        Mi propósito es acompañarte con honestidad, cuidado y un plan diseñado
-        para tus necesidades. La valoración es el espacio para escuchar lo que
-        buscas y explicarte con claridad cada alternativa.
-      </p>
-
-      <div class="profile-values" aria-label="Principios de atención">
-        <article>
-          <span class="value-icon" aria-hidden="true">01</span>
-          <h3>Atención ética</h3>
-          <p>Información clara para tomar decisiones con tranquilidad.</p>
-        </article>
-        <article>
-          <span class="value-icon" aria-hidden="true">02</span>
-          <h3>Plan personalizado</h3>
-          <p>Cada recomendación parte de una revisión individual.</p>
-        </article>
-        <article>
-          <span class="value-icon" aria-hidden="true">03</span>
-          <h3>Seguimiento cercano</h3>
-          <p>Acompañamiento durante las distintas etapas del proceso.</p>
-        </article>
-      </div>
-
-      <a class="button button-dark button-large" href={withBase("/#agenda")}>Agenda tu valoración</a>
-    </div>
-  </section>
+  <InnerHero
+    class="about-hero"
+    eyebrow="Sobre mí · Dra. Jazmín Álvarez"
+    title="Ciencia, precisión"
+    titleAccent="y atención cercana"
+    description="Mi propósito es acompañarte con honestidad, cuidado y un plan diseñado para tus necesidades. La valoración es el espacio para escuchar lo que buscas y explicarte con claridad cada alternativa."
+    image={withBase("/images/doctora-consultorio.webp")}
+    imageAlt="Dra. Jazmín Álvarez realizando un tratamiento en su consultorio, junto a su título de Médico Cirujano y Partero"
+    imagePosition="35% 30%"
+    lazy
+    showActions
+    benefits={[
+      { icon: "shield", label: "Atención ética" },
+      { icon: "person", label: "Plan personalizado" },
+      { icon: "leaf", label: "Seguimiento cercano" },
+    ]}
+  />
 
   <section class="about-note">
     <p class="eyebrow">La consulta</p>
@@ -63,11 +36,9 @@ import { withBase } from "../../data/paths";
 <script>
   import { getDemoSettings } from "../../scripts/demoStore";
 
-  const profile = getDemoSettings().profile;
-  const name = document.querySelector<HTMLElement>("[data-profile-name]");
-  const headline = document.querySelector<HTMLElement>("[data-profile-headline]");
-  const biography = document.querySelector<HTMLElement>("[data-profile-biography]");
-  if (name) name.textContent = profile.name;
-  if (headline) headline.textContent = profile.headline;
-  if (biography) biography.textContent = profile.biography;
+  // La biografía se puede editar desde el panel de administración.
+  const biography = document.querySelector<HTMLElement>(".about-hero .inner-hero-copy > h1 + p");
+  const text = getDemoSettings().profile.biography;
+  if (biography && text) biography.textContent = text;
 </script>
+

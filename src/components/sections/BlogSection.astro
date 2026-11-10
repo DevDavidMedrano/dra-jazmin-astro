@@ -1,29 +1,26 @@
 ---
+import { withBase } from "../../data/paths";
+import InnerHero from "../InnerHero.astro";
 ---
 
 <div class="blog-page" id="blog">
-  <section class="blog-hero">
-    <div>
-      <p class="eyebrow">Dra. Jazmín Álvarez</p>
-      <h1>Información para acompañar tus decisiones.</h1>
-      <p>
-        Un espacio para conocer a la doctora, resolver dudas frecuentes y compartir información sobre restauración capilar y medicina estética.
-      </p>
-    </div>
-    <aside>
-      <span>Enfoque médico</span>
-      <strong data-blog-profile-name>Dra. Jazmín Álvarez</strong>
-      <p data-blog-profile-headline>Ciencia, precisión y atención cercana</p>
-    </aside>
-  </section>
+  <InnerHero
+    eyebrow="Blog"
+    title="Conoce más"
+    titleAccent="sobre cada proceso"
+    description="Información clara sobre restauración capilar y medicina estética para que llegues a tu valoración con mejores preguntas."
+    image={withBase("/images/hero-doctor-06.webp")}
+    imageAlt="Dra. Jazmín Álvarez explicando un tratamiento a una paciente con una tableta"
+    imagePosition="40% 30%"
+    lazy
+    benefits={[
+      { icon: "star", label: "Artículos" },
+      { icon: "play", label: "Videos" },
+      { icon: "people", label: "Dudas frecuentes" },
+    ]}
+  />
 
   <section class="blog-feed" aria-labelledby="blog-title">
-    <div class="blog-feed-heading">
-      <div><p class="eyebrow">Publicaciones</p><h2 id="blog-title">Conoce más sobre cada proceso</h2></div>
-      <p data-blog-profile-bio>
-        Cada publicación busca ofrecer información clara para que puedas llegar a tu valoración con mejores preguntas.
-      </p>
-    </div>
     <div class="blog-grid" data-public-blog-grid>
       <article class="blog-empty-card" data-blog-empty>
         <span>✦</span>

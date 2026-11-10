@@ -14,6 +14,13 @@ interface Props {
   /** Muestra los botones "Agenda tu valoración" y "Conoce los tratamientos". */
   showActions?: boolean;
   benefits?: { icon: IconName; label: string }[];
+  /** Encuadre de la foto (object-position). */
+  imagePosition?: string;
+  /** Las portadas de secciones de más abajo cargan su foto en diferido. */
+  lazy?: boolean;
+  /** Fuerza el diseño de portada verde con foto (igual que Inicio y Tratamientos). */
+  rich?: boolean;
+  class?: string;
 }
 
 const {
@@ -25,10 +32,14 @@ const {
   imageAlt,
   showActions = false,
   benefits = [],
+  imagePosition,
+  lazy = false,
+  rich = false,
+  class: className,
 } = Astro.props;
 ---
 
-<section class:list={["inner-hero", { "inner-hero-rich": showActions || benefits.length > 0 }]}>
+<section class:list={["inner-hero", className, { "inner-hero-rich": rich || showActions || benefits.length > 0 }]}>
   <div class="inner-hero-copy">
     <p class="eyebrow">{eyebrow}</p>
     <h1>
@@ -36,6 +47,7 @@ const {
       {titleAccent && <em>{titleAccent}</em>}
     </h1>
     <p>{description}</p>
+    <slot />
 
     {
       showActions && (
@@ -47,7 +59,7 @@ const {
             </svg>
             Agenda tu valoración
           </a>
-          <a class="button button-outline button-large" href="#catalogo">
+          <a class="button button-outline button-large" href={withBase("/#catalogo")}>
             <Icon name="play" class="button-icon" />
             Conoce los tratamientos
           </a>
@@ -71,7 +83,15 @@ const {
     }
   </div>
   <figure class="inner-hero-media">
-    <img src={image} alt={imageAlt} width="1000" height="610" fetchpriority="high" />
+    <img
+      src={image}
+      alt={imageAlt}
+      width="1000"
+      height="610"
+      loading={lazy ? "lazy" : undefined}
+      fetchpriority={lazy ? undefined : "high"}
+      style={imagePosition ? `object-position: ${imagePosition}` : undefined}
+    />
     <span class="inner-curve inner-curve-one" aria-hidden="true"></span>
     <span class="inner-curve inner-curve-two" aria-hidden="true"></span>
   </figure>

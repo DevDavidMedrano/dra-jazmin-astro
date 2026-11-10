@@ -1,18 +1,29 @@
 ---
 import { site } from "../../data/site";
+import { withBase } from "../../data/paths";
+import InnerHero from "../InnerHero.astro";
 ---
 
-<div class="agenda-page" id="agenda">
-  <section class="agenda-heading">
-    <p class="eyebrow">Agenda</p>
-    <h1>Agenda tu valoración</h1>
-    <p>Elige el día y horario que mejor se adapte a ti.</p>
-    <ol class="agenda-steps" aria-label="Pasos para solicitar una cita">
-      <li class="active"><span>1</span>Fecha</li>
-      <li><span>2</span>Horario</li>
-      <li><span>3</span>Confirmación</li>
-    </ol>
-  </section>
+<div class="section-block" id="agenda">
+<InnerHero
+  eyebrow="Agenda"
+  title="Agenda tu"
+  titleAccent="valoración"
+  description="Elige el día y horario que mejor se adapte a ti. Confirmamos tu cita por WhatsApp."
+  image={withBase("/images/hero-doctor-04.webp")}
+  imageAlt="Dra. Jazmín Álvarez en su escritorio con una tableta"
+  imagePosition="50% 25%"
+  lazy
+  rich
+>
+  <ol class="agenda-steps hero-steps" aria-label="Pasos para solicitar una cita">
+    <li class="active"><span>1</span>Fecha</li>
+    <li><span>2</span>Horario</li>
+    <li><span>3</span>Confirmación</li>
+  </ol>
+</InnerHero>
+
+<div class="agenda-page">
 
   <section
     class="agenda-layout"
@@ -58,6 +69,7 @@ import { site } from "../../data/site";
       </div>
     </div>
   </section>
+</div>
 </div>
 
 <script>

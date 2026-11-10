@@ -1599,3 +1599,78 @@ html {
     justify-self: end;
   }
 }
+
+/* ==========================================================================
+   Portadas de sección (Resultados, Sobre mí, Blog, Agenda, Contacto):
+   mismo diseño que Inicio y Tratamientos
+   ========================================================================== */
+
+.section-block > .inner-hero,
+.about-page > .inner-hero,
+.blog-page > .inner-hero,
+.contact-page > .inner-hero {
+  margin: 0;
+}
+
+/* Pasos de la agenda sobre fondo verde */
+.inner-hero-copy .hero-steps {
+  margin: clamp(20px, 3.5vh, 34px) 0 0;
+  padding: 0;
+}
+
+.inner-hero-copy .hero-steps li {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.inner-hero-copy .hero-steps li:not(:last-child)::after {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.inner-hero-copy .hero-steps span {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+}
+
+.inner-hero-copy .hero-steps .active {
+  color: var(--gold-light);
+}
+
+.inner-hero-copy .hero-steps .active span {
+  background: var(--gold);
+  color: var(--petrol-950);
+}
+
+/* Con la portada nueva ya no hace falta separar tanto el contenido */
+.section-block .results-gallery {
+  padding-top: clamp(40px, 5vw, 70px);
+}
+
+.section-block .agenda-page {
+  padding-top: clamp(40px, 5vw, 70px);
+}
+
+.blog-page .blog-feed {
+  padding-top: clamp(40px, 5vw, 70px);
+}
+
+/* La foto de Sobre mí ya no ocupa media pantalla en grande: misma proporción que las otras portadas */
+.about-hero .inner-hero-media img {
+  object-fit: cover;
+}
+
+/* El bloque de texto llena todo el alto de la portada (sin franjas arriba y abajo) */
+.inner-hero-rich .inner-hero-copy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inner-hero-rich .inner-hero-copy > * {
+  flex: none;
+}
+
+/* El formulario de contacto se monta sobre la portada sin caja color crema detrás */
+.contact-page .contact-layout {
+  background: transparent;
+}

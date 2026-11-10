@@ -1,5 +1,6 @@
 ---
 import { withBase } from "../../data/paths";
+import InnerHero from "../InnerHero.astro";
 const cases = [
   { id: "01", category: "capilar", title: "Restauración capilar" },
   { id: "02", category: "capilar", title: "Tratamiento capilar" },
@@ -7,17 +8,24 @@ const cases = [
 ];
 ---
 
-<section class="results-gallery" id="resultados" aria-labelledby="gallery-heading">
-  <div class="section-heading results-gallery-heading">
-    <div>
-      <p class="eyebrow">Galería clínica</p>
-      <h2 id="gallery-heading">Evolución documentada con autorización</h2>
-    </div>
-    <p>
-      Esta sección queda preparada para integrar fotografías clínicas reales
-      autorizadas por cada paciente.
-    </p>
-  </div>
+<div class="section-block" id="resultados">
+<InnerHero
+  eyebrow="Resultados"
+  title="Evolución documentada"
+  titleAccent="con autorización"
+  description="Casos reales que muestran la evolución de cada tratamiento, siempre con la autorización por escrito de cada paciente."
+  image={withBase("/images/hero-doctor-03.webp")}
+  imageAlt="Dra. Jazmín Álvarez revisando el cuero cabelludo de un paciente"
+  imagePosition="45% 30%"
+  lazy
+  benefits={[
+    { icon: "shield", label: "Fotos con consentimiento" },
+    { icon: "person", label: "Casos individuales" },
+    { icon: "star", label: "Seguimiento médico" },
+  ]}
+/>
+
+<section class="results-gallery" aria-label="Galería clínica">
 
   <div class="result-filters" role="group" aria-label="Filtrar casos">
     <button class="result-filter active" type="button" data-result-filter="all">Todos</button>
@@ -62,6 +70,7 @@ const cases = [
     </p>
   </div>
 </section>
+</div>
 
 <script>
   const filters = Array.from(

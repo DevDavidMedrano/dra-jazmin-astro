@@ -1,26 +1,26 @@
 ---
 import { site } from "../../data/site";
 import BrandLogo from "../BrandLogo.astro";
+import InnerHero from "../InnerHero.astro";
+import { withBase } from "../../data/paths";
 ---
 
 <div class="contact-page" id="contacto">
-  <section class="contact-intro">
-    <div class="contact-intro-inner">
-      <div class="contact-intro-copy">
-        <p class="eyebrow">Contacto</p>
-        <h1>Estamos para escucharte</h1>
-        <p>
-          Cuéntanos qué necesitas y prepara un mensaje con tus datos. Al enviarlo,
-          abrirás WhatsApp para confirmar el contacto con el consultorio.
-        </p>
-      </div>
-      <div class="contact-intro-badge" aria-hidden="true">
-        <span>Atención personalizada</span>
-        <strong>Hablemos</strong>
-        <i>↘</i>
-      </div>
-    </div>
-  </section>
+  <InnerHero
+    eyebrow="Contacto"
+    title="Estamos para"
+    titleAccent="escucharte"
+    description="Cuéntanos qué necesitas y prepara un mensaje con tus datos. Al enviarlo, abrirás WhatsApp para confirmar el contacto con el consultorio."
+    image={withBase("/images/hero-doctor-02.webp")}
+    imageAlt="Dra. Jazmín Álvarez en su consultorio"
+    imagePosition="40% 25%"
+    lazy
+    benefits={[
+      { icon: "person", label: "Atención personalizada" },
+      { icon: "calendar", label: "Citas por WhatsApp" },
+      { icon: "shield", label: "Datos confidenciales" },
+    ]}
+  />
 
   <section class="contact-layout">
     <div class="contact-form-panel">

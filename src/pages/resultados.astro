@@ -3,7 +3,6 @@ import { withBase } from "../data/paths";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import InnerHero from "../components/InnerHero.astro";
 import ResultsGallerySection from "../components/sections/ResultsGallerySection.astro";
 ---
 
@@ -13,13 +12,6 @@ import ResultsGallerySection from "../components/sections/ResultsGallerySection.
 >
   <Header />
   <main class="inner-page">
-    <InnerHero
-      eyebrow="Resultados"
-      title="Resultados que se sienten naturales"
-      description="Cada proceso es único y se acompaña de una valoración profesional, seguimiento y documentación responsable."
-      image={withBase("/images/hero-doctor-02.webp")}
-      imageAlt="Dra. Jazmín Álvarez en su consultorio"
-    />
     <ResultsGallerySection />
     <section class="page-cta page-cta-compact">
       <div>
