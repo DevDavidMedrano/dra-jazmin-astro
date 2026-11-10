@@ -1,8 +1,22 @@
 ---
 import { withBase } from "../../data/paths";
 import InnerHero from "../InnerHero.astro";
-const cases = [
-  { id: "01", category: "capilar", title: "Restauración capilar" },
+/** Los casos sin fotos muestran el espacio reservado. */
+const cases: {
+  id: string;
+  category: string;
+  title: string;
+  photos?: { before: string; after: string };
+}[] = [
+  {
+    id: "01",
+    category: "capilar",
+    title: "Restauración capilar",
+    photos: {
+      before: "/images/resultados/caso-01-antes.webp",
+      after: "/images/resultados/caso-01-despues.webp",
+    },
+  },
   { id: "02", category: "capilar", title: "Tratamiento capilar" },
   { id: "03", category: "estetica", title: "Medicina estética" },
 ];
@@ -42,6 +56,19 @@ const cases = [
             <strong>{item.title}</strong>
           </div>
           <div class="case-comparison">
+            {item.photos ? (
+              <>
+                <div>
+                  <img class="case-photo" src={withBase(item.photos.before)} alt={`Caso ${item.id}: antes del tratamiento`} width="252" height="198" loading="lazy" />
+                  <p>Antes</p>
+                </div>
+                <div>
+                  <img class="case-photo" src={withBase(item.photos.after)} alt={`Caso ${item.id}: después del tratamiento`} width="246" height="198" loading="lazy" />
+                  <p>Después</p>
+                </div>
+              </>
+            ) : (
+              <>
             <div>
               <div class="case-placeholder">
                 <img src={withBase("/brand/dra-jazmin-mark.png")} alt="" width="197" height="387" loading="lazy" />
@@ -56,6 +83,8 @@ const cases = [
               </div>
               <p>Después</p>
             </div>
+              </>
+            )}
           </div>
         </article>
       ))

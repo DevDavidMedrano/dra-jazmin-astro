@@ -1,24 +1,42 @@
 ---
+/**
+ * Portada de Inicio ("Nuevo estilo"): fondo verde profundo, foto de la doctora
+ * a la derecha con arco dorado y barra blanca con los 4 tratamientos abajo.
+ */
 import { withBase } from "../data/paths";
-import { treatments } from "../data/site";
 import Icon from "./Icon.astro";
+import TreatmentStrip from "./TreatmentStrip.astro";
 
 const benefits = [
-  { icon: "shield", label: "Enfoque médico" },
-  { icon: "people", label: "Atención personalizada" },
+  { icon: "shield", label: "Atención segura" },
+  { icon: "person", label: "Enfoque médico" },
   { icon: "leaf", label: "Resultados naturales" },
+  { icon: "star", label: "Tecnología de vanguardia" },
 ] as const;
 ---
 
-<section class="hero" id="inicio">
-  <div class="hero-content">
+<section class="home-hero" id="inicio">
+  <figure class="home-hero-media">
+    <img
+      src={withBase("/images/doctora-inicio.webp")}
+      alt="Dra. Jazmín Álvarez con bata médica"
+      width="1066"
+      height="1600"
+      fetchpriority="high"
+    />
+  </figure>
+  <span class="home-hero-arc" aria-hidden="true"></span>
+
+  <div class="home-hero-content">
     <p class="eyebrow">Medicina estética y restauración capilar</p>
     <h1>
-      Recupera tu cabello, renueva tu <em>confianza</em>
+      Recupera tu cabello,<br />
+      realza tu belleza<br />
+      y renueva tu <em>confianza.</em>
     </h1>
-    <p class="hero-description">
-      Tratamientos médicos especializados para la caída del cabello,
-      rejuvenecimiento facial y bienestar estético.
+    <p class="home-hero-description">
+      Tratamientos especializados con enfoque médico, resultados naturales y
+      una atención totalmente personalizada.
     </p>
 
     <div class="hero-buttons">
@@ -28,6 +46,7 @@ const benefits = [
           <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
         </svg>
         Agenda tu valoración
+        <span class="cta-arrow" aria-hidden="true">→</span>
       </a>
       <a class="button button-outline button-large" href={withBase("/#tratamientos")}>
         <Icon name="play" class="button-icon" />
@@ -49,38 +68,7 @@ const benefits = [
     </div>
   </div>
 
-  <figure class="hero-media">
-    <img
-      src={withBase("/images/hero-doctor.webp")}
-      alt="Dra. Jazmín Álvarez en su consultorio"
-      width="842"
-      height="605"
-      fetchpriority="high"
-    />
-  </figure>
-
-  <aside class="hero-treatments" aria-labelledby="hero-treatments-title">
-    <h2 id="hero-treatments-title">Principales tratamientos</h2>
-    <ul>
-      {
-        treatments.map((treatment) => (
-          <li>
-            <a href={withBase(`/#${treatment.id}`)}>
-              <span class="hero-treatment-icon">
-                <Icon name={treatment.icon} />
-              </span>
-              <span class="hero-treatment-title">{treatment.title}</span>
-              <span class="hero-treatment-arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </aside>
-
-  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-    <path class="hero-wave-fill" d="M0 58C240 4 470 6 720 42s500 52 720 10V90H0Z" />
-    <path class="hero-wave-line" d="M0 58C240 4 470 6 720 42s500 52 720 10" />
-  </svg>
+  <div class="home-hero-strip">
+    <TreatmentStrip />
+  </div>
 </section>
-

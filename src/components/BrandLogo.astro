@@ -2,7 +2,7 @@
 import { withBase } from "../data/paths";
 /**
  * Logotipo oficial (símbolo + "Dra. Jazmín Álvarez" + especialidad).
- * La variante "light" lo invierte a blanco para los fondos oscuros.
+ * La variante "light" (fondos oscuros) usa el símbolo dorado con el texto en blanco.
  */
 import { site } from "../data/site";
 
@@ -17,7 +17,7 @@ const { variant = "dark", class: className } = Astro.props;
 <span class:list={["brand-logo", `brand-logo-${variant}`, className]}>
   <img
     class="brand-logo-full"
-    src={withBase("/brand/dra-jazmin-logo.png")}
+    src={withBase(variant === "light" ? "/brand/dra-jazmin-logo-gold.png" : "/brand/dra-jazmin-logo.png")}
     alt={`${site.doctorName} · ${site.specialty}`}
     width="1100"
     height="431"

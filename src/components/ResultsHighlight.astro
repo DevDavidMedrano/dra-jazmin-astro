@@ -5,17 +5,14 @@ import Icon from "./Icon.astro";
 ---
 
 <section class="results-highlight" aria-labelledby="results-highlight-title">
-  <!--
-    IMAGEN DE REFERENCIA tomada del diseño. Antes de publicar debe sustituirse
-    por un caso real de la doctora con consentimiento firmado del paciente.
-  -->
+  <!-- Caso real de la doctora. Requiere el consentimiento firmado del paciente para publicarse. -->
   <figure class="before-after">
     <div class="before-after-panel">
       <img
         src={withBase("/images/resultados/capilar-antes.webp")}
-        alt="Coronilla con pérdida de cabello antes del tratamiento"
-        width="252"
-        height="198"
+        alt="Coronilla de un paciente con cabello escaso antes del tratamiento"
+        width="800"
+        height="640"
         loading="lazy"
       />
       <span class="before-after-pill">Antes</span>
@@ -23,9 +20,9 @@ import Icon from "./Icon.astro";
     <div class="before-after-panel before-after-after">
       <img
         src={withBase("/images/resultados/capilar-despues.webp")}
-        alt="Coronilla con cabello recuperado después del tratamiento"
-        width="246"
-        height="198"
+        alt="La misma coronilla con mayor densidad de cabello después del tratamiento"
+        width="800"
+        height="640"
         loading="lazy"
       />
       <span class="before-after-pill">Después</span>
