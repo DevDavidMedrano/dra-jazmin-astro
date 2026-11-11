@@ -3,7 +3,7 @@ import { stripBase, withBase } from "../data/paths";
 import { site, treatments } from "../data/site";
 import BrandLogo from "./BrandLogo.astro";
 import Icon from "./Icon.astro";
-import logoEstilo from "../assets/logo-estilo.png";
+import logoSimbolo from "../assets/logo-estilo-simbolo.png";
 
 /** `section` es el id de la sección en la página única. */
 const sectionLink = (label: string, section: string, extra: object = {}) => ({
@@ -42,7 +42,7 @@ const isActive = (item: (typeof navItems)[number]) => {
   <a class="header-logo" href={withBase("/")} aria-label={`${site.doctorName} - Ir al inicio`}>
     {
       currentPath === "/" ? (
-        <img class="header-logo-estilo" src={logoEstilo.src} alt={site.doctorName} width={logoEstilo.width} height={logoEstilo.height} />
+        <span class="header-logo-estilo"><img class="logo-estilo-simbolo" src={logoSimbolo.src} alt="" width={logoSimbolo.width} height={logoSimbolo.height} /><span class="logo-estilo-texto"><span class="logo-estilo-nombre">Dra. Jazmín<br />Álvarez</span><span class="logo-estilo-lema">Medicina Estética y<br />Restauración Capilar</span></span></span>
       ) : (
         <BrandLogo variant="light" />
       )

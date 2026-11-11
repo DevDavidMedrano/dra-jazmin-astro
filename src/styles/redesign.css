@@ -2766,3 +2766,66 @@ html {
     height: clamp(220px, 62vw, 320px);
   }
 }
+
+/* Logo de Inicio en alta resolución: símbolo dorado + textos reales (nítidos a cualquier tamaño) */
+.header-logo-estilo {
+  align-items: center;
+  display: flex;
+  font-size: clamp(10.5px, 0.98vw, 16.5px);
+  gap: 0.7em;
+  height: auto;
+  line-height: 1;
+  width: auto;
+}
+
+.logo-estilo-simbolo {
+  display: block;
+  height: 5.3em;
+  width: auto;
+}
+
+.logo-estilo-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+}
+
+.logo-estilo-nombre {
+  color: #fff;
+  font-family: var(--display-font);
+  font-size: 1.62em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.logo-estilo-lema {
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--body-font);
+  font-size: 0.86em;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+@media (max-width: 820px) {
+  .header-logo-estilo {
+    font-size: 9.5px;
+    height: auto;
+  }
+}
+
+.header-logo:has(.header-logo-estilo) {
+  flex: none;
+  width: auto;
+}
+
+.header-logo img.logo-estilo-simbolo {
+  flex: none;
+  height: 5.3em;
+  width: auto;
+}
+
+.logo-estilo-texto {
+  white-space: nowrap;
+}
