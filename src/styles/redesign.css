@@ -2832,12 +2832,12 @@ html {
 
 /* Tarjetas de tratamientos con foto: alto de la foto fijo, sin porcentajes.
    (Safari en iPhone estiraba la foto a todo el alto de la tarjeta y el texto quedaba encima.) */
-.treatment-card-photo {
+.treatment-grid .treatment-card.treatment-card-photo {
   display: flex;
   flex-direction: column;
 }
 
-.treatment-card-photo > img {
+.treatment-grid .treatment-card.treatment-card-photo > img {
   aspect-ratio: auto;
   display: block;
   flex: none;
@@ -2847,14 +2847,14 @@ html {
   width: 100%;
 }
 
-.treatment-card-photo > .treatment-card-copy {
+.treatment-grid .treatment-card.treatment-card-photo > .treatment-card-copy {
   flex: 1 0 auto;
   position: relative;
   z-index: 1;
 }
 
 @media (max-width: 900px) {
-  .treatment-card-photo > img {
+  .treatment-grid .treatment-card.treatment-card-photo > img {
     height: clamp(220px, 62vw, 320px);
   }
 }
