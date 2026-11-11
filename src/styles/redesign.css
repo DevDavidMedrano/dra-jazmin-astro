@@ -2107,3 +2107,17 @@ html {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Foto de Inicio más lejos (como en el diseño): se ve de la cabeza a la cintura */
+@media (min-width: 821px) {
+  .home-hero-media img {
+    height: 108%;
+    left: auto;
+    object-fit: cover;
+    object-position: center top;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+}
