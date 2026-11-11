@@ -17,9 +17,17 @@ const cases: {
       after: "/images/resultados/caso-01-despues.webp",
     },
   },
-  { id: "02", category: "capilar", title: "Tratamiento capilar" },
-  { id: "03", category: "estetica", title: "Medicina estética" },
+  {
+    id: "02",
+    category: "capilar",
+    title: "Tratamiento capilar",
+    photos: {
+      before: "/images/resultados/capilar-antes.webp",
+      after: "/images/resultados/capilar-despues.webp",
+    },
+  },
 ];
+const hasCategory = (category: string) => cases.some((item) => item.category === category);
 ---
 
 <div class="section-block" id="resultados">
@@ -44,7 +52,9 @@ const cases: {
   <div class="result-filters" role="group" aria-label="Filtrar casos">
     <button class="result-filter active" type="button" data-result-filter="all">Todos</button>
     <button class="result-filter" type="button" data-result-filter="capilar">Restauración capilar</button>
-    <button class="result-filter" type="button" data-result-filter="estetica">Medicina estética</button>
+    {hasCategory("estetica") && (
+      <button class="result-filter" type="button" data-result-filter="estetica">Medicina estética</button>
+    )}
   </div>
 
   <div class="case-grid" data-case-grid>

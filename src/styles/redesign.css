@@ -2100,3 +2100,10 @@ html {
     display: none;
   }
 }
+
+/* Galería de resultados: dos casos, uno junto al otro en pantalla grande */
+@media (min-width: 901px) {
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
