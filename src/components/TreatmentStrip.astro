@@ -1,6 +1,23 @@
 ---
 import { treatments } from "../data/site";
 import Icon from "./Icon.astro";
+import artCapilar from "../assets/iconos/tratamiento-capilar.png";
+import artFacial from "../assets/iconos/tratamiento-facial.png";
+import artEstetica from "../assets/iconos/tratamiento-estetica.png";
+import artPersonalizado from "../assets/iconos/tratamiento-personalizado.png";
+
+interface Props {
+  /** Usa los dibujos de la imagen "Estilo" en lugar de los íconos de línea (portada de Inicio). */
+  pictures?: boolean;
+}
+
+const { pictures = false } = Astro.props;
+const art: Record<string, ImageMetadata> = {
+  "restauracion-capilar": artCapilar,
+  "rejuvenecimiento-facial": artFacial,
+  "medicina-estetica": artEstetica,
+  "tratamientos-personalizados": artPersonalizado,
+};
 ---
 
 <nav class="treatment-strip" aria-label="Tratamientos">
@@ -8,7 +25,11 @@ import Icon from "./Icon.astro";
     treatments.map((treatment) => (
       <a href={`#${treatment.id}`}>
         <span class="treatment-strip-icon">
-          <Icon name={treatment.icon} />
+          {pictures && art[treatment.id] ? (
+            <img class="treatment-strip-art" src={art[treatment.id].src} alt="" width={art[treatment.id].width} height={art[treatment.id].height} />
+          ) : (
+            <Icon name={treatment.icon} />
+          )}
         </span>
         <span class="treatment-strip-title">{treatment.title}</span>
         <span class="treatment-strip-arrow" aria-hidden="true">

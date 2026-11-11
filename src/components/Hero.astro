@@ -6,13 +6,16 @@
 import { withBase } from "../data/paths";
 import Icon from "./Icon.astro";
 import TreatmentStrip from "./TreatmentStrip.astro";
+import iconSeguridad from "../assets/iconos/beneficio-seguridad.png";
+import iconMedico from "../assets/iconos/beneficio-medico.png";
+import iconNatural from "../assets/iconos/beneficio-natural.png";
 
+// Dibujos dorados tomados de la imagen "Estilo".
 const benefits = [
-  { icon: "shield", label: "Atención segura" },
-  { icon: "person", label: "Enfoque médico" },
-  { icon: "leaf", label: "Resultados naturales" },
-  { icon: "star", label: "Tecnología de vanguardia" },
-] as const;
+  { image: iconSeguridad, label: "Atención segura" },
+  { image: iconMedico, label: "Enfoque médico" },
+  { image: iconNatural, label: "Resultados naturales" },
+];
 ---
 
 <section class="home-hero" id="inicio">
@@ -30,13 +33,13 @@ const benefits = [
   <div class="home-hero-content">
     <p class="eyebrow">Medicina estética y restauración capilar</p>
     <h1>
-      Recupera tu cabello,<br />
-      realza tu belleza<br />
-      y renueva tu <em>confianza.</em>
+      Ciencia, estética y<br />
+      salud capilar en<br />
+      <em>un solo lugar</em>
     </h1>
     <p class="home-hero-description">
-      Tratamientos especializados con enfoque médico, resultados naturales y
-      una atención totalmente personalizada.
+      Tratamientos personalizados que recuperan tu cabello, realzan tu belleza
+      natural y fortalecen tu confianza.
     </p>
 
     <div class="hero-buttons">
@@ -58,8 +61,8 @@ const benefits = [
       {
         benefits.map((benefit) => (
           <div class="benefit">
-            <span class="benefit-icon">
-              <Icon name={benefit.icon} />
+            <span class="benefit-icon benefit-art">
+              <img src={benefit.image.src} alt="" width={benefit.image.width} height={benefit.image.height} />
             </span>
             <p>{benefit.label}</p>
           </div>
@@ -69,6 +72,6 @@ const benefits = [
   </div>
 
   <div class="home-hero-strip">
-    <TreatmentStrip />
+    <TreatmentStrip pictures />
   </div>
 </section>

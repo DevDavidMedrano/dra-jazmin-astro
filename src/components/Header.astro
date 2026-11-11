@@ -3,6 +3,7 @@ import { stripBase, withBase } from "../data/paths";
 import { site, treatments } from "../data/site";
 import BrandLogo from "./BrandLogo.astro";
 import Icon from "./Icon.astro";
+import logoEstilo from "../assets/logo-estilo.png";
 
 /** `section` es el id de la sección en la página única. */
 const sectionLink = (label: string, section: string, extra: object = {}) => ({
@@ -39,7 +40,13 @@ const isActive = (item: (typeof navItems)[number]) => {
 
 <header class="site-header" data-header>
   <a class="header-logo" href={withBase("/")} aria-label={`${site.doctorName} - Ir al inicio`}>
-    <BrandLogo variant="light" />
+    {
+      currentPath === "/" ? (
+        <img class="header-logo-estilo" src={logoEstilo.src} alt={site.doctorName} width={logoEstilo.width} height={logoEstilo.height} />
+      ) : (
+        <BrandLogo variant="light" />
+      )
+    }
   </a>
 
   <nav class="desktop-nav" aria-label="Navegación principal">
@@ -250,5 +257,18 @@ const isActive = (item: (typeof navItems)[number]) => {
       { passive: true },
     );
     updateActive();
+  }
+</script>
+
+<script>
+  // En Inicio, mientras se ve la portada, el encabezado es transparente y se funde con el fondo.
+  const header = document.querySelector<HTMLElement>("[data-header]");
+  const homeHero = document.querySelector<HTMLElement>(".home-hero");
+
+  if (header && homeHero) {
+    document.documentElement.classList.add("has-home-hero");
+    const update = () => header.classList.toggle("header-over-hero", window.scrollY < 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
   }
 </script>

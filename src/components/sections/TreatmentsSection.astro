@@ -10,8 +10,18 @@ import InnerHero from "../InnerHero.astro";
 import TreatmentStrip from "../TreatmentStrip.astro";
 import { treatments } from "../../data/site";
 
-/** Fotografía de las tarjetas pares; las impares muestran el ícono. */
+/** Fotografía de cada tarjeta; las que no tengan foto muestran el ícono. */
 const cardPhotos: Record<string, { src: string; alt: string; position: string }> = {
+  "restauracion-capilar": {
+    src: "/images/doctora-consultorio-capilar.webp",
+    alt: "Dra. Jazmín Álvarez en su consultorio junto al equipo de diagnóstico capilar",
+    position: "55% 30%",
+  },
+  "medicina-estetica": {
+    src: "/images/doctora-valoracion-facial.webp",
+    alt: "Dra. Jazmín Álvarez valorando el rostro de una paciente",
+    position: "50% 35%",
+  },
   "rejuvenecimiento-facial": {
     src: "/images/doctora-tratamiento.webp",
     alt: "Dra. Jazmín Álvarez aplicando un tratamiento a una paciente",
