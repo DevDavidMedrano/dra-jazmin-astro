@@ -2653,3 +2653,58 @@ html {
     width: clamp(38px, 3.2vw, 52px);
   }
 }
+
+/* ==========================================================================
+   Portadas de sección con el arco dorado de la imagen "agenda":
+   la foto queda dentro de un gran arco con borde dorado brillante
+   ========================================================================== */
+@media (min-width: 901px) {
+  .inner-hero-rich .inner-hero-media {
+    filter: drop-shadow(0 0 10px rgba(255, 214, 128, 0.55)) drop-shadow(0 0 28px rgba(226, 180, 90, 0.35));
+    overflow: visible;
+  }
+
+  .inner-hero-rich .inner-hero-media img {
+    -webkit-clip-path: ellipse(95% 120% at 100% 95%);
+    clip-path: ellipse(95% 120% at 100% 95%);
+    z-index: 1;
+  }
+
+  .inner-hero-rich .inner-hero-media::after {
+    display: none;
+  }
+
+  /* Borde dorado: la misma forma, un poco más grande, detrás de la foto */
+  .inner-hero-rich .inner-curve-one {
+    background: linear-gradient(170deg, #fff6d2 0%, #f1d48c 22%, #d6ab58 50%, #a8843a 78%, rgba(168, 132, 58, 0.15) 100%);
+    border: 0;
+    border-radius: 0;
+    -webkit-clip-path: ellipse(95.5% 120.6% at 100% 95%);
+    clip-path: ellipse(95.5% 120.6% at 100% 95%);
+    display: block;
+    height: auto;
+    inset: 0;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    transform: none;
+    width: auto;
+    z-index: 0;
+  }
+
+  /* Destello en la parte alta del arco */
+  .inner-hero-rich .inner-curve-two {
+    background: radial-gradient(ellipse at center, rgba(255, 246, 214, 0.95) 0%, rgba(245, 210, 130, 0.45) 22%, transparent 62%);
+    border: 0;
+    border-radius: 50%;
+    display: block;
+    height: 220px;
+    left: calc(42% - 60px);
+    mix-blend-mode: screen;
+    opacity: 0.85;
+    top: 4%;
+    transform: rotate(-52deg);
+    width: 70px;
+    z-index: 2;
+  }
+}
