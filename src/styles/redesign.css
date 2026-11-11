@@ -2708,3 +2708,61 @@ html {
     z-index: 2;
   }
 }
+
+/* ==========================================================================
+   Teléfono: ajustes finos
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Portadas verdes: sin espacio vacío debajo del texto */
+  .inner-hero-rich .inner-hero-copy {
+    justify-content: flex-start;
+    min-height: 0;
+    padding-bottom: clamp(30px, 8vw, 48px);
+  }
+
+  /* La foto entra con el mismo arco dorado de la portada de Agenda */
+  .inner-hero-rich .inner-hero-media {
+    filter: drop-shadow(0 -2px 8px rgba(255, 214, 128, 0.5));
+    overflow: visible;
+  }
+
+  .inner-hero-rich .inner-hero-media img {
+    -webkit-clip-path: ellipse(135% 100% at 100% 100%);
+    clip-path: ellipse(135% 100% at 100% 100%);
+    z-index: 1;
+  }
+
+  .inner-hero-rich .inner-hero-media::after {
+    display: none;
+  }
+
+  .inner-hero-rich .inner-curve-one {
+    background: linear-gradient(100deg, rgba(168, 132, 58, 0.2) 0%, #d6ab58 35%, #fff2c4 70%, #e2c37a 100%);
+    border: 0;
+    border-radius: 0;
+    -webkit-clip-path: ellipse(135.6% 101% at 100% 100%);
+    clip-path: ellipse(135.6% 101% at 100% 100%);
+    display: block;
+    height: auto;
+    inset: 0;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    transform: none;
+    width: auto;
+    z-index: 0;
+  }
+
+  .inner-hero-rich .inner-curve-two {
+    display: none;
+  }
+
+  /* Tarjetas de tratamientos: todas las fotos del mismo alto */
+  .treatment-card-photo {
+    grid-template-rows: auto auto;
+  }
+
+  .treatment-card-photo > img {
+    height: clamp(220px, 62vw, 320px);
+  }
+}
