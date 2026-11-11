@@ -2431,3 +2431,225 @@ html {
     display: none;
   }
 }
+
+/* ---------- Portada de Agenda (imagen de referencia "agenda") ---------- */
+
+.agenda-hero {
+  background: #063b2f;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.agenda-hero-bg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.agenda-hero-copy {
+  padding: clamp(36px, 7vw, 64px) 20px clamp(40px, 8vw, 64px);
+  position: relative;
+  z-index: 1;
+}
+
+.agenda-hero-eyebrow {
+  align-items: center;
+  color: #e3c47c;
+  display: flex;
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-weight: 600;
+  gap: 18px;
+  letter-spacing: 0.24em;
+  margin: 0 0 clamp(14px, 2vw, 26px);
+  text-transform: uppercase;
+}
+
+.agenda-hero-eyebrow::after {
+  background: linear-gradient(90deg, #e9cd86, #c99a45);
+  content: "";
+  height: 2px;
+  width: clamp(54px, 5.5vw, 86px);
+}
+
+.agenda-hero h1 {
+  color: #fff;
+  font-family: var(--display-font);
+  font-size: clamp(2.5rem, 4.4vw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.04;
+  margin: 0 0 clamp(18px, 2.2vw, 30px);
+}
+
+.agenda-hero h1 em {
+  background: linear-gradient(100deg, #f6e1a6 0%, #d8b264 45%, #b98a3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: block;
+  font-size: 1.42em;
+  font-style: italic;
+  padding: 0 0.08em 0.12em 0;
+  position: relative;
+  width: fit-content;
+}
+
+.agenda-hero h1 em::after {
+  background: linear-gradient(90deg, transparent, #e2c37a 30%, #c99a45 85%, transparent);
+  border-radius: 50%;
+  bottom: 0.02em;
+  content: "";
+  height: 3px;
+  left: 42%;
+  position: absolute;
+  right: 0;
+  transform: rotate(-1.2deg);
+}
+
+.agenda-hero-text {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.02rem, 1.45vw, 1.4rem);
+  line-height: 1.4;
+  margin: 0 0 clamp(24px, 3vw, 40px);
+  max-width: 25em;
+}
+
+.agenda-hero-features {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+  margin: 0 0 clamp(28px, 3.4vw, 48px);
+  padding: 0;
+}
+
+.agenda-hero-features li {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  gap: 14px;
+  line-height: 1.35;
+}
+
+.agenda-hero-icon {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(226, 195, 122, 0.18);
+  display: inline-flex;
+  flex: none;
+  height: clamp(44px, 3.2vw, 52px);
+  justify-content: center;
+  width: clamp(44px, 3.2vw, 52px);
+}
+
+.agenda-hero-icon svg {
+  fill: none;
+  height: 56%;
+  stroke: #e2c37a;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+  width: 56%;
+}
+
+.agenda-hero-button {
+  gap: 14px;
+  white-space: nowrap;
+}
+
+.agenda-hero-button .button-icon {
+  fill: none;
+  height: 1.35em;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  width: 1.35em;
+}
+
+@media (min-width: 640px) {
+  .agenda-hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 0;
+  }
+
+  .agenda-hero-features li {
+    padding-right: clamp(16px, 1.8vw, 26px);
+  }
+
+  .agenda-hero-features li + li {
+    border-left: 1px solid rgba(226, 195, 122, 0.45);
+    padding-left: clamp(16px, 1.8vw, 26px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .agenda-hero {
+    aspect-ratio: 1600 / 682;
+    min-height: 560px;
+  }
+
+  .agenda-hero-bg {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: right center;
+    position: absolute;
+  }
+
+  .agenda-hero-copy {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    max-width: 46%;
+    padding: 40px 0 40px 4.8vw;
+  }
+}
+
+@media (max-width: 1023px) {
+  .agenda-hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .agenda-hero-bg {
+    aspect-ratio: 4 / 3;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: 74% center;
+    order: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .agenda-hero-copy {
+    align-items: flex-start;
+    max-width: 47%;
+  }
+
+  .agenda-hero-text {
+    max-width: 21em;
+  }
+
+  .agenda-hero-features {
+    flex-wrap: nowrap;
+  }
+
+  .agenda-hero-features li {
+    font-size: clamp(0.84rem, 1.02vw, 1.05rem);
+    gap: clamp(10px, 0.9vw, 14px);
+    padding-right: clamp(12px, 1.5vw, 26px);
+    white-space: nowrap;
+  }
+
+  .agenda-hero-features li + li {
+    padding-left: clamp(12px, 1.5vw, 26px);
+  }
+
+  .agenda-hero-icon {
+    height: clamp(38px, 3.2vw, 52px);
+    width: clamp(38px, 3.2vw, 52px);
+  }
+}

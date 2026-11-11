@@ -1,29 +1,56 @@
 ---
 import { site } from "../../data/site";
-import { withBase } from "../../data/paths";
-import InnerHero from "../InnerHero.astro";
+import agendaFondo from "../../assets/agenda-fondo.webp";
 ---
 
 <div class="section-block" id="agenda">
-<InnerHero
-  eyebrow="Agenda"
-  title="Agenda tu"
-  titleAccent="valoración"
-  description="Elige el día y horario que mejor se adapte a ti. Confirmamos tu cita por WhatsApp."
-  image={withBase("/images/doctora-escritorio.webp")}
-  imageAlt="Dra. Jazmín Álvarez sonriendo en su escritorio, junto a un tricoscopio y un modelo del folículo piloso"
-  imagePosition="50% 30%"
-  lazy
-  rich
->
-  <ol class="agenda-steps hero-steps" aria-label="Pasos para solicitar una cita">
-    <li class="active"><span>1</span>Fecha</li>
-    <li><span>2</span>Horario</li>
-    <li><span>3</span>Confirmación</li>
-  </ol>
-</InnerHero>
+<section class="agenda-hero" aria-labelledby="agenda-hero-title">
+  <img
+    class="agenda-hero-bg"
+    src={agendaFondo.src}
+    width={agendaFondo.width}
+    height={agendaFondo.height}
+    alt="Dra. Jazmín Álvarez sonriendo en su consultorio"
+    loading="lazy"
+  />
+  <div class="agenda-hero-copy">
+    <p class="agenda-hero-eyebrow">Agenda</p>
+    <h1 id="agenda-hero-title">Agenda tu <em>valoración</em></h1>
+    <p class="agenda-hero-text">
+      Da el primer paso para recuperar tu cabello, realzar tu belleza y sentirte mejor.
+    </p>
+    <ul class="agenda-hero-features">
+      <li>
+        <span class="agenda-hero-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2.5" /><path d="M8 3.5v4M16 3.5v4M3.5 10h17M8 14h2M12 14h2M8 17h2" /></svg>
+        </span>
+        Elige fecha<br /> y horario
+      </li>
+      <li>
+        <span class="agenda-hero-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4.5 19.5l1.2-3.6A8 8 0 1 1 8.4 18.6z" /><path d="M9.2 8.6c.3 2.6 2.4 5 5.2 5.9l1.1-1.2-1.6-.9-.8.7c-1-.5-1.9-1.4-2.4-2.4l.7-.8-.9-1.6z" /></svg>
+        </span>
+        Confirma<br /> por WhatsApp
+      </li>
+      <li>
+        <span class="agenda-hero-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="m8.2 12.2 2.6 2.6 5-5.2" /></svg>
+        </span>
+        Asesoría<br /> personalizada
+      </li>
+    </ul>
+    <a class="button button-gold button-large agenda-hero-button" href="#agenda-calendario">
+      <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" />
+        <path d="M8 3.5v4M16 3.5v4M3.5 10h17" />
+      </svg>
+      Agendar mi valoración
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
 
-<div class="agenda-page">
+<div class="agenda-page" id="agenda-calendario">
 
   <section
     class="agenda-layout"
