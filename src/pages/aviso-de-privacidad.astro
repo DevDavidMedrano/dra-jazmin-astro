@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { site } from "../data/site";
+
+const updated = "12 de noviembre de 2026";
+---
+
+<BaseLayout
+  title="Aviso de privacidad | Dra. Jazmín Álvarez"
+  description="Aviso de privacidad integral del consultorio de la Dra. Jazmín Álvarez: qué datos personales se recaban, para qué se usan y cómo ejercer tus derechos ARCO."
+>
+  <Header />
+  <main class="inner-page legal-page">
+    <header class="legal-hero">
+      <p class="eyebrow">Aviso de privacidad</p>
+      <h1>Protección de tus <em>datos personales</em></h1>
+      <p>Última actualización: {updated}</p>
+    </header>
+
+    <article class="legal-body">
+      <section>
+        <h2>1. Responsable de tus datos</h2>
+        <p>
+          La <strong>{site.doctorName}</strong>, con consultorio en {site.clinic}, Zapopan, Jalisco, México
+          (en adelante, “la Responsable”), es responsable del uso y protección de tus datos personales, conforme a
+          la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y demás normativa aplicable.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Datos personales que recabamos</h2>
+        <p>Para brindarte atención podemos solicitar los siguientes datos:</p>
+        <ul>
+          <li><strong>Identificación y contacto:</strong> nombre, teléfono, WhatsApp, correo electrónico y edad.</li>
+          <li><strong>Datos de la cita:</strong> fecha y horario preferidos y el tratamiento de tu interés.</li>
+          <li>
+            <strong>Datos sensibles de salud:</strong> antecedentes médicos, alergias, medicamentos, diagnóstico,
+            evolución del tratamiento y fotografías clínicas.
+          </li>
+        </ul>
+        <p>
+          Los datos de salud se consideran <strong>datos personales sensibles</strong>. Solo se recaban durante la
+          valoración médica y se tratan con tu <strong>consentimiento expreso y por escrito</strong>.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Finalidades</h2>
+        <p><strong>Finalidades necesarias</strong> para la relación médico–paciente:</p>
+        <ul>
+          <li>Agendar, confirmar y dar seguimiento a tus citas.</li>
+          <li>Realizar la valoración médica, integrar tu expediente clínico y brindarte el tratamiento.</li>
+          <li>Dar seguimiento a tu evolución y atender dudas o urgencias.</li>
+          <li>Emitir comprobantes fiscales cuando los solicites.</li>
+        </ul>
+        <p><strong>Finalidades adicionales</strong> (no son necesarias para atenderte):</p>
+        <ul>
+          <li>Enviarte información sobre tratamientos, promociones o recordatorios.</li>
+          <li>
+            Publicar fotografías de antes y después en este sitio o en redes sociales, únicamente si lo autorizas por
+            escrito y sin mostrar datos que te identifiquen, salvo que lo autorices expresamente.
+          </li>
+        </ul>
+        <p>
+          Si no deseas que tus datos se usen para las finalidades adicionales, puedes indicarlo en cualquier momento por
+          los medios del punto 6. Negarte no afectará tu atención médica.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Formularios de este sitio</h2>
+        <p>
+          Los formularios de contacto y agenda de este sitio <strong>no almacenan tu información</strong>: únicamente
+          preparan un mensaje que tú decides enviar por WhatsApp. A partir de ese momento, el mensaje también queda sujeto
+          a las políticas de privacidad de WhatsApp.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Transferencias de datos</h2>
+        <p>
+          Tus datos no se venden ni se comparten con terceros para fines comerciales. Solo podrán transferirse, sin
+          requerir tu consentimiento, en los casos previstos por la ley, por ejemplo: a laboratorios o especialistas
+          cuando sea necesario para tu diagnóstico o tratamiento, al hospital donde se ubica el consultorio, o a
+          autoridades competentes que lo requieran.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Derechos ARCO y revocación del consentimiento</h2>
+        <p>
+          Tienes derecho a <strong>Acceder</strong> a tus datos, <strong>Rectificarlos</strong> si son inexactos,
+          <strong>Cancelarlos</strong> y <strong>Oponerte</strong> a su uso para fines específicos. También puedes
+          revocar tu consentimiento o limitar el uso de tus datos.
+        </p>
+        <p>
+          Para ejercer estos derechos envía tu solicitud por WhatsApp al
+          <a href={site.whatsappUrl} target="_blank" rel="noreferrer">{site.whatsappDisplay}</a> o entrégala en el
+          consultorio. Incluye tu nombre, un medio para responderte, una copia de tu identificación y la descripción de
+          lo que solicitas. Te responderemos en un plazo máximo de 20 días hábiles.
+        </p>
+        <p>
+          El expediente clínico debe conservarse por el tiempo que establece la NOM-004-SSA3-2012, por lo que algunos
+          datos no podrán cancelarse antes de ese plazo.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Cookies y tecnologías de rastreo</h2>
+        <p>
+          Este sitio no utiliza cookies de publicidad ni de rastreo. Únicamente puede guardar preferencias técnicas en tu
+          propio navegador para que la página funcione correctamente.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Cambios a este aviso</h2>
+        <p>
+          Este aviso puede actualizarse por cambios legales o en nuestros servicios. La versión vigente siempre estará
+          publicada en esta página, con su fecha de actualización.
+        </p>
+      </section>
+    </article>
+  </main>
+  <SiteFooter />
+</BaseLayout>
