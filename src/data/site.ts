@@ -71,8 +71,9 @@ export const stats = {
 } as const;
 
 export type Service = {
+  id: string;
   title: string;
-  icon: TreatmentIcon;
+  icon: IconName;
   summary: string;
   /** Ancla a una sección con más información, si existe. */
   details?: string;
@@ -81,39 +82,95 @@ export type Service = {
 /** Servicios que ofrece la doctora (sección "Servicios" dentro de Tratamientos). */
 export const services: Service[] = [
   {
-    title: "Consulta de tricología y medicina estética",
-    icon: "sparkles",
-    summary: "Valoración médica del cabello, el cuero cabelludo y la piel para definir el tratamiento adecuado para ti.",
-  },
-  {
-    title: "Restauración e injerto capilar",
+    id: "consulta-tricologia",
+    title: "Consulta de Tricología y Medicina Estética",
     icon: "hair",
-    summary: "Evaluación de la zona donante y del patrón de pérdida para planear un injerto con resultados naturales.",
+    summary: "Valoración médica del cabello, cuero cabelludo y plan personalizado.",
   },
   {
-    title: "Toxina botulínica (Botox) para rejuvenecimiento facial",
-    icon: "face",
-    summary: "Suaviza las líneas de expresión de frente, entrecejo y patas de gallo, cuidando la naturalidad del rostro.",
+    id: "injerto-capilar",
+    title: "Restauración e Injerto Capilar",
+    icon: "hair",
+    summary: "Evaluación de la zona donante y diseño de la línea capilar para un resultado natural.",
   },
   {
-    title: "Toxina botulínica (Botox) para hiperhidrosis",
+    id: "botox-facial",
+    title: "Toxina Botulínica (Botox®)",
+    icon: "syringe",
+    summary: "Suaviza líneas de expresión, previene arrugas y rejuvenece tu rostro.",
+  },
+  {
+    id: "hiperhidrosis",
+    title: "Toxina Botulínica (Botox®) para Hiperhidrosis",
     icon: "syringe",
     summary: "Tratamiento médico para la sudoración excesiva en axilas, manos o pies.",
     details: "#hiperhidrosis",
   },
   {
-    title: "Relleno de labios con ácido hialurónico",
-    icon: "syringe",
-    summary: "Aporta volumen, hidratación y definición a los labios, respetando tus proporciones.",
+    id: "relleno-labios",
+    title: "Relleno de Labios con Ácido Hialurónico",
+    icon: "lips",
+    summary: "Aporta volumen, hidratación y definición a tus labios, respetando tus proporciones.",
   },
   {
-    title: "Dermapen para rejuvenecimiento facial",
-    icon: "face",
-    summary: "Microagujas que estimulan el colágeno para mejorar la textura, los poros y las cicatrices leves.",
+    id: "dermapen",
+    title: "Dermapen para Rejuvenecimiento Facial",
+    icon: "pen",
+    summary: "Microagujas que estimulan el colágeno, mejoran la textura, los poros y las cicatrices leves.",
   },
   {
-    title: "Yellow peel",
+    id: "yellow-peel",
+    title: "Yellow Peel",
     icon: "sparkles",
     summary: "Peeling que ayuda a unificar el tono, reducir manchas y devolver luminosidad a la piel.",
   },
 ];
+
+/**
+ * Opiniones de 5 estrellas tomadas de Google (perfil "Dra Jazmin Alvarez. Medicina
+ * estética y tratamiento capilar"). Para agregar una, copia el texto tal cual aparece
+ * en Google. `rating` y `count` son el resumen que muestra Google.
+ */
+export const googleReviews = {
+  rating: "5.0",
+  count: 23,
+  url: "https://www.google.com/search?q=Dra+Jazmin+Alvarez+Medicina+est%C3%A9tica+y+tratamiento+capilar+Zapopan#lrd=,1,,,",
+  /** Opiniones de 5 estrellas (mínimo 5), de la más nueva a la más antigua. */
+  items: [
+    {
+      name: "Carlos Alex G.",
+      when: "Hace un mes",
+      text: "Super recomendado, empecé el tratamiento con la Dra Jazmín y solo he tenido muy buenos resultados!!",
+    },
+    {
+      name: "Jorge Jair P.",
+      when: "Hace 2 meses",
+      text: "Toda una profesional y experta en tema de tricología, me ha ayudado bastante a recuperar mi cabello.",
+    },
+    {
+      name: "Angel C.",
+      when: "Hace 3 meses",
+      text: "He ido constantemente con la doctora para distintos tratamientos de crecimiento de barba, de cabello y tratamientos estéticos como peelings, baby face, etc. Siempre muy profesional, explica muy bien los términos y tratamientos, así como el seguimiento. Muy recomendada.",
+    },
+    {
+      name: "Yoltic Quetzalcóatl M.",
+      when: "Hace 3 meses",
+      text: "Excelente servicio, la doctora escucha con paciencia y empatía, mi tratamiento tiene muy buenos resultados, el hospital es de primer nivel y muy puntual y acertiva en todo.",
+    },
+    {
+      name: "Luis Fernando A.",
+      when: "Hace 3 meses",
+      text: "Llevé un par de tratamientos con ella y siempre me sentí en las mejores manos. Su atención, profesionalismo y dedicación hicieron toda la diferencia.",
+    },
+    {
+      name: "Elizabeth A.",
+      when: "Hace 5 meses",
+      text: "Muy buena atención y súper profesional. Me explicó todo de forma clara y me hizo sentir muy cómoda en la consulta. Se nota que sabe muchísimo sobre cuidado capilar. La recomiendo mucho.",
+    },
+    {
+      name: "Karla L.",
+      when: "Hace un año",
+      text: "La Dra. Jazmín fue súper amable con mi mamá al momento de su valoración, le explicó su cuadro de manera muy detallada y le dio las mejores opciones de tratamiento! Es una persona increíblemente amable y con mucha calidez humana, se nota lo mucho que ama su trabajo. La recomiendo ampliamente!",
+    },
+  ],
+};

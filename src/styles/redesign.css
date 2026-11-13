@@ -2907,82 +2907,7 @@ html {
 .legal-body strong { color: var(--charcoal); }
 .legal-body a { color: var(--emerald, #1d6b55); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
-/* ---------- Servicios (lista de actividades de la doctora) ---------- */
-.services-list {
-  background: linear-gradient(180deg, var(--ice, #eff2ec), var(--cream, #faf8f3));
-  padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 72px);
-}
-.services-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
-  list-style: none;
-  margin: 34px auto 0;
-  max-width: 1240px;
-  padding: 0;
-}
-.service-item {
-  align-items: flex-start;
-  background: #fff;
-  border: 1px solid rgba(11, 61, 49, .1);
-  border-left: 4px solid var(--gold, #d1ab5a);
-  border-radius: 14px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  gap: 16px;
-  padding: 22px 22px 20px;
-  transition: box-shadow 300ms ease, transform 320ms ease;
-}
-.service-item:hover, .service-item:focus-within { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-.service-icon {
-  align-items: center;
-  background: var(--petrol-900, #0b3d31);
-  border-radius: 50%;
-  color: var(--gold-light, #ecd497);
-  display: inline-flex;
-  flex: none;
-  height: 48px;
-  justify-content: center;
-  width: 48px;
-}
-.services-list .service-icon svg { height: 30px; width: 30px; stroke: currentColor; stroke-width: 2.6; }
-.services-list .service-icon svg * { stroke: currentColor; }
-.service-item h3 {
-  color: var(--petrol-900, #0b3d31);
-  font-family: var(--display-font);
-  font-size: 1.15rem;
-  font-weight: 600;
-  line-height: 1.25;
-  margin: 2px 0 8px;
-}
-.service-item p { color: var(--graphite); font-size: .95rem; line-height: 1.6; margin: 0 0 12px; }
-.service-item a { color: var(--emerald, #1d6b55); font-size: .9rem; font-weight: 600; }
-.service-item a:hover { color: var(--teal-dark, #a8843a); }
-@media (min-width: 1100px) {
-  .services-grid { display: flex; flex-wrap: wrap; justify-content: center; }
-  .service-item { flex: 0 1 calc((100% - 36px) / 3); }
-}
-.legal-hero .legal-hero-sub { color: rgba(255,255,255,.8); font-size: .98rem; line-height: 1.6; margin: 0 auto; max-width: 620px; }
-.legal-meta { display: flex; flex-wrap: wrap; gap: 14px 40px; justify-content: center; margin: 26px 0 0; }
-.legal-meta div { text-align: center; }
-.legal-meta dt { color: var(--gold, #d1ab5a); font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.legal-meta dd { color: #fff; font-size: 1.02rem; font-weight: 600; margin: 4px 0 0; }
-.legal-download { display: inline-flex; gap: .5em; margin-top: 28px; }
-.legal-body .legal-doctor { border-left: 3px solid var(--gold, #d1ab5a); font-size: .92rem; line-height: 1.6; margin-bottom: 34px; padding-left: 14px; }
-.legal-body h3 { color: var(--teal-dark, #a8843a); font-family: var(--body-font); font-size: 1rem; font-weight: 700; margin: 22px 0 8px; }
-.legal-body ol { margin: 0 0 14px; padding-left: 2.2em; }
-.legal-body ol li::marker { color: var(--teal-dark, #a8843a); font-weight: 700; }
-.legal-body .legal-callout { background: rgba(209,171,90,.12); border-radius: 10px; padding: 14px 16px; }
-.legal-body .legal-date { margin-top: 18px; text-align: right; }
-.legal-contact { background: var(--petrol-900, #0b3d31); border-radius: 16px; margin-top: 44px; padding: 26px 24px; text-align: center; }
-.legal-body .legal-contact p { color: rgba(255,255,255,.85); margin: 0 0 6px; }
-.legal-body .legal-contact strong { color: var(--gold-light, #ecd497); }
-.legal-body .legal-contact a:not(.button) { color: var(--gold-light, #ecd497); }
-.legal-body .legal-contact .legal-download { color: var(--petrol-900, #0b3d31); text-decoration: none; margin-top: 18px; }
-@media (max-width: 600px) { .legal-meta { gap: 12px 24px; } .legal-body ol { padding-left: 1.9em; } }
-
 /* ---------- Toxina botulínica para hiperhidrosis ---------- */
-.service-item a.service-details { color: var(--teal-dark, #a8843a); margin-left: 16px; }
 .hh { background: var(--ivory, #f3f1ea); padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 72px); }
 .hh > * { margin-inline: auto; max-width: 1180px; }
 .hh-head {
@@ -3030,3 +2955,149 @@ html {
   .hh-faq + .hh-faq { border-left: 0; border-top: 1px solid rgba(236, 212, 151, .25); padding-top: 18px; }
   .hh-cta { flex-direction: column; text-align: center; }
 }
+
+/* ---------- Servicios: "Lo que la doctora puede hacer por ti" (nuevo diseño) ---------- */
+.services-list {
+  background:
+    radial-gradient(60% 50% at 0% 0%, rgba(11, 61, 49, .16), transparent 60%),
+    linear-gradient(180deg, #f6f3ec, #f1eee6);
+  overflow: hidden;
+  padding: clamp(44px, 6vw, 84px) clamp(16px, 4vw, 56px);
+  position: relative;
+}
+.services-list::before {
+  background: linear-gradient(160deg, #0b3d31 0%, #115443 55%, transparent 56%);
+  content: "";
+  height: 150px;
+  left: 0;
+  opacity: .9;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 260px;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.services-list::after {
+  border-top: 2px solid rgba(209, 171, 90, .8);
+  content: "";
+  height: 0;
+  left: -20px;
+  pointer-events: none;
+  position: absolute;
+  top: 160px;
+  transform: rotate(-31deg);
+  transform-origin: left;
+  width: 330px;
+}
+.services-head { margin: 0 auto; max-width: 1160px; position: relative; text-align: center; }
+.services-eyebrow {
+  align-items: center;
+  color: var(--petrol-900, #0b3d31);
+  display: inline-flex;
+  font-size: .82rem;
+  font-weight: 700;
+  gap: 18px;
+  letter-spacing: .32em;
+  margin: 0;
+  text-transform: uppercase;
+}
+.services-eyebrow::before, .services-eyebrow::after { background: var(--gold, #d1ab5a); content: ""; height: 2px; width: 54px; }
+.services-head h2 {
+  color: var(--petrol-900, #0b3d31);
+  font-family: var(--display-font);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 10px 0 12px;
+}
+.services-head h2 em { color: var(--gold, #d1ab5a); font-style: italic; }
+.services-head > p:last-child { color: var(--charcoal); font-size: 1.02rem; line-height: 1.6; margin: 0; }
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: center;
+  list-style: none;
+  margin: 34px auto 0;
+  max-width: 1440px;
+  padding: 0;
+  position: relative;
+}
+.services-grid .service-item {
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid rgba(11, 61, 49, .06);
+  border-left: 0;
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(6, 41, 31, .10);
+  display: flex;
+  flex: 0 1 calc((100% - 44px) / 3);
+  gap: 0;
+  min-height: 168px;
+  overflow: hidden;
+  padding: 0;
+  transition: box-shadow 300ms ease, transform 320ms ease;
+}
+.services-grid .service-item:hover, .services-grid .service-item:focus-within { box-shadow: 0 20px 44px rgba(6, 41, 31, .16); transform: translateY(-4px); }
+.service-photo { display: block; flex: 0 0 44%; height: auto; min-height: 100%; object-fit: cover; width: 44%; }
+.service-body { display: flex; flex: 1; flex-direction: column; justify-content: center; padding: 16px 18px 18px; }
+.service-title { align-items: center; display: flex; gap: 12px; }
+.services-grid .service-icon { align-items: center; background: var(--petrol-900, #0b3d31); border-radius: 8px; color: var(--gold-light, #ecd497); display: inline-flex; flex: none; height: 38px; justify-content: center; width: 38px; }
+.services-list .service-icon svg { height: 22px; stroke: currentColor; stroke-width: 2.4; width: 22px; }
+.services-list .service-icon svg * { stroke: currentColor; }
+.services-grid .service-item h3 {
+  color: var(--petrol-900, #0b3d31);
+  font-family: var(--body-font);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+}
+.services-grid .service-item p { color: var(--charcoal); font-size: .9rem; line-height: 1.5; margin: 10px 0 12px; }
+.services-grid .service-more {
+  align-items: center;
+  align-self: flex-start;
+  border: 1.5px solid var(--petrol-900, #0b3d31);
+  border-radius: 999px;
+  color: var(--petrol-900, #0b3d31);
+  display: inline-flex;
+  font-size: .82rem;
+  font-weight: 600;
+  gap: .6em;
+  padding: 6px 16px;
+  transition: background 220ms ease, color 220ms ease;
+}
+.services-grid .service-more:hover { background: var(--petrol-900, #0b3d31); color: #fff; }
+@media (max-width: 1200px) { .services-grid .service-item { flex-basis: calc((100% - 22px) / 2); } }
+@media (max-width: 720px) {
+  .services-list::before { height: 90px; width: 150px; }
+  .services-list::after { display: none; }
+  .services-eyebrow::before, .services-eyebrow::after { width: 32px; }
+  .services-grid { gap: 16px; }
+  .services-grid .service-item { flex-basis: 100%; min-height: 150px; }
+  .service-photo { flex-basis: 40%; width: 40%; }
+  .service-body { padding: 14px 14px 16px; }
+  .services-grid .service-item h3 { font-size: .95rem; }
+  .services-grid .service-icon { height: 32px; width: 32px; }
+}
+
+/* ---------- Opiniones de Google (Contacto) ---------- */
+.greviews { background: linear-gradient(180deg, #f6f3ec, #efece3); padding: clamp(44px, 6vw, 80px) clamp(16px, 4vw, 56px); text-align: center; }
+.greviews-eyebrow { align-items: center; color: var(--petrol-900, #0b3d31); display: inline-flex; font-size: .8rem; font-weight: 700; gap: 16px; letter-spacing: .3em; margin: 0; text-transform: uppercase; }
+.greviews-eyebrow::before, .greviews-eyebrow::after { background: var(--gold, #d1ab5a); content: ""; height: 2px; width: 44px; }
+.greviews-head h2 { color: var(--petrol-900, #0b3d31); font-family: var(--display-font); font-size: clamp(1.9rem, 3.8vw, 2.9rem); font-weight: 500; line-height: 1.15; margin: 10px 0 16px; }
+.greviews-head h2 em { color: var(--gold, #d1ab5a); }
+.greviews-score { align-items: center; background: #fff; border-radius: 999px; box-shadow: var(--shadow-sm); color: var(--graphite); display: inline-flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 10px 22px; }
+.greviews-score strong { color: var(--charcoal); font-size: 1.5rem; }
+.greviews-g svg { display: block; height: 24px; width: 24px; }
+.greviews-stars { color: #f5b301; letter-spacing: .08em; }
+.greviews-score .greviews-stars { font-size: 1.3rem; }
+.greviews-list { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; list-style: none; margin: 32px auto 0; max-width: 1180px; padding: 0; }
+.greview { background: #fff; border-radius: 16px; border-top: 3px solid var(--gold, #d1ab5a); box-shadow: 0 14px 34px rgba(6, 41, 31, .09); flex: 0 1 360px; padding: 22px 22px 24px; text-align: left; }
+.greview-top { align-items: center; display: flex; gap: 12px; }
+.greview-avatar { align-items: center; background: var(--petrol-900, #0b3d31); border-radius: 50%; color: var(--gold-light, #ecd497); display: inline-flex; flex: none; font-weight: 700; height: 42px; justify-content: center; width: 42px; }
+.greview-top strong { color: var(--charcoal); display: block; font-size: 1rem; }
+.greview-meta { color: var(--graphite); font-size: .85rem; }
+.greview p { color: var(--charcoal); font-size: .98rem; line-height: 1.6; margin: 14px 0 0; }
+.greviews-link { border: 1.5px solid var(--petrol-900, #0b3d31); border-radius: 999px; color: var(--petrol-900, #0b3d31); display: inline-flex; font-size: .9rem; font-weight: 600; gap: .5em; margin-top: 30px; padding: 9px 22px; transition: background 220ms ease, color 220ms ease; }
+.greviews-link:hover { background: var(--petrol-900, #0b3d31); color: #fff; }

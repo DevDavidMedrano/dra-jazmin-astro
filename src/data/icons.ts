@@ -4,6 +4,8 @@ export type IconName =
   | "face"
   | "syringe"
   | "sparkles"
+  | "lips"
+  | "pen"
   | "calendar"
   | "people"
   | "person"

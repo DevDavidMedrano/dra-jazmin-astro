@@ -9,6 +9,13 @@ import Icon from "../Icon.astro";
 import InnerHero from "../InnerHero.astro";
 import TreatmentStrip from "../TreatmentStrip.astro";
 import HyperhidrosisSection from "./HyperhidrosisSection.astro";
+import svcTricologia from "../../assets/servicios/consulta-tricologia.webp";
+import svcInjerto from "../../assets/servicios/injerto-capilar.webp";
+import svcBotox from "../../assets/servicios/botox-facial.webp";
+import svcHiperhidrosis from "../../assets/servicios/hiperhidrosis.webp";
+import svcLabios from "../../assets/servicios/relleno-labios.webp";
+import svcDermapen from "../../assets/servicios/dermapen.webp";
+import svcYellow from "../../assets/servicios/yellow-peel.webp";
 import { services, site, treatments } from "../../data/site";
 
 /** Fotografía de cada tarjeta; las que no tengan foto muestran el ícono. */
@@ -33,6 +40,17 @@ const cardPhotos: Record<string, { src: string; alt: string; position: string }>
     alt: "Dra. Jazmín Álvarez revisando el cuero cabelludo con un tricoscopio",
     position: "center 35%",
   },
+};
+
+/** Foto de cada servicio (sección "Lo que la doctora puede hacer por ti"). */
+const servicePhotos: Record<string, ImageMetadata> = {
+  "consulta-tricologia": svcTricologia,
+  "injerto-capilar": svcInjerto,
+  "botox-facial": svcBotox,
+  hiperhidrosis: svcHiperhidrosis,
+  "relleno-labios": svcLabios,
+  dermapen: svcDermapen,
+  "yellow-peel": svcYellow,
 };
 
 const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar información", "Agendar ahora"];
@@ -98,31 +116,36 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
     </div>
   </section>
   <section class="services-list" id="servicios" aria-labelledby="services-heading">
-    <div class="section-heading compact-heading">
-      <p class="eyebrow">Servicios</p>
-      <h2 id="services-heading">Lo que la doctora puede hacer por ti</h2>
+    <div class="services-head">
+      <p class="services-eyebrow">Servicios</p>
+      <h2 id="services-heading">Lo que la doctora puede hacer <em>por ti</em></h2>
+      <p>Tratamientos médicos estéticos y capilares con resultados naturales, seguros y personalizados.</p>
     </div>
     <ul class="services-grid">
       {
-        services.map((service) => (
-          <li class="service-item">
-            <span class="service-icon" aria-hidden="true"><Icon name={service.icon} /></span>
-            <div>
-              <h3>{service.title}</h3>
-              <p>{service.summary}</p>
-              <a
-                href={`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(`Hola, me gustaría información sobre: ${service.title}`)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pedir información <span aria-hidden="true">→</span>
-              </a>
-              {service.details && (
-                <a class="service-details" href={service.details}>Ver detalles</a>
+        services.map((service) => {
+          const photo = servicePhotos[service.id];
+          const href = service.details
+            ?? `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(`Hola, me gustaría información sobre: ${service.title}`)}`;
+          const external = !service.details;
+          return (
+            <li class="service-item">
+              {photo && (
+                <img class="service-photo" src={photo.src} alt="" width={photo.width} height={photo.height} loading="lazy" />
               )}
-            </div>
-          </li>
-        ))
+              <div class="service-body">
+                <div class="service-title">
+                  <span class="service-icon" aria-hidden="true"><Icon name={service.icon} /></span>
+                  <h3>{service.title}</h3>
+                </div>
+                <p>{service.summary}</p>
+                <a class="service-more" href={href} {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>
+                  Más información <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </li>
+          );
+        })
       }
     </ul>
   </section>
