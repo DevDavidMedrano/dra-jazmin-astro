@@ -1,127 +1,496 @@
 ---
+/**
+ * Aviso de Privacidad Integral — texto oficial del documento AP-001 v1.0
+ * (agosto de 2026) entregado por la doctora. Los anexos A y B (diagrama de flujo
+ * y formato de solicitud ARCO) se descargan en el PDF de public/docs/.
+ */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import { site } from "../data/site";
+import { withBase } from "../data/paths";
 
-const updated = "12 de noviembre de 2026";
+const email = "drajazminalvarez@gmail.com";
+const pdf = withBase("/docs/aviso-de-privacidad-integral.pdf");
 ---
 
 <BaseLayout
   title="Aviso de privacidad | Dra. Jazmín Álvarez"
-  description="Aviso de privacidad integral del consultorio de la Dra. Jazmín Álvarez: qué datos personales se recaban, para qué se usan y cómo ejercer tus derechos ARCO."
+  description="Aviso de Privacidad Integral de la Dra. Tania Jazmín Álvarez de Anda: datos que se recaban, finalidades, transferencias, medidas de seguridad y ejercicio de los derechos ARCO."
 >
   <Header />
   <main class="inner-page legal-page">
     <header class="legal-hero">
       <p class="eyebrow">Aviso de privacidad</p>
-      <h1>Protección de tus <em>datos personales</em></h1>
-      <p>Última actualización: {updated}</p>
+      <h1>Aviso de Privacidad <em>Integral</em></h1>
+      <p class="legal-hero-sub">
+        Conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y demás
+        disposiciones aplicables.
+      </p>
+      <dl class="legal-meta">
+        <div><dt>Código</dt><dd>AP-001</dd></div>
+        <div><dt>Versión</dt><dd>1.0</dd></div>
+        <div><dt>Última actualización</dt><dd>1 de agosto de 2026</dd></div>
+      </dl>
+      <a class="button button-gold legal-download" href={pdf} download>
+        Descargar PDF completo con anexos <span aria-hidden="true">↓</span>
+      </a>
     </header>
 
     <article class="legal-body">
+      <p class="legal-doctor">
+        <strong>Dra. Tania Jazmín Álvarez de Anda</strong><br />
+        Medicina Estética, Tricología y Restauración Capilar<br />
+        Céd. Prof. 9848556 · Med. Est. 1416CEECB0005 · Tricología 20211361
+      </p>
+
       <section>
-        <h2>1. Responsable de tus datos</h2>
+        <h2>1. Responsable del tratamiento de los datos personales</h2>
         <p>
-          La <strong>{site.doctorName}</strong>, con consultorio en {site.clinic}, Zapopan, Jalisco, México
-          (en adelante, “la Responsable”), es responsable del uso y protección de tus datos personales, conforme a
-          la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y demás normativa aplicable.
+          En cumplimiento de lo dispuesto por los artículos 15, 16 y demás relativos de la <strong>Ley Federal de
+          Protección de Datos Personales en Posesión de los Particulares</strong>, así como de su Reglamento y demás
+          disposiciones aplicables, la <strong>Dra. Tania Jazmín Álvarez de Anda</strong>, médica con práctica profesional
+          en Medicina Estética, Tricología y Restauración Capilar, con domicilio en <strong>Av. Central Guillermo González
+          Camarena 911, piso 4, consultorio 6-A, Poniente, C.P. 45136, Zapopan, Jalisco</strong>, es la responsable del
+          tratamiento, uso, protección y confidencialidad de los datos personales y datos personales sensibles que recabe
+          con motivo de la prestación de servicios médicos.
+        </p>
+        <p>
+          Para cualquier asunto relacionado con el presente Aviso de Privacidad, incluyendo el ejercicio de los derechos de
+          Acceso, Rectificación, Cancelación y Oposición (ARCO), así como para realizar consultas o presentar solicitudes
+          relacionadas con el tratamiento de sus datos personales, podrá comunicarse al correo electrónico
+          <a href={`mailto:${email}`}>{email}</a> o acudir directamente al domicilio del consultorio en días y horarios de
+          atención.
+        </p>
+        <p>
+          La responsable implementa medidas administrativas, técnicas y físicas razonables para proteger los datos
+          personales contra daño, pérdida, alteración, destrucción, uso, acceso o tratamiento no autorizado, procurando en
+          todo momento el cumplimiento de los principios de licitud, consentimiento, información, calidad, finalidad,
+          lealtad, proporcionalidad y responsabilidad previstos en la legislación mexicana en materia de protección de datos
+          personales.
         </p>
       </section>
 
       <section>
-        <h2>2. Datos personales que recabamos</h2>
-        <p>Para brindarte atención podemos solicitar los siguientes datos:</p>
+        <h2>2. Datos personales que se recaban</h2>
+        <p>
+          Para la prestación de servicios de Medicina Estética, Tricología y Restauración Capilar, la responsable podrá
+          recabar de manera directa o indirecta los datos personales necesarios para la adecuada integración del expediente
+          clínico, la atención médica y el cumplimiento de las obligaciones legales aplicables.
+        </p>
+        <p>Los datos personales podrán incluir, de manera enunciativa mas no limitativa, los siguientes:</p>
+        <h3>a) Datos de identificación</h3>
         <ul>
-          <li><strong>Identificación y contacto:</strong> nombre, teléfono, WhatsApp, correo electrónico y edad.</li>
-          <li><strong>Datos de la cita:</strong> fecha y horario preferidos y el tratamiento de tu interés.</li>
-          <li>
-            <strong>Datos sensibles de salud:</strong> antecedentes médicos, alergias, medicamentos, diagnóstico,
-            evolución del tratamiento y fotografías clínicas.
-          </li>
+          <li>Nombre completo.</li>
+          <li>Fecha de nacimiento.</li>
+          <li>Edad.</li>
+          <li>Sexo.</li>
+          <li>Nacionalidad.</li>
+          <li>Estado civil.</li>
+          <li>Fotografía de identificación, cuando resulte necesaria.</li>
+          <li>Firma autógrafa y/o firma electrónica.</li>
+          <li>Clave Única de Registro de Población (CURP), cuando sea necesaria.</li>
+          <li>Registro Federal de Contribuyentes (RFC), cuando sea requerido para la emisión de comprobantes fiscales.</li>
+          <li>Identificación oficial, cuando resulte necesaria para acreditar la identidad del paciente o de su representante legal.</li>
+        </ul>
+        <h3>b) Datos de contacto</h3>
+        <ul>
+          <li>Domicilio.</li>
+          <li>Teléfono fijo.</li>
+          <li>Teléfono celular.</li>
+          <li>Correo electrónico.</li>
+          <li>Contacto de familiar, tutor, responsable o persona de emergencia.</li>
+        </ul>
+        <h3>c) Datos administrativos</h3>
+        <ul>
+          <li>Número de expediente clínico.</li>
+          <li>Información para facturación.</li>
+          <li>Información de aseguradora, póliza, número de siniestro o reclamación, cuando corresponda.</li>
+          <li>Datos de médico tratante, médico remitente u otros profesionales de la salud involucrados en la atención.</li>
+        </ul>
+        <h3>d) Datos personales sensibles</h3>
+        <p>
+          Con fundamento en la legislación aplicable, podrán recabarse datos personales sensibles relacionados con el
+          estado de salud del paciente, incluyendo de manera enunciativa mas no limitativa:
+        </p>
+        <ul>
+          <li>Antecedentes heredofamiliares.</li>
+          <li>Antecedentes personales patológicos y no patológicos.</li>
+          <li>Alergias.</li>
+          <li>Medicamentos en uso.</li>
+          <li>Enfermedades crónicas.</li>
+          <li>Antecedentes quirúrgicos.</li>
+          <li>Antecedentes dermatológicos, estéticos y capilares.</li>
+          <li>Exploración física.</li>
+          <li>Diagnósticos.</li>
+          <li>Pronóstico.</li>
+          <li>Tratamientos médicos, estéticos y capilares.</li>
+          <li>Procedimientos realizados.</li>
+          <li>Consentimientos informados.</li>
+          <li>Incapacidades y certificados médicos.</li>
+          <li>Estudios de laboratorio y gabinete.</li>
+          <li>Tricoscopia y análisis capilar, cuando resulten necesarios.</li>
+          <li>Estudios de imagen relacionados con la atención, cuando resulten necesarios.</li>
+          <li>Ultrasonido de tejidos blandos, cuando resulte necesario.</li>
+          <li>Resultados de otros estudios auxiliares de diagnóstico.</li>
+          <li>Fotografías clínicas y documentación fotográfica del proceso diagnóstico o terapéutico.</li>
+          <li>Evolución clínica y notas médicas.</li>
+          <li>Cualquier otra información necesaria para la adecuada prestación de los servicios médicos.</li>
         </ul>
         <p>
-          Los datos de salud se consideran <strong>datos personales sensibles</strong>. Solo se recaban durante la
-          valoración médica y se tratan con tu <strong>consentimiento expreso y por escrito</strong>.
+          El tratamiento de los datos personales sensibles se realizará exclusivamente cuando resulte indispensable para la
+          atención médica del paciente, la integración del expediente clínico y el cumplimiento de las obligaciones legales
+          y sanitarias aplicables, observando en todo momento las medidas de seguridad y confidencialidad previstas en la
+          legislación vigente.
         </p>
       </section>
 
       <section>
-        <h2>3. Finalidades</h2>
-        <p><strong>Finalidades necesarias</strong> para la relación médico–paciente:</p>
+        <h2>3. Finalidades del tratamiento de los datos personales</h2>
+        <p>
+          Los datos personales y datos personales sensibles que sean recabados serán tratados únicamente para las
+          finalidades que sean necesarias para la adecuada prestación de los servicios médicos especializados, la
+          integración del expediente clínico y el cumplimiento de las obligaciones legales derivadas de la relación
+          médico-paciente.
+        </p>
+        <h3>3.1 Finalidades primarias</h3>
+        <p>
+          Las finalidades primarias son aquellas que dan origen y son necesarias para la prestación de los servicios
+          médicos, por lo que no requieren consentimiento adicional al derivado de la relación jurídica existente entre el
+          paciente y la responsable.
+        </p>
+        <p>Sus datos personales podrán ser utilizados para:</p>
+        <ol type="I">
+          <li>Identificar al paciente y, en su caso, a su representante legal.</li>
+          <li>Integrar, administrar, actualizar, resguardar y conservar el expediente clínico electrónico, de conformidad con la <strong>NOM-004-SSA3-2012, Del expediente clínico</strong>, y demás disposiciones aplicables.</li>
+          <li>Proporcionar consulta médica en Medicina Estética, Tricología y Restauración Capilar.</li>
+          <li>Realizar la valoración clínica, establecer diagnósticos, pronósticos, planes terapéuticos y dar seguimiento a la evolución del paciente.</li>
+          <li>Prescribir medicamentos, tratamientos tópicos o sistémicos, dispositivos médicos, productos sanitarios y demás insumos necesarios para la atención.</li>
+          <li>Solicitar, recibir, interpretar y almacenar estudios de laboratorio, tricoscopia, análisis capilar, fotografías clínicas, estudios de imagen y cualquier otro estudio auxiliar necesario para el diagnóstico, tratamiento y seguimiento.</li>
+          <li>Documentar mediante fotografías clínicas, imágenes diagnósticas y demás registros médicos el estado clínico del paciente cuando resulte necesario para fines asistenciales, diagnósticos, terapéuticos o de integración del expediente clínico.</li>
+          <li>Elaborar recetas médicas, certificados, constancias, incapacidades, informes médicos, notas clínicas, consentimientos informados y demás documentos relacionados con la atención médica.</li>
+          <li>Programar consultas, procedimientos médico-estéticos, tratamientos capilares, revisiones posteriores y demás actividades relacionadas con la continuidad de la atención.</li>
+          <li>Contactar al paciente por vía telefónica, correo electrónico o aplicaciones de mensajería instantánea, incluyendo <strong>WhatsApp</strong>, para confirmar citas, proporcionar indicaciones médicas, enviar recetas, estudios, resultados, información relacionada con su tratamiento o dar seguimiento a su atención.</li>
+          <li>Compartir la información estrictamente necesaria con hospitales, laboratorios, gabinetes de imagen, médicos tratantes, médicos interconsultantes, anestesiólogos, personal de enfermería y demás profesionales de la salud que participen en la atención del paciente, cuando ello resulte indispensable para la adecuada prestación de los servicios médicos.</li>
+          <li>Realizar los trámites administrativos y médicos necesarios con compañías aseguradoras, instituciones hospitalarias o terceros obligados al pago, cuando el paciente solicite la utilización de dichos servicios.</li>
+          <li>Elaborar comprobantes fiscales digitales por Internet (CFDI), realizar gestiones administrativas y dar cumplimiento a las obligaciones fiscales, sanitarias y legales aplicables.</li>
+          <li>Atender requerimientos de autoridades competentes cuando exista mandato legal que así lo disponga.</li>
+        </ol>
+        <h3>3.2 Finalidades secundarias</h3>
+        <p>
+          Adicionalmente, y únicamente cuando el paciente otorgue su consentimiento expreso, sus datos personales podrán ser
+          utilizados para las siguientes finalidades secundarias:
+        </p>
+        <ol type="I">
+          <li>Utilizar información clínica, fotografías o estudios de imagen con fines académicos, científicos, de investigación o de docencia, procurando en todo momento su anonimización cuando sea posible.</li>
+          <li>Publicar casos clínicos, fotografías de antes y después o material audiovisual con fines académicos, educativos, científicos o promocionales, incluso en redes sociales y medios digitales, únicamente previa autorización expresa y por escrito del paciente.</li>
+          <li>Enviar información relacionada con campañas de prevención, promoción de la salud, educación médica, actualización de servicios o información institucional del consultorio.</li>
+        </ol>
+        <p>
+          La negativa para el tratamiento de los datos personales con relación a las finalidades secundarias <strong>no
+          podrá ser motivo para negar la prestación de los servicios médicos solicitados</strong>.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Transferencia de datos personales</h2>
+        <p>
+          Para el cumplimiento de las finalidades descritas en el presente Aviso de Privacidad, la responsable podrá
+          transferir los datos personales y datos personales sensibles del paciente únicamente cuando ello resulte necesario
+          para la adecuada prestación de los servicios médicos o cuando exista obligación legal que así lo permita.
+        </p>
+        <p>
+          Las transferencias podrán realizarse, de manera enunciativa mas no limitativa, a las siguientes personas físicas o
+          morales:
+        </p>
+        <ol type="I">
+          <li>Hospitales, clínicas, centros de procedimientos y demás establecimientos para la atención médica en los que el paciente reciba valoración, procedimientos o tratamiento, siempre que el paciente lo autorice o sea referido para su atención.</li>
+          <li>Médicos tratantes, especialistas interconsultantes, personal de enfermería, anestesiólogos y demás profesionales de la salud que intervengan en el diagnóstico, tratamiento o seguimiento del paciente, cuando corresponda.</li>
+          <li>Laboratorios clínicos, gabinetes de imagen, servicios de tricoscopia, análisis capilar y demás prestadores de servicios auxiliares de diagnóstico que participen en la atención médica del paciente.</li>
+          <li>Compañías aseguradoras, ajustadores, administradoras de servicios médicos y terceros obligados al pago, cuando el paciente solicite la utilización de dichos servicios o resulte necesario para la gestión de autorizaciones, reembolsos, pagos o trámites administrativos.</li>
+          <li>Autoridades administrativas, sanitarias o judiciales competentes, cuando la transferencia sea requerida en cumplimiento de una disposición legal, resolución judicial o mandato emitido por autoridad competente.</li>
+          <li>Prestadores de servicios tecnológicos que participen en el almacenamiento, respaldo, mantenimiento o administración del expediente clínico electrónico, siempre que se encuentren sujetos a obligaciones de confidencialidad y adopten medidas de seguridad acordes con la legislación aplicable.</li>
+        </ol>
+        <p>
+          Las transferencias antes señaladas se realizarán únicamente cuando sean necesarias para cumplir con las
+          finalidades previstas en este Aviso de Privacidad y conforme a los supuestos establecidos en los artículos 35 y 36
+          de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
+        </p>
+        <p>
+          Fuera de los casos previstos por la legislación aplicable o de aquellos expresamente autorizados por el paciente,
+          <strong>la responsable no venderá, cederá, comercializará ni divulgará los datos personales a terceros para fines
+          distintos de los relacionados con la prestación de los servicios médicos</strong>.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Medidas de seguridad para la protección de los datos personales</h2>
+        <p>
+          La responsable reconoce la importancia de proteger la privacidad y confidencialidad de los datos personales y
+          datos personales sensibles de los pacientes, por lo que implementa medidas administrativas, técnicas y físicas
+          razonables para prevenir su daño, pérdida, alteración, destrucción, uso, acceso o tratamiento no autorizado, de
+          conformidad con la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</strong>,
+          su Reglamento y demás disposiciones aplicables.
+        </p>
+        <p>Las medidas de seguridad implementadas incluyen, de manera enunciativa mas no limitativa, las siguientes:</p>
+        <h3>I. Medidas administrativas</h3>
+        <ol type="a">
+          <li>Acceso restringido a la información clínica únicamente a la responsable y, en su caso, al personal expresamente autorizado.</li>
+          <li>Obligación de guardar confidencialidad respecto de toda la información contenida en los expedientes clínicos.</li>
+          <li>Capacitación y actualización sobre protección de datos personales cuando exista personal de apoyo autorizado para el tratamiento de la información.</li>
+          <li>Implementación de procedimientos para el ejercicio de los derechos ARCO y atención de solicitudes relacionadas con datos personales.</li>
+        </ol>
+        <h3>II. Medidas técnicas</h3>
+        <ol type="a">
+          <li>Resguardo del expediente clínico en medios electrónicos protegidos mediante mecanismos de autenticación y control de acceso.</li>
+          <li>Uso de contraseñas seguras y actualización periódica de las credenciales de acceso a los sistemas electrónicos utilizados para la atención médica.</li>
+          <li>Realización de respaldos periódicos de la información clínica para prevenir su pérdida o alteración.</li>
+          <li>Utilización de dispositivos electrónicos protegidos mediante mecanismos de seguridad que reduzcan el riesgo de acceso no autorizado.</li>
+          <li>Implementación de medidas razonables para preservar la integridad, disponibilidad y confidencialidad de la información contenida en el expediente clínico electrónico.</li>
+        </ol>
+        <h3>III. Medidas físicas</h3>
+        <ol type="a">
+          <li>Control de acceso a las áreas donde se encuentren los equipos utilizados para la administración del expediente clínico electrónico.</li>
+          <li>Resguardo de los dispositivos electrónicos en lugares seguros cuando no se encuentren en uso.</li>
+          <li>Adopción de medidas destinadas a evitar que personas no autorizadas tengan acceso a la información clínica.</li>
+        </ol>
+        <p>
+          La responsable revisará periódicamente las medidas de seguridad implementadas con el propósito de mantener un
+          nivel de protección adecuado conforme a la naturaleza de los datos tratados, los avances tecnológicos y los
+          riesgos asociados al tratamiento de la información.
+        </p>
+        <p>
+          En caso de que ocurra una vulneración de seguridad que afecte de forma significativa los derechos patrimoniales o
+          morales de los titulares, la responsable adoptará las medidas necesarias para mitigar sus efectos y, cuando
+          resulte procedente conforme a la legislación aplicable, notificará oportunamente a los titulares afectados para
+          que puedan adoptar las acciones que estimen convenientes.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Ejercicio de los derechos ARCO</h2>
+        <p>
+          De conformidad con lo dispuesto por la <strong>Ley Federal de Protección de Datos Personales en Posesión de los
+          Particulares</strong>, el titular de los datos personales o, en su caso, su representante legal debidamente
+          acreditado, podrá ejercer en cualquier momento los derechos de <strong>Acceso, Rectificación, Cancelación y
+          Oposición (ARCO)</strong> respecto de los datos personales que obren en posesión de la responsable.
+        </p>
+        <p>
+          Para tal efecto, el titular deberá presentar una solicitud por escrito o enviarla al correo electrónico
+          <a href={`mailto:${email}`}>{email}</a>, proporcionando como mínimo la siguiente información:
+        </p>
+        <ol type="I">
+          <li>Nombre completo del titular de los datos personales.</li>
+          <li>Domicilio o correo electrónico para recibir notificaciones.</li>
+          <li>Documentos que acrediten su identidad o, en su caso, la representación legal correspondiente.</li>
+          <li>Descripción clara y precisa de los datos personales respecto de los cuales pretende ejercer alguno de los derechos ARCO.</li>
+          <li>En caso de solicitar la rectificación de datos personales, deberá indicar las modificaciones que solicita y, cuando resulte procedente, aportar la documentación que sustente la actualización correspondiente.</li>
+        </ol>
+        <p>
+          La responsable podrá solicitar información adicional cuando sea necesaria para localizar el expediente o verificar
+          la identidad del solicitante.
+        </p>
+        <p>
+          La solicitud será atendida dentro de los plazos establecidos por la legislación aplicable. En caso de resultar
+          procedente, la responsable llevará a cabo las acciones necesarias para hacer efectivo el derecho ejercido dentro de
+          los términos previstos por la Ley.
+        </p>
+        <p>
+          El ejercicio de los derechos ARCO será gratuito; sin embargo, cuando el titular solicite copias simples,
+          certificadas, medios electrónicos de almacenamiento o cualquier otro soporte físico, podrá requerirse el pago de
+          los costos de reproducción o envío que, en su caso, resulten aplicables.
+        </p>
+        <p>
+          El ejercicio de los derechos ARCO no procederá en aquellos casos en que exista una obligación legal de conservar la
+          información, cuando el tratamiento sea necesario para el cumplimiento de obligaciones derivadas de la relación
+          médico-paciente, para la protección de la salud del titular o de terceros, o en cualquiera de los supuestos
+          previstos por la legislación aplicable.
+        </p>
+        <p>
+          En particular, la solicitud de <strong>cancelación</strong> no dará lugar a la eliminación del expediente clínico
+          cuando exista obligación legal de conservarlo conforme a la <strong>Ley General de Salud</strong>, la
+          <strong>NOM-004-SSA3-2012, Del expediente clínico</strong>, y demás disposiciones aplicables. En estos casos, los
+          datos personales permanecerán bloqueados y únicamente podrán ser tratados para el cumplimiento de obligaciones
+          legales o requerimientos de autoridad competente.
+        </p>
+        <p class="legal-callout">
+          El procedimiento detallado (Anexo A) y el formato de solicitud para el ejercicio de derechos ARCO (Anexo B) vienen
+          en el <a href={pdf} download>PDF completo del aviso</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Revocación del consentimiento para el tratamiento de datos personales</h2>
+        <p>
+          El titular de los datos personales podrá revocar, en cualquier momento, el consentimiento que haya otorgado para
+          el tratamiento de sus datos personales, siempre que dicho tratamiento no sea necesario para el cumplimiento de
+          obligaciones legales, contractuales o derivadas de la relación médico-paciente.
+        </p>
+        <p>
+          La solicitud de revocación deberá presentarse por escrito o enviarse al correo electrónico
+          <a href={`mailto:${email}`}>{email}</a>, debiendo contener, cuando menos, la siguiente información:
+        </p>
+        <ol type="I">
+          <li>Nombre completo del titular.</li>
+          <li>Domicilio o correo electrónico para recibir notificaciones.</li>
+          <li>Documentos que acrediten su identidad o, en su caso, la representación legal correspondiente.</li>
+          <li>Descripción clara y precisa del consentimiento cuya revocación solicita.</li>
+        </ol>
+        <p>
+          La responsable analizará la solicitud y comunicará al titular la determinación correspondiente dentro de los
+          plazos previstos por la legislación aplicable.
+        </p>
+        <p>
+          La revocación del consentimiento <strong>no tendrá efectos retroactivos</strong>, por lo que no afectará la
+          licitud del tratamiento realizado con anterioridad a la fecha en que sea procedente.
+        </p>
+        <p>Asimismo, la revocación no procederá cuando el tratamiento de los datos personales resulte necesario para:</p>
+        <ol type="a">
+          <li>Dar cumplimiento a obligaciones previstas en la legislación aplicable.</li>
+          <li>Conservar el expediente clínico durante el plazo establecido por la <strong>Ley General de Salud</strong>, la <strong>NOM-004-SSA3-2012, Del expediente clínico</strong>, y demás disposiciones aplicables.</li>
+          <li>Atender requerimientos formulados por autoridades competentes.</li>
+          <li>Proteger la vida, la salud o la integridad física del titular o de terceros.</li>
+        </ol>
+        <p>
+          En los casos en que la revocación resulte procedente, la responsable cesará el tratamiento de los datos personales
+          para aquellas finalidades que dependan exclusivamente del consentimiento del titular, sin perjuicio de conservar
+          la información cuyo resguardo sea obligatorio conforme a la legislación vigente.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Medios para limitar el uso o divulgación de los datos personales</h2>
+        <p>
+          El titular de los datos personales podrá solicitar en cualquier momento la limitación del uso o divulgación de sus
+          datos personales cuando considere que su tratamiento excede las finalidades previstas en el presente Aviso de
+          Privacidad o cuando desee restringir su utilización para aquellas finalidades que legalmente sean susceptibles de
+          limitarse.
+        </p>
+        <p>
+          Para tal efecto, el titular podrá presentar su solicitud por escrito en el domicilio del consultorio o enviarla al
+          correo electrónico <a href={`mailto:${email}`}>{email}</a>, indicando de manera clara las limitaciones que
+          solicita respecto del tratamiento de sus datos personales.
+        </p>
+        <p>
+          La responsable analizará la solicitud y, cuando resulte procedente conforme a la legislación aplicable y no exista
+          impedimento legal o sanitario, adoptará las medidas necesarias para limitar el uso o divulgación de los datos
+          personales del titular.
+        </p>
+        <p>No obstante lo anterior, la responsable podrá continuar tratando los datos personales cuando ello resulte necesario para:</p>
+        <ol type="I">
+          <li>La prestación de los servicios médicos solicitados por el titular.</li>
+          <li>La integración, actualización, conservación y resguardo del expediente clínico electrónico.</li>
+          <li>El cumplimiento de obligaciones legales, fiscales, sanitarias o administrativas.</li>
+          <li>La atención de requerimientos formulados por autoridades competentes.</li>
+          <li>La protección de la vida, la salud o la integridad física del titular o de terceros.</li>
+        </ol>
+        <p>
+          La limitación del uso o divulgación de los datos personales no afectará el tratamiento que resulte indispensable
+          para las finalidades primarias descritas en el presente Aviso de Privacidad, ni impedirá el cumplimiento de las
+          obligaciones establecidas en la <strong>Ley General de Salud</strong>, la <strong>NOM-004-SSA3-2012, Del
+          expediente clínico</strong>, la <strong>Ley Federal de Protección de Datos Personales en Posesión de los
+          Particulares</strong> y demás disposiciones aplicables.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Modificaciones al aviso de privacidad</h2>
+        <p>
+          El presente Aviso de Privacidad podrá ser modificado, actualizado o complementado en cualquier momento por la
+          responsable, cuando ello resulte necesario para:
+        </p>
+        <ol type="I">
+          <li>Dar cumplimiento a reformas o modificaciones en la legislación aplicable.</li>
+          <li>Atender criterios emitidos por las autoridades competentes en materia de protección de datos personales o de prestación de servicios de atención médica.</li>
+          <li>Adecuar los procesos internos relacionados con la prestación de los servicios médicos.</li>
+          <li>Incorporar nuevos servicios, tecnologías, plataformas electrónicas o mecanismos para la atención de los pacientes.</li>
+          <li>Mejorar las medidas de seguridad implementadas para la protección de los datos personales.</li>
+        </ol>
+        <p>
+          Las modificaciones que, en su caso, se realicen al presente Aviso de Privacidad estarán disponibles para su
+          consulta en el domicilio del consultorio, donde podrá solicitarse una copia impresa de la versión vigente.
+        </p>
+        <p>
+          Cuando las modificaciones impliquen cambios sustanciales en las finalidades para las cuales fueron recabados los
+          datos personales o en las condiciones de su tratamiento, la responsable adoptará las medidas que resulten
+          procedentes conforme a la <strong>Ley Federal de Protección de Datos Personales en Posesión de los
+          Particulares</strong> para informar oportunamente a los titulares.
+        </p>
+        <p>
+          La fecha de la última actualización se señalará al final del presente Aviso de Privacidad, a efecto de que el
+          titular pueda identificar la versión vigente del documento.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Autoridad competente y legislación aplicable</h2>
+        <p>
+          El tratamiento de los datos personales se llevará a cabo de conformidad con lo dispuesto por la legislación
+          mexicana vigente en materia de protección de datos personales y prestación de servicios de atención médica.
+        </p>
+        <p>
+          En caso de que el titular considere que su derecho a la protección de datos personales ha sido vulnerado por
+          alguna conducta u omisión de la responsable, o presuma cualquier incumplimiento a las disposiciones previstas en la
+          <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</strong>, podrá acudir ante
+          la autoridad competente para hacer valer los derechos que estime procedentes.
+        </p>
+        <p>
+          La autoridad garante en materia de protección de datos personales en posesión de los particulares es la
+          <strong>Secretaría Anticorrupción y Buen Gobierno</strong>, a través del órgano competente en materia de
+          protección de datos personales, en términos de la legislación vigente.
+        </p>
+        <p>Asimismo, para todo lo no previsto en el presente Aviso de Privacidad serán aplicables, entre otras, las siguientes disposiciones:</p>
         <ul>
-          <li>Agendar, confirmar y dar seguimiento a tus citas.</li>
-          <li>Realizar la valoración médica, integrar tu expediente clínico y brindarte el tratamiento.</li>
-          <li>Dar seguimiento a tu evolución y atender dudas o urgencias.</li>
-          <li>Emitir comprobantes fiscales cuando los solicites.</li>
+          <li>Constitución Política de los Estados Unidos Mexicanos.</li>
+          <li>Ley General de Salud.</li>
+          <li>Reglamento de la Ley General de Salud en Materia de Prestación de Servicios de Atención Médica.</li>
+          <li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</li>
+          <li>Reglamento de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</li>
+          <li>Lineamientos del Aviso de Privacidad emitidos por la autoridad competente.</li>
+          <li>NOM-004-SSA3-2012, Del expediente clínico, o la disposición que la sustituya.</li>
+          <li>Demás disposiciones legales y administrativas aplicables.</li>
         </ul>
-        <p><strong>Finalidades adicionales</strong> (no son necesarias para atenderte):</p>
-        <ul>
-          <li>Enviarte información sobre tratamientos, promociones o recordatorios.</li>
-          <li>
-            Publicar fotografías de antes y después en este sitio o en redes sociales, únicamente si lo autorizas por
-            escrito y sin mostrar datos que te identifiquen, salvo que lo autorices expresamente.
-          </li>
-        </ul>
-        <p>
-          Si no deseas que tus datos se usen para las finalidades adicionales, puedes indicarlo en cualquier momento por
-          los medios del punto 6. Negarte no afectará tu atención médica.
-        </p>
       </section>
 
       <section>
-        <h2>4. Formularios de este sitio</h2>
+        <h2>11. Vigencia del aviso de privacidad</h2>
         <p>
-          Los formularios de contacto y agenda de este sitio <strong>no almacenan tu información</strong>: únicamente
-          preparan un mensaje que tú decides enviar por WhatsApp. A partir de ese momento, el mensaje también queda sujeto
-          a las políticas de privacidad de WhatsApp.
+          El presente <strong>Aviso de Privacidad Integral</strong> entra en vigor a partir de la fecha de su publicación y
+          permanecerá vigente hasta en tanto no sea sustituido por una versión posterior emitida por la responsable.
         </p>
+        <p>
+          El tratamiento de los datos personales recabados con anterioridad a la emisión de nuevas versiones continuará
+          sujetándose a las disposiciones legales aplicables y a las finalidades para las cuales fueron obtenidos, salvo que
+          el titular ejerza alguno de los derechos previstos por la legislación en materia de protección de datos personales
+          y ello resulte legalmente procedente.
+        </p>
+        <p>
+          La versión vigente del presente Aviso de Privacidad estará disponible para consulta en el domicilio del
+          consultorio y podrá ser solicitada en cualquier momento por los titulares de los datos personales.
+        </p>
+        <p class="legal-date"><strong>Fecha de última actualización:</strong> 1 de agosto de 2026.</p>
       </section>
 
       <section>
-        <h2>5. Transferencias de datos</h2>
+        <h2>Declaración de la responsable</h2>
         <p>
-          Tus datos no se venden ni se comparten con terceros para fines comerciales. Solo podrán transferirse, sin
-          requerir tu consentimiento, en los casos previstos por la ley, por ejemplo: a laboratorios o especialistas
-          cuando sea necesario para tu diagnóstico o tratamiento, al hospital donde se ubica el consultorio, o a
-          autoridades competentes que lo requieran.
+          La <strong>Dra. Tania Jazmín Álvarez de Anda</strong>, en su carácter de responsable del tratamiento de los datos
+          personales, manifiesta su compromiso de tratar la información personal de los pacientes con estricto apego a los
+          principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y
+          responsabilidad, garantizando en todo momento la confidencialidad de la información clínica y el respeto a los
+          derechos de los titulares, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los
+          Particulares, la Ley General de Salud, la NOM-004-SSA3-2012, Del expediente clínico, y demás disposiciones legales
+          aplicables.
         </p>
       </section>
 
-      <section>
-        <h2>6. Derechos ARCO y revocación del consentimiento</h2>
-        <p>
-          Tienes derecho a <strong>Acceder</strong> a tus datos, <strong>Rectificarlos</strong> si son inexactos,
-          <strong>Cancelarlos</strong> y <strong>Oponerte</strong> a su uso para fines específicos. También puedes
-          revocar tu consentimiento o limitar el uso de tus datos.
-        </p>
-        <p>
-          Para ejercer estos derechos envía tu solicitud por WhatsApp al
-          <a href={site.whatsappUrl} target="_blank" rel="noreferrer">{site.whatsappDisplay}</a> o entrégala en el
-          consultorio. Incluye tu nombre, un medio para responderte, una copia de tu identificación y la descripción de
-          lo que solicitas. Te responderemos en un plazo máximo de 20 días hábiles.
-        </p>
-        <p>
-          El expediente clínico debe conservarse por el tiempo que establece la NOM-004-SSA3-2012, por lo que algunos
-          datos no podrán cancelarse antes de ese plazo.
-        </p>
-      </section>
-
-      <section>
-        <h2>7. Cookies y tecnologías de rastreo</h2>
-        <p>
-          Este sitio no utiliza cookies de publicidad ni de rastreo. Únicamente puede guardar preferencias técnicas en tu
-          propio navegador para que la página funcione correctamente.
-        </p>
-      </section>
-
-      <section>
-        <h2>8. Cambios a este aviso</h2>
-        <p>
-          Este aviso puede actualizarse por cambios legales o en nuestros servicios. La versión vigente siempre estará
-          publicada en esta página, con su fecha de actualización.
-        </p>
-      </section>
+      <aside class="legal-contact">
+        <p><strong>Consultorio 6-A</strong></p>
+        <p>Av. Central Guillermo González Camarena 911, piso 4, consultorio 6-A, Poniente, C.P. 45136, Zapopan, Jalisco.</p>
+        <p>Tel. 33 1094 7178 · <a href={`mailto:${email}`}>{email}</a></p>
+        <a class="button button-gold legal-download" href={pdf} download>
+          Descargar PDF completo con anexos <span aria-hidden="true">↓</span>
+        </a>
+      </aside>
     </article>
   </main>
   <SiteFooter />
