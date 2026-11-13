@@ -74,6 +74,8 @@ export type Service = {
   title: string;
   icon: TreatmentIcon;
   summary: string;
+  /** Ancla a una sección con más información, si existe. */
+  details?: string;
 };
 
 /** Servicios que ofrece la doctora (sección "Servicios" dentro de Tratamientos). */
@@ -97,6 +99,7 @@ export const services: Service[] = [
     title: "Toxina botulínica (Botox) para hiperhidrosis",
     icon: "syringe",
     summary: "Tratamiento médico para la sudoración excesiva en axilas, manos o pies.",
+    details: "#hiperhidrosis",
   },
   {
     title: "Relleno de labios con ácido hialurónico",

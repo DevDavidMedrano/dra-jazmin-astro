@@ -8,6 +8,7 @@ import { withBase } from "../../data/paths";
 import Icon from "../Icon.astro";
 import InnerHero from "../InnerHero.astro";
 import TreatmentStrip from "../TreatmentStrip.astro";
+import HyperhidrosisSection from "./HyperhidrosisSection.astro";
 import { services, site, treatments } from "../../data/site";
 
 /** Fotografía de cada tarjeta; las que no tengan foto muestran el ícono. */
@@ -116,10 +117,14 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
               >
                 Pedir información <span aria-hidden="true">→</span>
               </a>
+              {service.details && (
+                <a class="service-details" href={service.details}>Ver detalles</a>
+              )}
             </div>
           </li>
         ))
       }
     </ul>
   </section>
+  <HyperhidrosisSection />
 </div>

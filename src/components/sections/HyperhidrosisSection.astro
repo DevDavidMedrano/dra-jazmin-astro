@@ -1,0 +1,79 @@
+---
+/**
+ * Toxina botulínica para hiperhidrosis — adaptado del anuncio de redes sociales
+ * (DRA/15.PNG). Las dosis del anuncio no se publican aquí: se definen en la
+ * valoración médica y la publicidad de servicios de salud debe evitar indicaciones
+ * de dosis (COFEPRIS).
+ */
+import { site } from "../../data/site";
+import axilas from "../../assets/hiperhidrosis/axilas.webp";
+import palmas from "../../assets/hiperhidrosis/palmas.webp";
+import plantas from "../../assets/hiperhidrosis/plantas.webp";
+
+const zones = [
+  { title: "Axilas", pos: "center 35%", img: axilas, alt: "Axila con los puntos de aplicación marcados", text: "Se aplican pequeñas microinyecciones distribuidas en el área de la axila donde se concentra el sudor." },
+  { title: "Palmas", pos: "center", img: palmas, alt: "Palmas de las manos con los puntos de aplicación marcados", text: "Se aplican múltiples puntos distribuidos en toda la palma de la mano." },
+  { title: "Plantas", pos: "center 12%", img: plantas, alt: "Plantas de los pies con los puntos de aplicación marcados", text: "Se aplican múltiples puntos en toda la planta del pie." },
+];
+
+const faqs = [
+  { q: "¿Cuándo empieza a hacer efecto?", a: "En general, entre 3 y 7 días después de la aplicación." },
+  { q: "¿Cuánto dura?", a: "El efecto suele durar de 4 a 7 meses, aunque puede variar en cada persona." },
+  { q: "¿Es seguro?", a: "Es un procedimiento mínimamente invasivo y bien tolerado cuando lo realiza un médico capacitado, después de una valoración." },
+];
+
+const whatsapp = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent("Hola, me gustaría información sobre la toxina botulínica (Botox) para hiperhidrosis")}`;
+---
+
+<section class="hh" id="hiperhidrosis" aria-labelledby="hh-heading">
+  <header class="hh-head">
+    <div>
+      <p class="hh-kicker">Toxina botulínica (Botox) para</p>
+      <h2 id="hh-heading">Hiperhidrosis</h2>
+      <p class="hh-tagline">Menos sudor <span aria-hidden="true">|</span> Más confianza</p>
+    </div>
+    <p class="hh-intro">
+      La toxina botulínica bloquea la señal nerviosa que estimula la producción de sudor, lo que ofrece un alivio
+      efectivo y temporal para la hiperhidrosis focal: la sudoración excesiva en zonas específicas del cuerpo.
+    </p>
+  </header>
+
+  <ul class="hh-zones">
+    {zones.map((z) => (
+      <li class="hh-zone">
+        <div class="hh-zone-media">
+          <img src={z.img.src} alt={z.alt} width={z.img.width} height={z.img.height} loading="lazy" style={`object-position: ${z.pos}`} />
+          <span class="hh-zone-tag">{z.title}</span>
+        </div>
+        <p>{z.text}</p>
+      </li>
+    ))}
+  </ul>
+  <p class="hh-dose-note">
+    La dosis y la técnica se definen en tu valoración médica, según la zona a tratar y la severidad de la sudoración.
+  </p>
+
+  <div class="hh-info">
+    {faqs.map((f) => (
+      <div class="hh-faq">
+        <h3>{f.q}</h3>
+        <p>{f.a}</p>
+      </div>
+    ))}
+    <div class="hh-faq hh-important">
+      <h3>Importante</h3>
+      <ul>
+        <li>La dosis y la técnica pueden ajustarse según tus necesidades y la zona a tratar.</li>
+        <li>En algunos casos puede haber molestias leves, como sensibilidad, enrojecimiento o moretones temporales.</li>
+        <li>No es un tratamiento definitivo, pero puede mejorar mucho tu calidad de vida.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hh-cta">
+    <p class="hh-script">Tu comodidad también es parte de tu bienestar.</p>
+    <a class="button button-gold" href={whatsapp} target="_blank" rel="noreferrer">
+      Pedir información por WhatsApp <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>

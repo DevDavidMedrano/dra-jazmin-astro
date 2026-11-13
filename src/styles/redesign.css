@@ -2980,3 +2980,53 @@ html {
 .legal-body .legal-contact a:not(.button) { color: var(--gold-light, #ecd497); }
 .legal-body .legal-contact .legal-download { color: var(--petrol-900, #0b3d31); text-decoration: none; margin-top: 18px; }
 @media (max-width: 600px) { .legal-meta { gap: 12px 24px; } .legal-body ol { padding-left: 1.9em; } }
+
+/* ---------- Toxina botulínica para hiperhidrosis ---------- */
+.service-item a.service-details { color: var(--teal-dark, #a8843a); margin-left: 16px; }
+.hh { background: var(--ivory, #f3f1ea); padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 72px); }
+.hh > * { margin-inline: auto; max-width: 1180px; }
+.hh-head {
+  align-items: center;
+  background: radial-gradient(120% 160% at 90% 0%, #115443 0%, #0b3d31 50%, #06291f 100%);
+  border-radius: 20px;
+  color: #fff;
+  display: grid;
+  gap: 24px 48px;
+  grid-template-columns: 1.1fr 1fr;
+  padding: clamp(28px, 4vw, 48px);
+}
+.hh-kicker, .hh-tagline { color: var(--gold-light, #ecd497); font-size: .8rem; font-weight: 600; letter-spacing: .22em; margin: 0; text-transform: uppercase; }
+.hh-tagline span { margin: 0 .8em; opacity: .6; }
+.hh-head h2 { color: #fff; font-family: var(--display-font); font-size: clamp(2.3rem, 5.6vw, 4.2rem); font-weight: 500; letter-spacing: .02em; line-height: 1.05; margin: 8px 0 12px; text-transform: uppercase; }
+.hh-intro { border-left: 1px solid rgba(236, 212, 151, .5); color: rgba(255,255,255,.88); font-size: 1.02rem; line-height: 1.7; margin: 0; padding-left: clamp(18px, 3vw, 40px); }
+.hh-zones { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); list-style: none; margin-top: 28px; padding: 0; }
+.hh-zone { background: #fff; border: 1px solid rgba(11,61,49,.1); border-radius: 16px; box-shadow: var(--shadow-sm); overflow: hidden; }
+.hh-zone-media { background: #111; position: relative; }
+.hh-zone-media img { display: block; height: 260px; object-fit: cover; width: 100%; }
+.hh-zone-tag { background: rgba(243, 241, 234, .92); border-radius: 10px; color: var(--petrol-900, #0b3d31); font-size: .85rem; font-weight: 700; left: 14px; letter-spacing: .16em; padding: 7px 16px; position: absolute; text-transform: uppercase; top: 14px; }
+.hh-zone p { color: var(--graphite); font-size: .95rem; line-height: 1.6; margin: 0; padding: 16px 18px 20px; }
+.hh-dose-note { color: var(--graphite); font-size: .92rem; font-style: italic; margin-top: 16px; text-align: center; }
+.hh-info { background: var(--petrol-950, #06291f); border-radius: 20px; color: #fff; display: grid; gap: 0; grid-template-columns: repeat(3, 1fr) 1.5fr; margin-top: 28px; padding: clamp(24px, 3vw, 36px) clamp(12px, 2vw, 20px); }
+.hh-faq { padding: 6px clamp(14px, 2vw, 26px); }
+.hh-faq + .hh-faq { border-left: 1px solid rgba(236, 212, 151, .25); }
+.hh-faq h3 { color: var(--gold-light, #ecd497); font-family: var(--body-font); font-size: .85rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 10px; text-transform: uppercase; }
+.hh-faq p, .hh-faq li { color: rgba(255,255,255,.86); font-size: .95rem; line-height: 1.6; margin: 0; }
+.hh-faq ul { margin: 0; padding-left: 1.1em; }
+.hh-faq li + li { margin-top: 8px; }
+.hh-faq li::marker { color: var(--gold, #d1ab5a); }
+.hh-cta { align-items: center; display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; margin-top: 28px; }
+.hh-script { color: var(--teal-dark, #a8843a); font-family: var(--display-font); font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-style: italic; margin: 0; }
+@media (max-width: 1000px) {
+  .hh-info { grid-template-columns: 1fr 1fr; row-gap: 22px; }
+  .hh-faq:nth-child(3) { border-left: 0; }
+  .hh-important { grid-column: 1 / -1; border-left: 0 !important; border-top: 1px solid rgba(236, 212, 151, .25); padding-top: 22px; }
+}
+@media (max-width: 760px) {
+  .hh-head { grid-template-columns: 1fr; }
+  .hh-intro { border-left: 0; border-top: 1px solid rgba(236, 212, 151, .5); padding: 18px 0 0; }
+  .hh-zones { grid-template-columns: 1fr; }
+  .hh-zone-media img { height: 240px; }
+  .hh-info { grid-template-columns: 1fr; }
+  .hh-faq + .hh-faq { border-left: 0; border-top: 1px solid rgba(236, 212, 151, .25); padding-top: 18px; }
+  .hh-cta { flex-direction: column; text-align: center; }
+}
