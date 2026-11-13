@@ -6,7 +6,7 @@ import GoogleReviews from "../GoogleReviews.astro";
 import HowToArrive from "../HowToArrive.astro";
 
 /** Mapa de Google en vista satelital (t=k); no necesita clave de API. */
-const mapEmbed = "https://maps.google.com/maps?q=" + encodeURIComponent("Hospital Real San José Valle Real, Av. Central Guillermo González Camarena 911, Zapopan, Jalisco") + "&t=k&z=17&ie=UTF8&output=embed";
+const mapEmbed = "https://maps.google.com/maps?q=" + encodeURIComponent("Hospital Real San José Valle Real, Av. Central 911, Residencial Poniente, 45136 Zapopan, Jal.") + "&t=k&z=17&ie=UTF8&output=embed";
 import { withBase } from "../../data/paths";
 ---
 
@@ -107,9 +107,28 @@ import { withBase } from "../../data/paths";
                 <circle cx="12" cy="10" r="2.5"></circle>
               </svg>
             </span>
-            <span><strong>Ubicación</strong><small>{site.clinic}</small></span>
+            <span><strong>Ubicación</strong><small>{site.clinic}<br />{site.address.join(", ")}</small></span>
             <b aria-hidden="true">↗</b>
           </a>
+          <a href={site.instagramUrl} target="_blank" rel="noreferrer">
+            <span class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+              </svg>
+            </span>
+            <span><strong>Instagram</strong><small>{site.instagramHandle}</small></span>
+            <b aria-hidden="true">↗</b>
+          </a>
+          {site.facebookUrl && (
+            <a href={site.facebookUrl} target="_blank" rel="noreferrer">
+              <span class="info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8Z"></path></svg>
+              </span>
+              <span><strong>Facebook</strong><small>{site.facebookName}</small></span>
+              <b aria-hidden="true">↗</b>
+            </a>
+          )}
           <div>
             <span class="info-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">

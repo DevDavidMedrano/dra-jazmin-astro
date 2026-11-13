@@ -9,7 +9,12 @@ export const site = {
     "https://wa.me/523310947178?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20valoraci%C3%B3n%20capilar.",
   instagramUrl: "https://www.instagram.com/drajazminalvarez",
   instagramHandle: "@drajazminalvarez",
-  clinic: "Hospital Real San José Valle Real, Piso 4, Consultorio 6-A",
+  /** Página de Facebook. Mientras esté vacío, el botón de Facebook no se muestra. */
+  facebookUrl: "",
+  facebookName: "Dra. Jazmín Álvarez",
+  clinic: "Hospital Real San José, Valle Real. Consultorio 6A, Piso 4",
+  /** Domicilio completo, una línea por renglón. */
+  address: ["Av. Central No. 911", "Col. Residencial Poniente", "C.P. 45136, Zapopan, Jal."],
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Hospital%20Real%20San%20Jos%C3%A9%20Valle%20Real%20Zapopan",
 };
