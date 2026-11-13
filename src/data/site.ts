@@ -10,7 +10,7 @@ export const site = {
   instagramUrl: "https://www.instagram.com/drajazminalvarez",
   instagramHandle: "@drajazminalvarez",
   /** Página de Facebook. Mientras esté vacío, el botón de Facebook no se muestra. */
-  facebookUrl: "",
+  facebookUrl: "https://www.facebook.com/mannlichhair/",
   facebookName: "Dra. Jazmín Álvarez",
   clinic: "Hospital Real San José, Valle Real. Consultorio 6A, Piso 4",
   /** Domicilio completo, una línea por renglón. */
