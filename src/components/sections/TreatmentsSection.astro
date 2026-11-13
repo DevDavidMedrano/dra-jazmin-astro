@@ -8,7 +8,7 @@ import { withBase } from "../../data/paths";
 import Icon from "../Icon.astro";
 import InnerHero from "../InnerHero.astro";
 import TreatmentStrip from "../TreatmentStrip.astro";
-import { treatments } from "../../data/site";
+import { services, site, treatments } from "../../data/site";
 
 /** Fotografía de cada tarjeta; las que no tengan foto muestran el ícono. */
 const cardPhotos: Record<string, { src: string; alt: string; position: string }> = {
@@ -95,5 +95,31 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
         })
       }
     </div>
+  </section>
+  <section class="services-list" id="servicios" aria-labelledby="services-heading">
+    <div class="section-heading compact-heading">
+      <p class="eyebrow">Servicios</p>
+      <h2 id="services-heading">Lo que la doctora puede hacer por ti</h2>
+    </div>
+    <ul class="services-grid">
+      {
+        services.map((service) => (
+          <li class="service-item">
+            <span class="service-icon" aria-hidden="true"><Icon name={service.icon} /></span>
+            <div>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <a
+                href={`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(`Hola, me gustaría información sobre: ${service.title}`)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pedir información <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </div>

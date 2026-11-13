@@ -69,3 +69,48 @@ export const stats = {
     { icon: "star", value: "Alta satisfacción", label: "de resultados" },
   ],
 } as const;
+
+export type Service = {
+  title: string;
+  icon: TreatmentIcon;
+  summary: string;
+};
+
+/** Servicios que ofrece la doctora (sección "Servicios" dentro de Tratamientos). */
+export const services: Service[] = [
+  {
+    title: "Consulta de tricología y medicina estética",
+    icon: "sparkles",
+    summary: "Valoración médica del cabello, el cuero cabelludo y la piel para definir el tratamiento adecuado para ti.",
+  },
+  {
+    title: "Restauración e injerto capilar",
+    icon: "hair",
+    summary: "Evaluación de la zona donante y del patrón de pérdida para planear un injerto con resultados naturales.",
+  },
+  {
+    title: "Toxina botulínica (Botox) para rejuvenecimiento facial",
+    icon: "face",
+    summary: "Suaviza las líneas de expresión de frente, entrecejo y patas de gallo, cuidando la naturalidad del rostro.",
+  },
+  {
+    title: "Toxina botulínica (Botox) para hiperhidrosis",
+    icon: "syringe",
+    summary: "Tratamiento médico para la sudoración excesiva en axilas, manos o pies.",
+  },
+  {
+    title: "Relleno de labios con ácido hialurónico",
+    icon: "syringe",
+    summary: "Aporta volumen, hidratación y definición a los labios, respetando tus proporciones.",
+  },
+  {
+    title: "Dermapen para rejuvenecimiento facial",
+    icon: "face",
+    summary: "Microagujas que estimulan el colágeno para mejorar la textura, los poros y las cicatrices leves.",
+  },
+  {
+    title: "Yellow peel",
+    icon: "sparkles",
+    summary: "Peeling que ayuda a unificar el tono, reducir manchas y devolver luminosidad a la piel.",
+  },
+];
