@@ -174,3 +174,18 @@ export const googleReviews = {
     },
   ],
 };
+
+/** Cédula y registros profesionales de la doctora (Sobre mí y pie de página). */
+export const credentials = {
+  fullName: "Dra. Tania Jazmín Álvarez de Anda",
+  cedula: "9848556",
+  cedulaSource: "DGP · Universidad de Guadalajara",
+  items: [
+    { label: "Cédula profesional", value: "9848556", detail: "DGP · Universidad de Guadalajara" },
+    { label: "Tricología", value: "20211361", detail: "Registro de especialidad" },
+    { label: "Medicina Estética", value: "1416CEECB0005", detail: "STPS" },
+    { label: "COFEPRIS", value: "2614102002A00811", detail: "Registro sanitario" },
+  ],
+  cofepris: "2614102002A00811",
+  verifyUrl: "https://cedulaprofesional.sep.gob.mx/",
+};

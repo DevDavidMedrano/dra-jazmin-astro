@@ -1,6 +1,6 @@
 ---
 import { withBase } from "../data/paths";
-import { site } from "../data/site";
+import { credentials, site } from "../data/site";
 import BrandLogo from "./BrandLogo.astro";
 ---
 
@@ -55,7 +55,8 @@ import BrandLogo from "./BrandLogo.astro";
 
   <div class="footer-legal">
     <span>© 2026 Dra. Jazmín Álvarez.</span>
-    <span data-footer-cofepris>Permiso de publicidad COFEPRIS: pendiente de capturar</span>
+    <span>{credentials.fullName} · Céd. Prof. {credentials.cedula}</span>
+    <span data-footer-cofepris>COFEPRIS: {credentials.cofepris}</span>
     <span>La información del sitio no sustituye una valoración médica.</span>
     <a href={withBase("/admin/login/")}>Acceso administrativo</a>
     <a class="footer-privacy" href={withBase("/aviso-de-privacidad/")}>Aviso de privacidad</a>

@@ -1,6 +1,7 @@
 ---
 import { withBase } from "../../data/paths";
 import InnerHero from "../InnerHero.astro";
+import { credentials } from "../../data/site";
 ---
 
 <div class="about-page" id="sobre-mi">
@@ -30,6 +31,23 @@ import InnerHero from "../InnerHero.astro";
       coherente contigo. Cuando una opción no es adecuada, también es importante
       decirlo con claridad.
     </p>
+  </section>
+
+  <section class="credentials" aria-labelledby="credentials-heading">
+    <p class="credentials-eyebrow">Formación y registros</p>
+    <h2 id="credentials-heading">{credentials.fullName}</h2>
+    <ul class="credentials-grid">
+      {credentials.items.map((c) => (
+        <li>
+          <span class="credentials-label">{c.label}</span>
+          <strong>{c.value}</strong>
+          <small>{c.detail}</small>
+        </li>
+      ))}
+    </ul>
+    <a class="credentials-verify" href={credentials.verifyUrl} target="_blank" rel="noreferrer">
+      Verificar cédula en el Registro Nacional de Profesionistas (SEP) <span aria-hidden="true">↗</span>
+    </a>
   </section>
 </div>
 

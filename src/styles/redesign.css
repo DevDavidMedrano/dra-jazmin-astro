@@ -3101,3 +3101,42 @@ html {
 .greview p { color: var(--charcoal); font-size: .98rem; line-height: 1.6; margin: 14px 0 0; }
 .greviews-link { border: 1.5px solid var(--petrol-900, #0b3d31); border-radius: 999px; color: var(--petrol-900, #0b3d31); display: inline-flex; font-size: .9rem; font-weight: 600; gap: .5em; margin-top: 30px; padding: 9px 22px; transition: background 220ms ease, color 220ms ease; }
 .greviews-link:hover { background: var(--petrol-900, #0b3d31); color: #fff; }
+
+/* ---------- Cédula y registros (Sobre mí) ---------- */
+.credentials { background: var(--petrol-900, #0b3d31); color: #fff; padding: clamp(44px, 6vw, 76px) clamp(16px, 4vw, 56px); text-align: center; }
+.credentials-eyebrow { align-items: center; color: var(--gold, #d1ab5a); display: inline-flex; font-size: .8rem; font-weight: 700; gap: 16px; letter-spacing: .3em; margin: 0; text-transform: uppercase; }
+.credentials-eyebrow::before, .credentials-eyebrow::after { background: var(--gold, #d1ab5a); content: ""; height: 2px; width: 44px; }
+.credentials h2 { color: #fff; font-family: var(--display-font); font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 500; margin: 10px 0 28px; }
+.credentials-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0 auto; max-width: 1100px; padding: 0; }
+.credentials-grid li { background: rgba(255,255,255,.06); border: 1px solid rgba(236,212,151,.3); border-radius: 14px; display: flex; flex-direction: column; gap: 6px; padding: 20px 16px; }
+.credentials-label { color: var(--gold-light, #ecd497); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.credentials-grid strong { color: #fff; font-size: 1.15rem; letter-spacing: .04em; overflow-wrap: anywhere; }
+.credentials-grid small { color: rgba(255,255,255,.7); font-size: .85rem; }
+.credentials-verify { border: 1.5px solid var(--gold, #d1ab5a); border-radius: 999px; color: var(--gold-light, #ecd497); display: inline-flex; font-size: .88rem; font-weight: 600; gap: .5em; margin-top: 26px; padding: 9px 22px; transition: background 220ms ease, color 220ms ease; }
+.credentials-verify:hover { background: var(--gold, #d1ab5a); color: var(--petrol-950, #06291f); }
+@media (max-width: 900px) { .credentials-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .credentials-grid { grid-template-columns: 1fr; } .credentials-eyebrow::before, .credentials-eyebrow::after { width: 22px; } .credentials-eyebrow { gap: 10px; letter-spacing: .2em; } }
+
+/* ---------- Mapa satelital (Contacto) ---------- */
+.map-embed { border-radius: 18px; box-shadow: var(--shadow-md); min-height: 300px; overflow: hidden; position: relative; }
+.map-embed iframe { border: 0; display: block; height: 100%; min-height: 300px; width: 100%; }
+.map-embed-link { align-items: center; background: var(--petrol-900, #0b3d31); border-radius: 999px; bottom: 14px; box-shadow: 0 8px 20px rgba(0,0,0,.25); color: #fff; display: inline-flex; font-size: .85rem; font-weight: 600; gap: .5em; left: 14px; padding: 8px 16px; position: absolute; }
+.map-embed-link b { color: var(--gold-light, #ecd497); }
+.map-embed-link:hover { background: var(--gold, #d1ab5a); color: var(--petrol-950, #06291f); }
+
+/* ---------- ¿Cómo llegar? ---------- */
+.arrive { background: #fff; padding: clamp(44px, 6vw, 80px) clamp(16px, 4vw, 56px); }
+.arrive-head { text-align: center; }
+.arrive-eyebrow { align-items: center; color: var(--petrol-900, #0b3d31); display: inline-flex; font-size: .8rem; font-weight: 700; gap: 16px; letter-spacing: .24em; margin: 0; text-transform: uppercase; }
+.arrive-eyebrow::before, .arrive-eyebrow::after { background: var(--gold, #d1ab5a); content: ""; height: 2px; width: 40px; }
+.arrive-head h2 { color: var(--petrol-900, #0b3d31); font-family: var(--display-font); font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; margin: 10px 0 0; }
+.arrive-head h2 em { color: var(--gold, #d1ab5a); }
+.arrive-steps { counter-reset: none; display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 34px auto 0; max-width: 1240px; padding: 0; }
+.arrive-step { background: var(--cream, #faf8f3); border: 1px solid rgba(11,61,49,.08); border-radius: 16px; box-shadow: var(--shadow-sm); overflow: hidden; }
+.arrive-media { position: relative; }
+.arrive-media img { aspect-ratio: 16 / 10; display: block; height: auto; object-fit: cover; width: 100%; }
+.arrive-num { align-items: center; background: var(--petrol-900, #0b3d31); border: 2px solid var(--gold, #d1ab5a); border-radius: 50%; bottom: -22px; color: var(--gold-light, #ecd497); display: inline-flex; font-family: var(--display-font); font-size: 1.3rem; font-weight: 600; height: 44px; justify-content: center; left: 18px; position: absolute; width: 44px; }
+.arrive-step p { color: var(--charcoal); font-size: .95rem; line-height: 1.6; margin: 0; padding: 32px 18px 20px; }
+.arrive-step strong { color: var(--petrol-900, #0b3d31); }
+@media (max-width: 1100px) { .arrive-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .arrive-steps { grid-template-columns: 1fr; } .arrive-eyebrow { font-size: .7rem; gap: 10px; letter-spacing: .16em; } .arrive-eyebrow::before, .arrive-eyebrow::after { width: 20px; } }

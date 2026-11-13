@@ -87,7 +87,7 @@ const defaultSchedule: WeeklySchedule = {
 const defaultSettings: DemoSettings = {
   schedule: defaultSchedule,
   hiddenHeroPhotos: [],
-  cofepris: "Permiso de publicidad COFEPRIS: pendiente de capturar",
+  cofepris: "COFEPRIS: 2614102002A00811",
   profile: {
     name: "Dra. Jazmín Álvarez",
     headline: "Ciencia, precisión y atención cercana",
@@ -129,7 +129,7 @@ export const getDemoSettings = (): DemoSettings => {
   return {
     schedule,
     hiddenHeroPhotos: stored.hiddenHeroPhotos ?? [],
-    cofepris: stored.cofepris ?? defaultSettings.cofepris,
+    cofepris: stored.cofepris && !stored.cofepris.includes("pendiente") ? stored.cofepris : defaultSettings.cofepris,
     profile: {
       ...defaultSettings.profile,
       ...(stored.profile ?? {}),

@@ -1,0 +1,32 @@
+---
+/** "¿Cómo llegar?" — pasos dentro del Hospital Real San José (imagen DRA/Cambios/mapa). */
+import paso1 from "../assets/llegar/paso-1.webp";
+import paso2 from "../assets/llegar/paso-2.webp";
+import paso3 from "../assets/llegar/paso-3.webp";
+import paso4 from "../assets/llegar/paso-4.webp";
+
+const steps = [
+  { img: paso1, alt: "Entrada al estacionamiento del Hospital Real San José", text: "Al ingresar al hospital por el estacionamiento, estaciónate en cualquiera de los sótanos, en el área de pacientes y visitas." },
+  { img: paso2, alt: "Elevadores Zona Azul en el estacionamiento", text: "Toma el elevador <strong>Zona Azul</strong> y presiona <strong>P</strong> (nivel plaza)." },
+  { img: paso3, alt: "Vestíbulo del hospital con los elevadores a consultorios", text: "Después, dirígete a los elevadores que están del lado izquierdo (<strong>elevadores a consultorios</strong>) y presiona el <strong>piso 4</strong>." },
+  { img: paso4, alt: "Sala de espera del piso 4", text: "Al salir del elevador en el piso 4, camina hacia la izquierda hasta el <strong>consultorio 6-A</strong>." },
+];
+---
+
+<section class="arrive" id="como-llegar" aria-labelledby="arrive-heading">
+  <div class="arrive-head">
+    <p class="arrive-eyebrow">Hospital Real San José Valle Real</p>
+    <h2 id="arrive-heading">¿Cómo <em>llegar</em>?</h2>
+  </div>
+  <ol class="arrive-steps">
+    {steps.map((s, i) => (
+      <li class="arrive-step">
+        <div class="arrive-media">
+          <img src={s.img.src} alt={s.alt} width={s.img.width} height={s.img.height} loading="lazy" />
+          <span class="arrive-num" aria-hidden="true">{i + 1}</span>
+        </div>
+        <p set:html={s.text} />
+      </li>
+    ))}
+  </ol>
+</section>

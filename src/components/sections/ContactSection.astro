@@ -3,6 +3,10 @@ import { site } from "../../data/site";
 import BrandLogo from "../BrandLogo.astro";
 import InnerHero from "../InnerHero.astro";
 import GoogleReviews from "../GoogleReviews.astro";
+import HowToArrive from "../HowToArrive.astro";
+
+/** Mapa de Google en vista satelital (t=k); no necesita clave de API. */
+const mapEmbed = "https://maps.google.com/maps?q=" + encodeURIComponent("Hospital Real San José Valle Real, Av. Central Guillermo González Camarena 911, Zapopan, Jalisco") + "&t=k&z=17&ie=UTF8&output=embed";
 import { withBase } from "../../data/paths";
 ---
 
@@ -118,16 +122,21 @@ import { withBase } from "../../data/paths";
         </div>
       </section>
 
-      <a class="map-card" href={site.mapsUrl} target="_blank" rel="noreferrer">
-        <span class="map-eyebrow">Hospital Real San José</span>
-        <span class="map-road road-one" aria-hidden="true"></span>
-        <span class="map-road road-two" aria-hidden="true"></span>
-        <span class="map-road road-three" aria-hidden="true"></span>
-        <span class="map-pin" aria-hidden="true"><i></i></span>
-        <span class="map-label">Abrir ubicación en Google Maps <b aria-hidden="true">↗</b></span>
-      </a>
+      <div class="map-embed">
+        <iframe
+          title="Mapa satelital del Hospital Real San José Valle Real"
+          src={mapEmbed}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+        <a class="map-embed-link" href={site.mapsUrl} target="_blank" rel="noreferrer">
+          Abrir en Google Maps <b aria-hidden="true">↗</b>
+        </a>
+      </div>
     </div>
   </section>
+  <HowToArrive />
   <GoogleReviews />
 </div>
 
