@@ -1582,6 +1582,16 @@ html {
   position: absolute;
 }
 
+/* Portada con la foto completa (imageFit="contain"): sin ampliar ni recortar;
+   los costados se llenan con la misma foto ya difuminada (imageBackdrop) */
+.inner-hero-media img.inner-hero-contain {
+  object-fit: contain;
+}
+
+.inner-hero-media img.inner-hero-backdrop {
+  object-fit: cover;
+}
+
 .site-header .brand-logo img.brand-logo-full {
   height: 78px;
 }

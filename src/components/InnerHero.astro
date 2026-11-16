@@ -16,6 +16,13 @@ interface Props {
   benefits?: { icon: IconName; label: string }[];
   /** Encuadre de la foto (object-position). */
   imagePosition?: string;
+  /**
+   * "contain" muestra la foto completa, sin ampliarla ni recortarla. Útil para
+   * fotos verticales; los costados se llenan con `imageBackdrop`.
+   */
+  imageFit?: "cover" | "contain";
+  /** Fondo para imageFit="contain": la misma foto ya difuminada (archivo aparte). */
+  imageBackdrop?: string;
   /** Las portadas de secciones de más abajo cargan su foto en diferido. */
   lazy?: boolean;
   /** Fuerza el diseño de portada verde con foto (igual que Inicio y Tratamientos). */
@@ -33,6 +40,8 @@ const {
   showActions = false,
   benefits = [],
   imagePosition,
+  imageFit = "cover",
+  imageBackdrop,
   lazy = false,
   rich = false,
   class: className,
@@ -83,7 +92,11 @@ const {
     }
   </div>
   <figure class="inner-hero-media">
+    {imageFit === "contain" && imageBackdrop && (
+      <img class="inner-hero-backdrop" src={imageBackdrop} alt="" aria-hidden="true" width="1000" height="640" loading={lazy ? "lazy" : undefined} />
+    )}
     <img
+      class={imageFit === "contain" ? "inner-hero-contain" : undefined}
       src={image}
       alt={imageAlt}
       width="1000"

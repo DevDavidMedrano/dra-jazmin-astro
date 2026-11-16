@@ -65,7 +65,8 @@ const hasCategory = (category: string) => cases.some((item) => item.category ===
   description="Casos reales que muestran la evolución de cada tratamiento, siempre con la autorización por escrito de cada paciente."
   image={withBase("/images/hero-resultados-facial.webp")}
   imageAlt="Dra. Jazmín Alvarez aplicando un tratamiento con dermapen a una paciente"
-  imagePosition="50% 40%"
+  imageFit="contain"
+  imageBackdrop={withBase("/images/hero-resultados-facial-fondo.webp")}
   lazy
   benefits={[
     { icon: "shield", label: "Fotos con consentimiento" },
