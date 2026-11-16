@@ -1,4 +1,4 @@
-# Sitio web - Dra. Jazmín Álvarez
+# Sitio web - Dra. Jazmín Alvarez
 
 Primera versión de la portada construida con Astro y preparada para publicarse en Vercel.
 

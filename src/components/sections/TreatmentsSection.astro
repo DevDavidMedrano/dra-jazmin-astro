@@ -8,11 +8,9 @@ import { withBase } from "../../data/paths";
 import Icon from "../Icon.astro";
 import InnerHero from "../InnerHero.astro";
 import TreatmentStrip from "../TreatmentStrip.astro";
-import HyperhidrosisSection from "./HyperhidrosisSection.astro";
 import svcTricologia from "../../assets/servicios/consulta-tricologia.webp";
 import svcInjerto from "../../assets/servicios/injerto-capilar.webp";
 import svcBotox from "../../assets/servicios/botox-facial.webp";
-import svcHiperhidrosis from "../../assets/servicios/hiperhidrosis.webp";
 import svcLabios from "../../assets/servicios/relleno-labios.webp";
 import svcDermapen from "../../assets/servicios/dermapen.webp";
 import svcYellow from "../../assets/servicios/yellow-peel.webp";
@@ -22,22 +20,22 @@ import { services, site, treatments } from "../../data/site";
 const cardPhotos: Record<string, { src: string; alt: string; position: string }> = {
   "restauracion-capilar": {
     src: "/images/doctora-consultorio-capilar.webp",
-    alt: "Dra. Jazmín Álvarez en su consultorio junto al equipo de diagnóstico capilar",
+    alt: "Dra. Jazmín Alvarez en su consultorio junto al equipo de diagnóstico capilar",
     position: "55% 30%",
   },
   "medicina-estetica": {
     src: "/images/doctora-valoracion-facial.webp",
-    alt: "Dra. Jazmín Álvarez valorando el rostro de una paciente",
+    alt: "Dra. Jazmín Alvarez valorando el rostro de una paciente",
     position: "50% 35%",
   },
   "rejuvenecimiento-facial": {
     src: "/images/doctora-tratamiento.webp",
-    alt: "Dra. Jazmín Álvarez aplicando un tratamiento a una paciente",
+    alt: "Dra. Jazmín Alvarez aplicando un tratamiento a una paciente",
     position: "center 30%",
   },
   "tratamientos-personalizados": {
     src: "/images/doctora-tricoscopia.webp",
-    alt: "Dra. Jazmín Álvarez revisando el cuero cabelludo con un tricoscopio",
+    alt: "Dra. Jazmín Alvarez revisando el cuero cabelludo con un tricoscopio",
     position: "82% 25%",
   },
 };
@@ -47,7 +45,6 @@ const servicePhotos: Record<string, ImageMetadata> = {
   "consulta-tricologia": svcTricologia,
   "injerto-capilar": svcInjerto,
   "botox-facial": svcBotox,
-  hiperhidrosis: svcHiperhidrosis,
   "relleno-labios": svcLabios,
   dermapen: svcDermapen,
   "yellow-peel": svcYellow,
@@ -63,7 +60,7 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
     titleAccent="para ti"
     description="Cada tratamiento comienza con una valoración médica personalizada para entender tus necesidades y definir opciones reales y seguras."
     image={withBase("/images/procedimiento-capilar.webp")}
-    imageAlt="Dra. Jazmín Álvarez durante un procedimiento de restauración capilar"
+    imageAlt="Dra. Jazmín Alvarez durante un procedimiento de restauración capilar"
     showActions
     benefits={[
       { icon: "shield", label: "Enfoque médico" },
@@ -149,5 +146,4 @@ const cardLinks = ["Solicitar valoración", "Conocer opciones", "Solicitar infor
       }
     </ul>
   </section>
-  <HyperhidrosisSection />
 </div>

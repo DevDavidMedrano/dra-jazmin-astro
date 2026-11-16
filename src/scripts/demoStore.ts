@@ -89,7 +89,7 @@ const defaultSettings: DemoSettings = {
   hiddenHeroPhotos: [],
   cofepris: "COFEPRIS: 2614102002A00811",
   profile: {
-    name: "Dra. Jazmín Álvarez",
+    name: "Dra. Jazmín Alvarez",
     headline: "Ciencia, precisión y atención cercana",
     biography:
       "Mi propósito es acompañarte con honestidad, cuidado y un plan diseñado para tus necesidades. La valoración es el espacio para escuchar lo que buscas y explicarte con claridad cada alternativa.",

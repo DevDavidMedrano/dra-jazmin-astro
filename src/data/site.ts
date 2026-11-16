@@ -1,7 +1,7 @@
 import type { IconName } from "./icons";
 
 export const site = {
-  doctorName: "Dra. Jazmín Álvarez",
+  doctorName: "Dra. Jazmín Alvarez",
   specialty: "Medicina Estética y Restauración Capilar",
   whatsappNumber: "523310947178",
   whatsappDisplay: "+52 33 1094 7178",
@@ -11,7 +11,7 @@ export const site = {
   instagramHandle: "@drajazminalvarez",
   /** Página de Facebook. Mientras esté vacío, el botón de Facebook no se muestra. */
   facebookUrl: "https://www.facebook.com/mannlichhair/",
-  facebookName: "Dra. Jazmín Álvarez",
+  facebookName: "Dra. Jazmín Alvarez",
   clinic: "Hospital Real San José, Valle Real. Consultorio 6A, Piso 4",
   /** Domicilio completo, una línea por renglón. */
   address: ["Av. Central No. 911", "Col. Residencial Poniente", "C.P. 45136, Zapopan, Jal."],
@@ -105,13 +105,6 @@ export const services: Service[] = [
     summary: "Suaviza líneas de expresión, previene arrugas y rejuvenece tu rostro.",
   },
   {
-    id: "hiperhidrosis",
-    title: "Toxina Botulínica (Botox®) para Hiperhidrosis",
-    icon: "syringe",
-    summary: "Tratamiento médico para la sudoración excesiva en axilas, manos o pies.",
-    details: "#hiperhidrosis",
-  },
-  {
     id: "relleno-labios",
     title: "Relleno de Labios con Ácido Hialurónico",
     icon: "lips",
@@ -182,7 +175,7 @@ export const googleReviews = {
 
 /** Cédula y registros profesionales de la doctora (Sobre mí y pie de página). */
 export const credentials = {
-  fullName: "Dra. Tania Jazmín Álvarez de Anda",
+  fullName: "Dra. Tania Jazmín Alvarez de Anda",
   cedula: "9848556",
   cedulaSource: "DGP · Universidad de Guadalajara",
   items: [
